@@ -7,7 +7,7 @@
         <property name="port2" type="string">7002</property>
         <property name="port3" type="string">7003</property>
         <property name="renderWidth" type="int">480</property>
-        <property name="showDebug" type="bool">true</property>
+        <property name="showDebug" type="bool">false</property>
         <property name="showFullscreen" type="bool">false</property>
         <property name="showGui" type="bool">true</property>
         <property name="showProps" type="bool">false</property>

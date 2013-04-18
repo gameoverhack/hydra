@@ -254,22 +254,27 @@ void GuiView::setup() {
     }
 
     hButtonBox * patternLayout = gui->addButtonBox("patternLayout", layoutPanel, HGUI_NEXT_COL, gui->margin2-100, 17, 32, 20);
+    hLabel * patternLayoutLabel = gui->addLabel("patternLayoutLabel", layoutPanel, HGUI_RIGHT, -patternLayout->getWidth(), -16, "ONscreenLayout");
+	patternLayout->addItems(3,2);
 	patternLayout->displayIndexes(true);
 
-    hButtonBox * patternLayoutOFF = gui->addButtonBox("patternLayoutOFF", layoutPanel, HGUI_NEXT_COL, gui->margin2-17, 80, 32, 20);
+    hButtonBox * patternLayoutOFF = gui->addButtonBox("patternLayoutOFF", layoutPanel, HGUI_NEXT_COL, gui->margin2-7-patternLayoutLabel->getWidth(), 80, 32, 20);
+    hLabel * patternLayoutOFFLabel = gui->addLabel("patternLayoutOFFLabel", layoutPanel, HGUI_RIGHT, -20, -16, "OFFscreenLayout");
     patternLayoutOFF->addItems(3,2);
 	patternLayoutOFF->displayIndexes(true);
 
-    hListBox * cameraList = gui->addListBox("cameraList", layoutPanel, HGUI_NEXT_COL, gui->margin2+100, 17, 120);
+    hListBox * cameraList = gui->addListBox("cameraList", layoutPanel, HGUI_NEXT_COL, gui->margin2 + patternLayout->getWidth() - 40, 17, 120);
+    hLabel * cameraListLabel = gui->addLabel("cameraListLabel", layoutPanel, HGUI_RIGHT, -cameraList->getWidth(), -16, "camera");
     cameraList->addItems(4, "");
 
     for (int i = 0; i < 4; i++) {
         cameraList->setElementLabel(i+1, "camera_" + ofToString(i+1));
     }
 
-    hListBox * videoList = gui->addListBox("videoList", layoutPanel, HGUI_NEXT_COL, gui->margin2-100, 17, 220);
+    hListBox * videoList = gui->addListBox("videoList", layoutPanel, HGUI_NEXT_COL, gui->margin2, 17, 220);
+    hLabel * videoListLabel = gui->addLabel("videoListLabel", layoutPanel, HGUI_RIGHT, -videoList->getWidth(), -16, "video");
 
-    hCheckBox * offscreenCB = gui->addCheckBox("offScreen", layoutPanel, HGUI_NEXT_COL, gui->margin2+17, 17);
+    hCheckBox * offscreenCB = gui->addCheckBox("offScreen", layoutPanel, HGUI_NEXT_COL, gui->margin2+videoList->getWidth(), 17);
     hLabel * offscreenCBLabel = gui->addLabel("offscreenCBLabel", layoutPanel, HGUI_RIGHT, 2, 0, "offscreen");
     offscreenCB->setBoolVar(&bOffScreen);
 
@@ -715,21 +720,37 @@ void GuiView::changePattern(hEventArgs& args) {
         return;
     }
 
-    int type = args.values[0] - 1;
-
+    int oldtype = _appModel->getPatternIndex(scene->getPatternName());
     vector<ofRectangle*> pattern = _appModel->getPattern(args.strings[0]);
 
-    for (int i = 0; i < scene->getVideos().size(); i++) {
-        delete scene->getVideos()[i];
-        scene->getVideos()[i] = NULL;
+    if (oldtype != -1){
+
+        vector<ofRectangle*> oldpattern = _appModel->getPattern(scene->getPatternName());
+
+        if(oldpattern.size() > pattern.size()){
+            // delete excess videos
+            for (int i = pattern.size()-6; i < scene->getVideos().size()-6; i++) {
+                delete scene->getVideos()[i];
+                scene->getVideos()[i] = NULL;
+            }
+        }
     }
 
     scene->setPatternName(args.strings[0]);
     scene->getVideos().resize(pattern.size());
 
     for (int i = 0; i < pattern.size(); i++) {
-        scene->getVideos()[i] = new VideoObject();
+        if(scene->getVideos()[i] == NULL) scene->getVideos()[i] = new VideoObject();
     }
+
+    hGui * gui = hGui::getInstance();
+    hListBox * videoList = (hListBox*)gui->getWidget("videoList");
+    hListBox * cameraList = (hListBox*)gui->getWidget("cameraList");
+    videoList->setAllElementsDisabled(true);
+    cameraList->setAllElementsDisabled(true);
+    videoList->unselectLastRadioElement();
+    cameraList->unselectLastRadioElement();
+    bOffScreen = false;
 
     updatePatternLayout();
 
@@ -893,6 +914,14 @@ void GuiView::selectScene(hEventArgs& args) {
     LOG_VERBOSE("Select scene");
 
     if (_appModel->setCurrentScene(args.strings[0])) {
+        hGui * gui = hGui::getInstance();
+        hListBox * videoList = (hListBox*)gui->getWidget("videoList");
+        hListBox * cameraList = (hListBox*)gui->getWidget("cameraList");
+        videoList->setAllElementsDisabled(true);
+        cameraList->setAllElementsDisabled(true);
+        videoList->unselectLastRadioElement();
+        cameraList->unselectLastRadioElement();
+        bOffScreen = false;
         updatePatternLayout();
     }
 }

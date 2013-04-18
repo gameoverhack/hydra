@@ -54,16 +54,29 @@ public:
         LOG_VERBOSE("Destroying VideoObject");
         //_position // how to delete?
         if (_player != NULL && _inputType == GO_VIDEO_PLAYER) {
-            _player->close();
-            delete _player;
+            //_player->close();
+            //delete _player;
             _player = NULL;
         }
         if (_overlay != NULL && _inputType == GO_VIDEO_PLAYER) {
-            _overlay->close();
-            delete _overlay;
+            //_overlay->close();
+            //delete _overlay;
             _overlay = NULL;
         }
         _inputType = _cropType = NULL;
+    };
+
+    bool isFrameNew(){
+        if (_player != NULL && _inputType == GO_VIDEO_PLAYER) {
+            return _player->isFrameNew();
+        }
+        if (_overlay != NULL && _inputType == GO_VIDEO_PLAYER) {
+            return _overlay->isFrameNew();
+        }
+        if (_camera != NULL && _inputType == GO_VIDEO_CAMERA) {
+            return _camera->isFrameNew();
+        }
+        return false;
     };
 
     int _inputType;
