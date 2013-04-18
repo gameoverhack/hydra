@@ -783,6 +783,14 @@ void GuiView::selectPattern(hEventArgs& args) {
     if (videoName != "") {
         LOG_VERBOSE("Video/Camera path is already selected so display it...");
 
+        if(videoList->findElement(videoName) == NULL && cameraList->findElement(videoName) == NULL){
+            LOG_ERROR("Video/Camera path exists but asset can't be found");
+            videoList->unselectLastRadioElement();
+            cameraList->unselectLastRadioElement();
+            bOffScreen = false;
+            return;
+        }
+
         bOffScreen = scene->getVideos()[position]->_bOffscreen;
 
         if (scene->getVideos()[position]->_inputType == GO_VIDEO_CAMERA) {
