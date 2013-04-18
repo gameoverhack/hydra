@@ -17,7 +17,7 @@ VideoController::VideoController() {
 	currentlyLoadingVideo = -1;
 
 	// init camera grabbers
-	map< string, goVideoGrabber* >& cameras = _appModel->getCameras();
+	map< string, ofVideoGrabber* >& cameras = _appModel->getCameras();
 
     int camWidth = boost::any_cast<int>(_appModel->getProperty("grabberWidth"));
     int camHeight = boost::any_cast<int>(_appModel->getProperty("grabberHeight"));
@@ -26,22 +26,33 @@ VideoController::VideoController() {
 
 	for (int i = 0; i < MAX_CAMERAS; i++) {
 	    LOG_NOTICE("Init Camera " + ofToString(i) + " at " + ofToString(camWidth) + " x " + ofToString(camHeight));
-		goVideoGrabber* camera = new goVideoGrabber();
+		ofVideoGrabber* camera = new ofVideoGrabber();
 		camera->setVerbose(true);
-        camera->setDeviceID(i);
-        camera->setRequestedMediaSubType(VI_MEDIASUBTYPE_YUY2);
-        if (i == 2) { // TP3 loungeroom cam 1
-            camera->setDesiredFrameRate(10);
-            camera->initGrabber(160, 120);
-        } else if (i == 3) { // TP3 loungeroom Cam 2
-            camera->setDesiredFrameRate(13);
-            camera->initGrabber(320, 240);
-        } else {
-            camera->setDesiredFrameRate(25);
-            camera->initGrabber(camWidth, camHeight);
-        }
 
-        cameras.insert(pair< string, goVideoGrabber* >("camera_"+ofToString(i+1), camera));
+		if(i < 2) camera->setDeviceID(4 + i);
+        if(i >= 2) camera->setDeviceID(4 + i + 1);
+
+        camera->setRequestedMediaSubType(VI_MEDIASUBTYPE_UYVY);
+
+        if(i == 0){
+            camera->initGrabber(1920, 1080);
+        }else{
+            camera->initGrabber(720, 576);
+        }
+//        camera->setDeviceID(i);
+//        camera->setRequestedMediaSubType(VI_MEDIASUBTYPE_YUY2);
+//        if (i == 2) { // TP3 loungeroom cam 1
+//            camera->setDesiredFrameRate(10);
+//            camera->initGrabber(160, 120);
+//        } else if (i == 3) { // TP3 loungeroom Cam 2
+//            camera->setDesiredFrameRate(13);
+//            camera->initGrabber(320, 240);
+//        } else {
+//            camera->setDesiredFrameRate(25);
+//            camera->initGrabber(camWidth, camHeight);
+//        }
+
+        cameras.insert(pair< string, ofVideoGrabber* >("camera_"+ofToString(i+1), camera));
 	}
 
 }
@@ -132,11 +143,11 @@ void VideoController::update() {
 
     vector<VideoObject*> videoObjects = scene->getVideos();
 
-    map< string, goVideoGrabber* >& cameras = _appModel->getCameras();
+    map< string, ofVideoGrabber* >& cameras = _appModel->getCameras();
 
-    map< string, goVideoGrabber* >::iterator it;
+    map< string, ofVideoGrabber* >::iterator it;
     for (it = cameras.begin(); it != cameras.end(); it++) {
-        goVideoGrabber* camera = it->second;
+        ofVideoGrabber* camera = it->second;
         if (camera == NULL) continue;
         camera->update();
     }
@@ -154,14 +165,14 @@ void VideoController::update() {
                 if (!videoObjects[i]->_bAssigned) {
                     LOG_VERBOSE("Assign player: " + videoObjects[i]->_videoName);
                     videoObjects[i]->_bAssigned = true;
-                    map< string, goThreadedVideo* >& allVideos = _appModel->getAllVideos();
-                    map< string, goThreadedVideo* >::iterator it = allVideos.find(videoObjects[i]->_videoName);
+                    map< string, ofxThreadedVideo* >& allVideos = _appModel->getAllVideos();
+                    map< string, ofxThreadedVideo* >::iterator it = allVideos.find(videoObjects[i]->_videoName);
                     if (it == allVideos.end()) {
-                        if (videoObjects[i]->_player == NULL) videoObjects[i]->_player = new goThreadedVideo();
+                        if (videoObjects[i]->_player == NULL) videoObjects[i]->_player = new ofxThreadedVideo();
+                        //videoObjects[i]->_player->setPixelFormat(OF_PIXELS_BGRA);
                         videoObjects[i]->_player->loadMovie(videoObjects[i]->_videoPath);
-                        ofAddListener(videoObjects[i]->_player->success, this, &VideoController::success);
-                        ofAddListener(videoObjects[i]->_player->error, this, &VideoController::error);
-                        allVideos.insert(pair< string, goThreadedVideo* >(videoObjects[i]->_videoName, videoObjects[i]->_player));
+                        ofAddListener(videoObjects[i]->_player->threadedVideoEvent, this, &VideoController::threadedVideoEvent);
+                        allVideos.insert(pair< string, ofxThreadedVideo* >(videoObjects[i]->_videoName, videoObjects[i]->_player));
                     } else {
                         videoObjects[i]->_player = it->second;
                     }
@@ -174,7 +185,7 @@ void VideoController::update() {
 
 
 //    vector<goThreadedVideo*>& videos = _appModel->getVideos();
-//    vector<goVideoGrabber*>& cameras = _appModel->getCameras();
+//    vector<ofVideoGrabber*>& cameras = _appModel->getCameras();
 //
 //    if (checkState(kVIDEOCONTROLLER_LOADING)) {
 //        // check if there are more movies to load
@@ -215,18 +226,26 @@ void VideoController::update() {
 }
 
 //--------------------------------------------------------------
-void VideoController::success(const void * sender, string & path) {
+void VideoController::threadedVideoEvent(ofxThreadedVideoEvent & e) {
 
-    goThreadedVideo * video = (goThreadedVideo*)sender;
+    ofxThreadedVideo * video = e.video;
 
 //    vector<goThreadedVideo*>& videos = _appModel->getVideos();
 //
-	LOG_NOTICE("Finsished loading: " + video->getCurrentlyPlaying());
+
+    if(e.eventType == VIDEO_EVENT_LOAD_OK){
+        LOG_NOTICE("Finsished loading: " + video->getPath());
+        video->setVolume(255);
+        video->setLoopState(OF_LOOP_NONE);
+    }else{
+        LOG_ERROR("Error loading:" + video->getEventTypeAsString(e.eventType));
+    }
+
+
 //	//remove the event listeners
-	ofRemoveListener(video->success, this, &VideoController::success);
-	ofRemoveListener(video->error, this, &VideoController::error);
-	video->setVolume(255);
-	video->setLoopState(OF_LOOP_NONE);
+//	ofRemoveListener(video->success, this, &VideoController::success);
+//	ofRemoveListener(video->error, this, &VideoController::error);
+
 //	// increment the counter for total number of movies loaded...this will cause the if statement in update to start loading again
 //    videos[currentlyLoadingVideo]->setPaused(true);
 //    videos[currentlyLoadingVideo]->setPosition(0.0f);
@@ -235,17 +254,17 @@ void VideoController::success(const void * sender, string & path) {
 
 }
 
-//--------------------------------------------------------------
-void VideoController::error(const void * sender, int & errCode) {
-
-    goThreadedVideo * video = (goThreadedVideo*)sender;
-
-//    vector<goThreadedVideo*>& videos = _appModel->getVideos();
+////--------------------------------------------------------------
+//void VideoController::error(const void * sender, int & errCode) {
 //
-	LOG_ERROR("Error loading:" + ofToString(errCode));
-//	//remove the event listeners
-	ofRemoveListener(video->success, this, &VideoController::success);
-	ofRemoveListener(video->error, this, &VideoController::error);
-//	// increment the counter for total number of movies loaded...this will cause the if statement in update to start loading again
-//	numberOfMoviesLoaded++;
-}
+//    ofxThreadedVideo * video = (ofxThreadedVideo*)sender;
+//
+////    vector<goThreadedVideo*>& videos = _appModel->getVideos();
+////
+//	LOG_ERROR("Error loading:" + ofToString(errCode));
+////	//remove the event listeners
+//	ofRemoveListener(video->success, this, &VideoController::success);
+//	ofRemoveListener(video->error, this, &VideoController::error);
+////	// increment the counter for total number of movies loaded...this will cause the if statement in update to start loading again
+////	numberOfMoviesLoaded++;
+//}

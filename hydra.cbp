@@ -71,8 +71,7 @@
 			<Add directory="../../../addons/ofxFenster/libs/ghost/lib" />
 			<Add directory="../../../addons/ofxFenster/src" />
 			<Add directory="../../../addons/ofxFenster/libs/string/include" />
-			<Add directory="../../../addons/goThreadedVideo/src" />
-			<Add directory="../../../addons/goVideoPlayer/src" />
+			<Add directory="../../../addons/ofxThreadedVideo/src" />
 			<Add directory="../../../addons/FastDelegate" />
 			<Add directory="../../../addons/ofxOsc/src" />
 			<Add directory="../../../addons/ofxOsc/libs/oscpack/include/osc" />
@@ -107,12 +106,11 @@
 			<Add directory="../../../addons/ofxhUtils/src/hEvents" />
 			<Add directory="../../../addons/ofxhUtils/src/hStringUtils" />
 			<Add directory="../../../addons/ofxhUtils/src/hTable" />
-			<Add directory="../../../addons/goVideoGrabber/src" />
 			<Add directory="../../../addons/ofxNetwork/src" />
-			<Add directory="../../../addons/ofxOsc/libs/oscpack/src" />
 			<Add directory="../../../addons/ofxOsc/libs/oscpack/src/osc" />
 			<Add directory="../../../addons/ofxOsc/libs/oscpack/src/ip" />
 			<Add directory="../../../addons/ofxOsc/libs/oscpack/src/ip/win32" />
+			<Add directory="../../../addons/ofxOsc/libs/oscpack/src" />
 		</Compiler>
 		<Linker>
 			<Add library="..\..\..\libs\FreeImage\lib\win_cb\FreeImage.lib" />
@@ -160,8 +158,8 @@
 			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_video231.a" />
 			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_highgui231.a" />
 			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_ml231.a" />
-			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_contrib231.a" />
 			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_core231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_contrib231.a" />
 			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_flann231.a" />
 			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_gpu231.a" />
 			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_ts231.a" />
@@ -176,16 +174,8 @@
 		<Unit filename="../../../addons/FastDelegate/FastDelegateBind.h" />
 		<Unit filename="../../../addons/goDirList/src/goDirList.cpp" />
 		<Unit filename="../../../addons/goDirList/src/goDirList.h" />
-		<Unit filename="../../../addons/goThreadedVideo/src/goThreadedVideo.cpp" />
-		<Unit filename="../../../addons/goThreadedVideo/src/goThreadedVideo.h" />
 		<Unit filename="../../../addons/goUtils/src/goUtils.cpp" />
 		<Unit filename="../../../addons/goUtils/src/goUtils.h" />
-		<Unit filename="../../../addons/goVideoGrabber/src/goVideoGrabber.cpp" />
-		<Unit filename="../../../addons/goVideoGrabber/src/goVideoGrabber.h" />
-		<Unit filename="../../../addons/goVideoPlayer/src/goQtUtils.cpp" />
-		<Unit filename="../../../addons/goVideoPlayer/src/goQtUtils.h" />
-		<Unit filename="../../../addons/goVideoPlayer/src/goVideoPlayer.cpp" />
-		<Unit filename="../../../addons/goVideoPlayer/src/goVideoPlayer.h" />
 		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_Buttons.h" />
 		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_C-api.h" />
 		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_CallbackEventConsumer.h" />
@@ -307,6 +297,8 @@
 		<Unit filename="../../../addons/ofxOsc/src/ofxOscReceiver.h" />
 		<Unit filename="../../../addons/ofxOsc/src/ofxOscSender.cpp" />
 		<Unit filename="../../../addons/ofxOsc/src/ofxOscSender.h" />
+		<Unit filename="../../../addons/ofxThreadedVideo/src/ofxThreadedVideo.cpp" />
+		<Unit filename="../../../addons/ofxThreadedVideo/src/ofxThreadedVideo.h" />
 		<Unit filename="../../../addons/ofxXmlSettings/libs/tinyxml.cpp" />
 		<Unit filename="../../../addons/ofxXmlSettings/libs/tinyxml.h" />
 		<Unit filename="../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp" />

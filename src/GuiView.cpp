@@ -451,7 +451,7 @@ void GuiView::update() {
 
     begin();
     {
-         gui->draw();
+         if(boost::any_cast<bool>(_appModel->getProperty("showGui"))) gui->draw();
     }
     end();
 }

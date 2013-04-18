@@ -14,7 +14,7 @@
 #include "Logger.h"
 #include "BaseState.h"
 
-#include "goThreadedVideo.h"
+#include "ofxThreadedVideo.h"
 
 enum {
     kVIDEOCONTROLLER_READY,
@@ -33,8 +33,8 @@ public:
 
     void loadFolder(string path);
 
-	void success(const void * sender, string & path);
-	void error(const void * sender, int & errCode);
+	void threadedVideoEvent(ofxThreadedVideoEvent & e);
+//	void error(const void * sender, int & errCode);
 
 private:
 

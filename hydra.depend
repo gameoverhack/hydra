@@ -6635,6 +6635,1929 @@
 
 1322544290 c:\users\gameover\code\of007\apps\devdonotdelete\hydra\src\stringutils.h
 
+1315558836 source:e:\of007pc\addons\godirlist\src\godirlist.cpp
+	"goDirList.h"
+
+1315558836 e:\of007pc\addons\godirlist\src\godirlist.h
+	"ofMain.h"
+	"goUtils.h"
+	<map>
+	<queue>
+	"Poco/DirectoryIterator.h"
+	"Poco/File.h"
+	"Poco/Path.h"
+	"Poco/DateTimeFormatter.h"
+	"Poco/DateTimeFormat.h"
+
+1365410798 e:\of007pc\libs\openframeworks\ofmain.h
+	"ofConstants.h"
+	"ofFileUtils.h"
+	"ofLog.h"
+	"ofSystemUtils.h"
+	"ofThread.h"
+	"ofURLFileLoader.h"
+	"ofUtils.h"
+	"ofBaseTypes.h"
+	"ofTypes.h"
+	"ofColor.h"
+	"ofPoint.h"
+	"ofRectangle.h"
+	"ofParameter.h"
+	"ofParameterGroup.h"
+	"ofMath.h"
+	"ofVectorMath.h"
+	"ofSerial.h"
+	"ofArduino.h"
+	"ofFbo.h"
+	"ofGLRenderer.h"
+	"ofGLUtils.h"
+	"ofLight.h"
+	"ofMaterial.h"
+	"ofShader.h"
+	"ofTexture.h"
+	"ofVbo.h"
+	"ofVboMesh.h"
+	"ofCairoRenderer.h"
+	"ofGraphics.h"
+	"ofImage.h"
+	"ofPath.h"
+	"ofPixels.h"
+	"ofPolyline.h"
+	"ofRendererCollection.h"
+	"ofTessellator.h"
+	"ofTrueTypeFont.h"
+	"ofBaseApp.h"
+	"ofAppRunner.h"
+	"ofSoundStream.h"
+	"ofSoundPlayer.h"
+	"ofVideoGrabber.h"
+	"ofVideoPlayer.h"
+	"ofEvents.h"
+	"of3dUtils.h"
+	"ofCamera.h"
+	"ofEasyCam.h"
+	"ofMesh.h"
+	"ofNode.h"
+
+1365410798 e:\of007pc\libs\openframeworks\utils\ofconstants.h
+	<TargetConditionals.h>
+	<windows.h>
+	"GL\glew.h"
+	"GL\wglew.h"
+	"glu.h"
+	<stdint.h>
+	<functional>
+	<unistd.h>
+	"GL/glew.h"
+	<OpenGL/gl.h>
+	<ApplicationServices/ApplicationServices.h>
+	<unistd.h>
+	<GL/glew.h>
+	<GL/gl.h>
+	<GL/glx.h>
+	<typeinfo>
+	<unistd.h>
+	<GLES/gl.h>
+	<GLES/glext.h>
+	"glu.h"
+	"tesselator.h"
+	<cstdlib>
+	<cstdio>
+	<cstdarg>
+	<cmath>
+	<ctime>
+	<cstdlib>
+	<string>
+	<iostream>
+	<vector>
+	<cstring>
+	<sstream>
+	<iomanip>
+	<fstream>
+	<algorithm>
+	<cfloat>
+
+1365410802 e:\of007pc\libs\quicktime\include\targetconditionals.h
+	"ConditionalMacros.h"
+
+1365410802 e:\of007pc\libs\quicktime\include\conditionalmacros.h
+
+1317284549 e:\of007pc\libs\glew\include\gl\glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1317284549 e:\of007pc\libs\glew\include\gl\wglew.h
+	<windows.h>
+
+1317284549 e:\of007pc\libs\glu\include\glu.h
+	"glu_mangle.h"
+	<GL/gl.h>
+
+1317284552 e:\of007pc\libs\tess2\include\tesselator.h
+	<TargetConditionals.h>
+
+1365410798 e:\of007pc\libs\openframeworks\utils\offileutils.h
+	"ofConstants.h"
+	"Poco/File.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\file.h
+	"Poco/Foundation.h"
+	"Poco/Timestamp.h"
+	<vector>
+	"File_WINCE.h"
+	"Poco/File_WIN32U.h"
+	"Poco/File_WIN32.h"
+	"Poco/File_VX.h"
+	"Poco/File_UNIX.h"
+	"Poco/File_VMS.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\foundation.h
+	"Poco/Config.h"
+	"Poco/Platform.h"
+	"Poco/Platform_WIN32.h"
+	"Poco/Platform_VMS.h"
+	"Poco/Platform_VX.h"
+	"Poco/Platform_POSIX.h"
+	"Poco/Bugcheck.h"
+	"Poco/Types.h"
+	<string>
+
+1365410799 e:\of007pc\libs\poco\include\poco\config.h
+
+1365410799 e:\of007pc\libs\poco\include\poco\platform.h
+
+1365410799 e:\of007pc\libs\poco\include\poco\platform_win32.h
+
+1317284549 e:\of007pc\libs\poco\include\poco\platform_vms.h
+
+1365410799 e:\of007pc\libs\poco\include\poco\platform_vx.h
+
+1317284549 e:\of007pc\libs\poco\include\poco\platform_posix.h
+
+1317284549 e:\of007pc\libs\poco\include\poco\bugcheck.h
+	"Poco/Foundation.h"
+	<string>
+	<iostream>
+
+1365410799 e:\of007pc\libs\poco\include\poco\types.h
+	"Poco/Foundation.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\timestamp.h
+	"Poco/Foundation.h"
+	<ctime>
+
+1317284549 e:\of007pc\libs\poco\include\poco\file_wince.h
+	"Poco/Foundation.h"
+	"Poco/Timestamp.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\file_win32u.h
+	"Poco/Foundation.h"
+	"Poco/Timestamp.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\file_win32.h
+	"Poco/Foundation.h"
+	"Poco/Timestamp.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\file_vx.h
+	"Poco/Foundation.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\file_unix.h
+	"Poco/Foundation.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\file_vms.h
+	"Poco/Foundation.h"
+
+1365410798 e:\of007pc\libs\openframeworks\utils\oflog.h
+	"ofConstants.h"
+	"ofFileUtils.h"
+	"ofTypes.h"
+
+1365410798 e:\of007pc\libs\openframeworks\types\oftypes.h
+	"ofConstants.h"
+	"ofColor.h"
+	<memory>
+	<tr1/memory>
+	"Poco/Mutex.h"
+
+1365410798 e:\of007pc\libs\openframeworks\types\ofcolor.h
+	<limits>
+	"ofMath.h"
+
+1365410798 e:\of007pc\libs\openframeworks\math\ofmath.h
+	"ofPoint.h"
+	"ofConstants.h"
+
+1317284549 e:\of007pc\libs\openframeworks\types\ofpoint.h
+	"ofVec3f.h"
+
+1365410798 e:\of007pc\libs\openframeworks\math\ofvec3f.h
+	"ofVec2f.h"
+	"ofVec4f.h"
+	"ofConstants.h"
+	<cmath>
+	<iostream>
+
+1365410798 e:\of007pc\libs\openframeworks\math\ofvec2f.h
+	"ofConstants.h"
+
+1365410798 e:\of007pc\libs\openframeworks\math\ofvec4f.h
+	"ofConstants.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\mutex.h
+	"Poco/Foundation.h"
+	"Poco/Exception.h"
+	"Poco/ScopedLock.h"
+	"Poco/Mutex_WINCE.h"
+	"Poco/Mutex_WIN32.h"
+	"Poco/Mutex_VX.h"
+	"Poco/Mutex_POSIX.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\exception.h
+	"Poco/Foundation.h"
+	<stdexcept>
+
+1365410799 e:\of007pc\libs\poco\include\poco\scopedlock.h
+	"Poco/Foundation.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\mutex_wince.h
+	"Poco/Foundation.h"
+	"Poco/Exception.h"
+	"Poco/UnWindows.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\unwindows.h
+	<windows.h>
+
+1317284549 e:\of007pc\libs\poco\include\poco\mutex_win32.h
+	"Poco/Foundation.h"
+	"Poco/Exception.h"
+	"Poco/UnWindows.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\mutex_vx.h
+	"Poco/Foundation.h"
+	"Poco/Exception.h"
+	<semLib.h>
+	<errno.h>
+
+1365410799 e:\of007pc\libs\poco\include\poco\mutex_posix.h
+	"Poco/Foundation.h"
+	"Poco/Exception.h"
+	<pthread.h>
+	<errno.h>
+
+1365410798 e:\of007pc\libs\openframeworks\utils\ofsystemutils.h
+
+1365410798 e:\of007pc\libs\openframeworks\utils\ofthread.h
+	"ofConstants.h"
+	"ofTypes.h"
+	"Poco/Thread.h"
+	"Poco/Runnable.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\thread.h
+	"Poco/Foundation.h"
+	"Poco/Mutex.h"
+	"Poco/Thread_WINCE.h"
+	"Poco/Thread_WIN32.h"
+	"Poco/Thread_VX.h"
+	"Poco/Thread_POSIX.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\thread_wince.h
+	"Poco/Foundation.h"
+	"Poco/Runnable.h"
+	"Poco/UnWindows.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\runnable.h
+	"Poco/Foundation.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\thread_win32.h
+	"Poco/Foundation.h"
+	"Poco/Runnable.h"
+	"Poco/UnWindows.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\thread_vx.h
+	"Poco/Foundation.h"
+	"Poco/Runnable.h"
+	"Poco/SignalHandler.h"
+	"Poco/Event.h"
+	"Poco/RefCountedObject.h"
+	"Poco/AutoPtr.h"
+	<taskLib.h>
+	<taskVarLib.h>
+
+1365410799 e:\of007pc\libs\poco\include\poco\signalhandler.h
+	"Poco/Foundation.h"
+	<vector>
+	<setjmp.h>
+
+1365410799 e:\of007pc\libs\poco\include\poco\event.h
+	"Poco/Foundation.h"
+	"Poco/Exception.h"
+	"Poco/Event_WIN32.h"
+	"Poco/Event_VX.h"
+	"Poco/Event_POSIX.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\event_win32.h
+	"Poco/Foundation.h"
+	"Poco/Exception.h"
+	"Poco/UnWindows.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\event_vx.h
+	"Poco/Foundation.h"
+	"Poco/Exception.h"
+	<semLib.h>
+
+1317284549 e:\of007pc\libs\poco\include\poco\event_posix.h
+	"Poco/Foundation.h"
+	"Poco/Exception.h"
+	<pthread.h>
+	<errno.h>
+
+1317284549 e:\of007pc\libs\poco\include\poco\refcountedobject.h
+	"Poco/Foundation.h"
+	"Poco/AtomicCounter.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\atomiccounter.h
+	"Poco/Foundation.h"
+	"Poco/UnWindows.h"
+	<libkern/OSAtomic.h>
+	"Poco/Mutex.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\autoptr.h
+	"Poco/Foundation.h"
+	"Poco/Exception.h"
+	<algorithm>
+
+1365410799 e:\of007pc\libs\poco\include\poco\thread_posix.h
+	"Poco/Foundation.h"
+	"Poco/Runnable.h"
+	"Poco/SignalHandler.h"
+	"Poco/Event.h"
+	"Poco/RefCountedObject.h"
+	"Poco/AutoPtr.h"
+	<pthread.h>
+	<limits.h>
+	<sys/select.h>
+	<errno.h>
+	<cstring>
+
+1365410798 e:\of007pc\libs\openframeworks\utils\ofurlfileloader.h
+	<deque>
+	<queue>
+	"ofThread.h"
+	"ofEvents.h"
+	"ofFileUtils.h"
+	"Poco/Condition.h"
+
+1365410798 e:\of007pc\libs\openframeworks\events\ofevents.h
+	"ofConstants.h"
+	"ofPoint.h"
+	"ofEventUtils.h"
+
+1365410798 e:\of007pc\libs\openframeworks\events\ofeventutils.h
+	"ofConstants.h"
+	"Poco/BasicEvent.h"
+	"Poco/Delegate.h"
+	<stdio.h>
+	<stdlib.h>
+
+1365410799 e:\of007pc\libs\poco\include\poco\basicevent.h
+	"Poco/AbstractEvent.h"
+	"Poco/DefaultStrategy.h"
+	"Poco/AbstractDelegate.h"
+	"Poco/Mutex.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\abstractevent.h
+	"Poco/Foundation.h"
+	"Poco/SingletonHolder.h"
+	"Poco/SharedPtr.h"
+	"Poco/ActiveResult.h"
+	"Poco/ActiveMethod.h"
+	"Poco/Mutex.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\singletonholder.h
+	"Poco/Foundation.h"
+	"Poco/Mutex.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\sharedptr.h
+	"Poco/Foundation.h"
+	"Poco/Exception.h"
+	"Poco/AtomicCounter.h"
+	<algorithm>
+
+1317284549 e:\of007pc\libs\poco\include\poco\activeresult.h
+	"Poco/Foundation.h"
+	"Poco/Mutex.h"
+	"Poco/Event.h"
+	"Poco/RefCountedObject.h"
+	"Poco/Exception.h"
+	<algorithm>
+
+1317284549 e:\of007pc\libs\poco\include\poco\activemethod.h
+	"Poco/Foundation.h"
+	"Poco/ActiveResult.h"
+	"Poco/ActiveRunnable.h"
+	"Poco/ActiveStarter.h"
+	"Poco/AutoPtr.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\activerunnable.h
+	"Poco/Foundation.h"
+	"Poco/ActiveResult.h"
+	"Poco/Runnable.h"
+	"Poco/RefCountedObject.h"
+	"Poco/AutoPtr.h"
+	"Poco/Exception.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\activestarter.h
+	"Poco/Foundation.h"
+	"Poco/ThreadPool.h"
+	"Poco/ActiveRunnable.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\threadpool.h
+	"Poco/Foundation.h"
+	"Poco/Thread.h"
+	"Poco/Mutex.h"
+	<vector>
+
+1365410799 e:\of007pc\libs\poco\include\poco\defaultstrategy.h
+	"Poco/NotificationStrategy.h"
+	"Poco/SharedPtr.h"
+	<vector>
+
+1365410799 e:\of007pc\libs\poco\include\poco\notificationstrategy.h
+	"Poco/Foundation.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\abstractdelegate.h
+	"Poco/Foundation.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\delegate.h
+	"Poco/Foundation.h"
+	"Poco/AbstractDelegate.h"
+	"Poco/FunctionDelegate.h"
+	"Poco/Expire.h"
+	"Poco/Mutex.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\functiondelegate.h
+	"Poco/Foundation.h"
+	"Poco/AbstractDelegate.h"
+	"Poco/Mutex.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\expire.h
+	"Poco/Foundation.h"
+	"Poco/AbstractDelegate.h"
+	"Poco/Timestamp.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\condition.h
+	"Poco/Foundation.h"
+	"Poco/Mutex.h"
+	"Poco/ScopedUnlock.h"
+	"Poco/Event.h"
+	"Poco/Exception.h"
+	<deque>
+
+1317284549 e:\of007pc\libs\poco\include\poco\scopedunlock.h
+	"Poco/Foundation.h"
+
+1365410798 e:\of007pc\libs\openframeworks\utils\ofutils.h
+	"ofConstants.h"
+	<bitset>
+	"ofLog.h"
+	<shellapi.h>
+
+1365410798 e:\of007pc\libs\openframeworks\types\ofbasetypes.h
+	"ofPoint.h"
+	"ofRectangle.h"
+	"ofConstants.h"
+	"ofColor.h"
+	"ofMesh.h"
+	"ofPixels.h"
+	"ofMatrix4x4.h"
+
+1365410798 e:\of007pc\libs\openframeworks\types\ofrectangle.h
+	"ofConstants.h"
+	"ofPoint.h"
+	"ofLog.h"
+
+1365410798 e:\of007pc\libs\openframeworks\3d\ofmesh.h
+	"ofVec3f.h"
+	"ofVec2f.h"
+	"ofColor.h"
+	"ofUtils.h"
+	"ofConstants.h"
+	"ofGLUtils.h"
+
+1365410798 e:\of007pc\libs\openframeworks\gl\ofglutils.h
+
+1365410798 e:\of007pc\libs\openframeworks\graphics\ofpixels.h
+	"ofConstants.h"
+	"ofUtils.h"
+	"ofColor.h"
+	"ofMath.h"
+	<limits>
+
+1365410798 e:\of007pc\libs\openframeworks\math\ofmatrix4x4.h
+	"ofVec3f.h"
+	"ofVec4f.h"
+	"ofQuaternion.h"
+	"ofConstants.h"
+	<cmath>
+
+1365410798 e:\of007pc\libs\openframeworks\math\ofquaternion.h
+	"ofConstants.h"
+	"ofVec3f.h"
+	"ofVec4f.h"
+	<cmath>
+
+1365410798 e:\of007pc\libs\openframeworks\types\ofparameter.h
+	"ofEvents.h"
+	"ofTypes.h"
+	"ofUtils.h"
+
+1365410798 e:\of007pc\libs\openframeworks\types\ofparametergroup.h
+	<map>
+	"Poco/Any.h"
+	"ofConstants.h"
+	"ofLog.h"
+	"ofParameter.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\any.h
+	"Poco/Exception.h"
+	<algorithm>
+	<typeinfo>
+
+1317284549 e:\of007pc\libs\openframeworks\math\ofvectormath.h
+	"ofVec2f.h"
+	"ofVec3f.h"
+	"ofVec4f.h"
+	"ofMatrix3x3.h"
+	"ofMatrix4x4.h"
+	"ofQuaternion.h"
+
+1365410798 e:\of007pc\libs\openframeworks\math\ofmatrix3x3.h
+	"ofConstants.h"
+
+1365410798 e:\of007pc\libs\openframeworks\communication\ofserial.h
+	"ofConstants.h"
+	"ofTypes.h"
+	<termios.h>
+	<winbase.h>
+	<tchar.h>
+	<iostream>
+	<string.h>
+	<setupapi.h>
+	<regstr.h>
+	<winioctl.h>
+	<initguid.h>
+
+1365410798 e:\of007pc\libs\openframeworks\communication\ofarduino.h
+	<list>
+	<vector>
+	<string>
+	<iostream>
+	"ofEvents.h"
+	"ofSerial.h"
+
+1365410798 e:\of007pc\libs\openframeworks\gl\offbo.h
+	"ofTexture.h"
+
+1365410798 e:\of007pc\libs\openframeworks\gl\oftexture.h
+	"ofPoint.h"
+	"ofRectangle.h"
+	"ofBaseTypes.h"
+	"ofConstants.h"
+
+1365410798 e:\of007pc\libs\openframeworks\gl\ofglrenderer.h
+	"ofBaseTypes.h"
+	"ofPolyline.h"
+	"ofMatrix4x4.h"
+	<stack>
+
+1365410798 e:\of007pc\libs\openframeworks\graphics\ofpolyline.h
+	"ofPoint.h"
+	"ofConstants.h"
+	<deque>
+	"ofRectangle.h"
+
+1365410798 e:\of007pc\libs\openframeworks\gl\oflight.h
+	"ofNode.h"
+	"ofColor.h"
+	"of3dGraphics.h"
+
+1365410798 e:\of007pc\libs\openframeworks\3d\ofnode.h
+	"ofVectorMath.h"
+	"of3dUtils.h"
+	"ofGraphics.h"
+
+1365410798 e:\of007pc\libs\openframeworks\3d\of3dutils.h
+	"ofVectorMath.h"
+
+1365410798 e:\of007pc\libs\openframeworks\graphics\ofgraphics.h
+	"ofConstants.h"
+	"ofColor.h"
+	"ofPoint.h"
+	"ofMatrix4x4.h"
+	"ofRectangle.h"
+	"ofTypes.h"
+	"ofBaseTypes.h"
+	"ofGLRenderer.h"
+
+1365410798 e:\of007pc\libs\openframeworks\graphics\of3dgraphics.h
+	"ofConstants.h"
+	"ofColor.h"
+	"ofPoint.h"
+	"ofMatrix4x4.h"
+	"ofRectangle.h"
+	"ofTypes.h"
+	"ofBaseTypes.h"
+	"ofGLRenderer.h"
+	"of3dPrimitives.h"
+
+1365410798 e:\of007pc\libs\openframeworks\3d\of3dprimitives.h
+	"ofVboMesh.h"
+	"ofRectangle.h"
+	"ofNode.h"
+	"ofTexture.h"
+	<map>
+
+1365410798 e:\of007pc\libs\openframeworks\gl\ofvbomesh.h
+	"ofMesh.h"
+	"ofVbo.h"
+
+1365410798 e:\of007pc\libs\openframeworks\gl\ofvbo.h
+	"ofConstants.h"
+	"ofVec3f.h"
+	"ofColor.h"
+	"ofUtils.h"
+	"ofMesh.h"
+	"ofGLUtils.h"
+
+1317284549 e:\of007pc\libs\openframeworks\gl\ofmaterial.h
+	"ofColor.h"
+
+1365410798 e:\of007pc\libs\openframeworks\gl\ofshader.h
+	"ofConstants.h"
+	"ofBaseTypes.h"
+	"ofTexture.h"
+	"ofMatrix4x4.h"
+	<map>
+
+1365410798 e:\of007pc\libs\openframeworks\graphics\ofcairorenderer.h
+	"cairo-features.h"
+	"cairo-pdf.h"
+	"cairo-svg.h"
+	"cairo.h"
+	<deque>
+	<stack>
+	"ofMatrix4x4.h"
+	"ofBaseTypes.h"
+	"ofPath.h"
+
+1317284549 e:\of007pc\libs\cairo\include\cairo\cairo-features.h
+
+1317284549 e:\of007pc\libs\cairo\include\cairo\cairo-pdf.h
+	"cairo.h"
+
+1317284549 e:\of007pc\libs\cairo\include\cairo\cairo.h
+	"cairo-version.h"
+	"cairo-features.h"
+	"cairo-deprecated.h"
+
+1317284549 e:\of007pc\libs\cairo\include\cairo\cairo-version.h
+
+1317284549 e:\of007pc\libs\cairo\include\cairo\cairo-deprecated.h
+
+1317284549 e:\of007pc\libs\cairo\include\cairo\cairo-svg.h
+	"cairo.h"
+
+1365410798 e:\of007pc\libs\openframeworks\graphics\ofpath.h
+	"ofConstants.h"
+	"ofPoint.h"
+	"ofColor.h"
+	"ofPolyline.h"
+	"ofBaseTypes.h"
+	"ofVboMesh.h"
+	"ofTessellator.h"
+
+1317284549 e:\of007pc\libs\openframeworks\graphics\oftessellator.h
+	"ofConstants.h"
+	"ofMesh.h"
+	"ofTypes.h"
+	"ofPolyline.h"
+	"tesselator.h"
+
+1365410798 e:\of007pc\libs\openframeworks\graphics\ofimage.h
+	"ofFileUtils.h"
+	"ofTexture.h"
+	"ofPixels.h"
+	"ofBaseTypes.h"
+	"ofConstants.h"
+
+1365410798 e:\of007pc\libs\openframeworks\graphics\ofrenderercollection.h
+	"ofBaseTypes.h"
+
+1365410798 e:\of007pc\libs\openframeworks\graphics\oftruetypefont.h
+	<vector>
+	"ofPoint.h"
+	"ofRectangle.h"
+	"ofConstants.h"
+	"ofPath.h"
+	"ofTexture.h"
+	"ofMesh.h"
+
+1365410798 e:\of007pc\libs\openframeworks\app\ofbaseapp.h
+	"ofPoint.h"
+	"ofEvents.h"
+	"ofBaseTypes.h"
+
+1317284549 e:\of007pc\libs\openframeworks\app\ofapprunner.h
+	"ofConstants.h"
+	"ofPoint.h"
+	"ofRectangle.h"
+	"ofTypes.h"
+
+1365410798 e:\of007pc\libs\openframeworks\sound\ofsoundstream.h
+	"ofConstants.h"
+	"ofBaseTypes.h"
+	"ofBaseApp.h"
+	"ofTypes.h"
+	"ofBaseSoundStream.h"
+	"ofRtAudioSoundStream.h"
+	"ofPASoundStream.h"
+	"ofxAndroidSoundStream.h"
+	"ofxiPhoneSoundStream.h"
+
+1365410798 e:\of007pc\libs\openframeworks\sound\ofbasesoundstream.h
+	"ofConstants.h"
+
+1365410798 e:\of007pc\libs\openframeworks\sound\ofrtaudiosoundstream.h
+	"ofConstants.h"
+	"ofBaseSoundStream.h"
+	"ofTypes.h"
+
+1365410798 e:\of007pc\libs\openframeworks\sound\ofpasoundstream.h
+	"ofConstants.h"
+	"ofBaseSoundStream.h"
+	"ofTypes.h"
+
+1365410798 e:\of007pc\libs\openframeworks\sound\ofsoundplayer.h
+	"ofConstants.h"
+	"ofTypes.h"
+	"ofBaseTypes.h"
+	"ofBaseSoundPlayer.h"
+	"ofQuicktimeSoundPlayer.h"
+	"ofFmodSoundPlayer.h"
+	"ofOpenALSoundPlayer.h"
+	"ofxOpenALSoundPlayer.h"
+	"ofxAndroidSoundPlayer.h"
+
+1365410798 e:\of007pc\libs\openframeworks\sound\ofbasesoundplayer.h
+	"ofConstants.h"
+
+1365410798 e:\of007pc\libs\openframeworks\sound\offmodsoundplayer.h
+	"ofConstants.h"
+	"ofBaseSoundPlayer.h"
+	"fmod.h"
+	"fmod_errors.h"
+
+1317284549 e:\of007pc\libs\fmodex\include\fmod.h
+	"fmod_codec.h"
+	"fmod_dsp.h"
+	"fmod_memoryinfo.h"
+
+1317284549 e:\of007pc\libs\fmodex\include\fmod_codec.h
+
+1317284549 e:\of007pc\libs\fmodex\include\fmod_dsp.h
+
+1317284549 e:\of007pc\libs\fmodex\include\fmod_memoryinfo.h
+
+1317284549 e:\of007pc\libs\fmodex\include\fmod_errors.h
+	"fmod.h"
+
+1365410798 e:\of007pc\libs\openframeworks\sound\ofopenalsoundplayer.h
+	"ofConstants.h"
+	"ofBaseSoundPlayer.h"
+	"ofEvents.h"
+	"ofThread.h"
+	<OpenAL/al.h>
+	<OpenAL/alc.h>
+	<AL/al.h>
+	<AL/alc.h>
+	"kiss_fft.h"
+	"kiss_fftr.h"
+	<sndfile.h>
+	<mpg123.h>
+
+1365410798 e:\of007pc\libs\openframeworks\video\ofvideograbber.h
+	"ofConstants.h"
+	"ofTexture.h"
+	"ofBaseTypes.h"
+	"ofPixels.h"
+	"ofTypes.h"
+	"ofiPhoneVideoGrabber.h"
+	"ofQuickTimeGrabber.h"
+	"ofQTKitGrabber.h"
+	"ofDirectShowGrabber.h"
+	"ofGstVideoGrabber.h"
+	"ofxAndroidVideoGrabber.h"
+
+1365410798 e:\of007pc\libs\openframeworks\video\ofquicktimegrabber.h
+	"ofConstants.h"
+	"ofQtUtils.h"
+	"ofTexture.h"
+	"ofBaseTypes.h"
+	"ofPixels.h"
+
+1365410798 e:\of007pc\libs\openframeworks\video\ofqtutils.h
+	"ofConstants.h"
+	<QuickTime/QuickTime.h>
+	<CoreServices/CoreServices.h>
+	<ApplicationServices/ApplicationServices.h>
+	<QTML.h>
+	<FixMath.h>
+	<QuickTimeComponents.h>
+	<TextUtils.h>
+	<MediaHandlers.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\qtml.h
+	<MacTypes.h>
+	<MacMemory.h>
+	<MacWindows.h>
+	<OSUtils.h>
+	<Files.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\mactypes.h
+	<ConditionalMacros.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\macmemory.h
+	<MacTypes.h>
+	<MixedMode.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\mixedmode.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\macwindows.h
+	<MacTypes.h>
+	<TextCommon.h>
+	<MacErrors.h>
+	<Aliases.h>
+	<AppleEvents.h>
+	<Collections.h>
+	<MixedMode.h>
+	<QDOffscreen.h>
+	<Quickdraw.h>
+	<CFString.h>
+	<Icons.h>
+	<Drag.h>
+	<Events.h>
+	<Menus.h>
+	<HIToolbar.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\textcommon.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\macerrors.h
+	<ConditionalMacros.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\aliases.h
+	<MacTypes.h>
+	<Files.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\files.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<OSUtils.h>
+	<TextCommon.h>
+	<UTCUtils.h>
+	<Finder.h>
+	<sys/types.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\osutils.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<MacMemory.h>
+	<Patches.h>
+	<DateTimeUtils.h>
+	<CFString.h>
+	<Endian.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\patches.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\datetimeutils.h
+	<ConditionalMacros.h>
+	<MacTypes.h>
+	<UTCUtils.h>
+	<CFDate.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\utcutils.h
+	<MacTypes.h>
+	<MacErrors.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfdate.h
+	<CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfbase.h
+	<CoreFoundation/CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corefoundation\cfbase.h
+	<ConditionalMacros.h>
+	"QTMLCompilerOptions.h"
+	"QTCFRenames.h"
+	<stdint.h>
+	<stdbool.h>
+	<GNUCompatibility/stdint.h>
+	<GNUCompatibility/stdbool.h>
+	<AvailabilityMacros.h>
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\gnucompatibility\stdint.h
+
+1365410802 e:\of007pc\libs\quicktime\include\gnucompatibility\stdbool.h
+
+1365410802 e:\of007pc\libs\quicktime\include\availabilitymacros.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfstring.h
+	<CoreFoundation/CFString.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corefoundation\cfstring.h
+	<CoreFoundation/CFBase.h>
+	<CoreFoundation/CFArray.h>
+	<CoreFoundation/CFData.h>
+	<CoreFoundation/CFDictionary.h>
+	<CoreFoundation/CFCharacterSet.h>
+	<CoreFoundation/CFLocale.h>
+	<stdarg.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corefoundation\cfarray.h
+	<CoreFoundation/CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corefoundation\cfdata.h
+	<CoreFoundation/CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corefoundation\cfdictionary.h
+	<CoreFoundation/CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corefoundation\cfcharacterset.h
+	<CoreFoundation/CFBase.h>
+	<CoreFoundation/CFData.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corefoundation\cflocale.h
+	<CoreFoundation/CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\endian.h
+	<ConditionalMacros.h>
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\finder.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\appleevents.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<AEDataModel.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\aedatamodel.h
+	<MacTypes.h>
+	<MixedMode.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\collections.h
+	<MacTypes.h>
+	<MixedMode.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\qdoffscreen.h
+	<MacErrors.h>
+	<Quickdraw.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\quickdraw.h
+	<Components.h>
+	<MacTypes.h>
+	<MixedMode.h>
+	<QuickdrawText.h>
+	<CGContext.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\components.h
+	<MacErrors.h>
+	<MacTypes.h>
+	<MixedMode.h>
+	<Files.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\quickdrawtext.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<IntlResources.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\intlresources.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cgcontext.h
+	<CGBase.h>
+	<CGAffineTransform.h>
+	<CGColorSpace.h>
+	<CGFont.h>
+	<CGImage.h>
+	<CGPDFDocument.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cgbase.h
+	<ConditionalMacros.h>
+	<stddef.h>
+	<stdint.h>
+	<stdint.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cgaffinetransform.h
+	<CGBase.h>
+	<CGGeometry.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cggeometry.h
+	<CGBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cgcolorspace.h
+	<CGBase.h>
+	<CGDataProvider.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cgdataprovider.h
+	<CGBase.h>
+	<CFURL.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfurl.h
+	<CoreFoundation/CFURL.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corefoundation\cfurl.h
+	<CoreFoundation/CFBase.h>
+	<CoreFoundation/CFData.h>
+	<CoreFoundation/CFString.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cgfont.h
+	<CGBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cgimage.h
+	<CGBase.h>
+	<CGColorSpace.h>
+	<CGDataProvider.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cgpdfdocument.h
+	<CGBase.h>
+	<CGDataProvider.h>
+	<CGGeometry.h>
+	<CFURL.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\icons.h
+	<MacTypes.h>
+	<Files.h>
+	<CodeFragments.h>
+	<Quickdraw.h>
+	<CGContext.h>
+	<IconStorage.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\codefragments.h
+	<MacTypes.h>
+	<CFBundle.h>
+	<Files.h>
+	<Multiprocessing.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfbundle.h
+	<CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\multiprocessing.h
+	<MacTypes.h>
+	<stdarg.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\iconstorage.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\drag.h
+	<MacTypes.h>
+	<Files.h>
+	<AppleEvents.h>
+	<Quickdraw.h>
+	<Events.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\events.h
+	<OSUtils.h>
+	<MacTypes.h>
+	<Endian.h>
+	<Quickdraw.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\menus.h
+	<MacTypes.h>
+	<MacErrors.h>
+	<TextCommon.h>
+	<Collections.h>
+	<CFString.h>
+	<CFUUID.h>
+	<Fonts.h>
+	<Quickdraw.h>
+	<AppleEvents.h>
+	<Processes.h>
+	<CarbonEventsCore.h>
+	<Events.h>
+	<HIObject.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfuuid.h
+	<CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\fonts.h
+	<MacTypes.h>
+	<Files.h>
+	<MacErrors.h>
+	<TextCommon.h>
+	<ATSTypes.h>
+	<Quickdraw.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\atstypes.h
+	<MacTypes.h>
+	<Files.h>
+	<MixedMode.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\processes.h
+	<MacTypes.h>
+	<Files.h>
+	<TextCommon.h>
+	<CFString.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\carboneventscore.h
+	<CFString.h>
+	<AERegistry.h>
+	<AEDataModel.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\aeregistry.h
+	<MacTypes.h>
+	<MacErrors.h>
+	<AppleEvents.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\hiobject.h
+	<CoreServices.h>
+	<CoreFoundation.h>
+	<CarbonEventsCore.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\coreservices.h
+	<ConditionalMacros.h>
+	<MacTypes.h>
+	<Finder.h>
+	<FixMath.h>
+	<Script.h>
+	<UTCUtils.h>
+	<TextCommon.h>
+	<Collections.h>
+	<Endian.h>
+	<Patches.h>
+	<Gestalt.h>
+	<MacMemory.h>
+	<Math64.h>
+	<MixedMode.h>
+	<MacErrors.h>
+	<Components.h>
+	<OSUtils.h>
+	<Files.h>
+	<Resources.h>
+	<CodeFragments.h>
+	<Aliases.h>
+	<MacLocales.h>
+	<Debugging.h>
+	<PLStringFuncs.h>
+	<DriverSynchronization.h>
+	<Devices.h>
+	<DriverServices.h>
+	<IntlResources.h>
+	<NumberFormatting.h>
+	<DateTimeUtils.h>
+	<StringCompare.h>
+	<TextUtils.h>
+	<ToolUtils.h>
+	<NameRegistry.h>
+	<UnicodeUtilities.h>
+	<fp.h>
+	<TextEncodingConverter.h>
+	<UnicodeConverter.h>
+	<Threads.h>
+	<Folders.h>
+	<Timer.h>
+	<MultiprocessingInfo.h>
+	<Multiprocessing.h>
+	<MachineExceptions.h>
+	<AVLTree.h>
+	<PEFBinaryFormat.h>
+	<HFSVolumes.h>
+	<AIFF.h>
+	<TextEncodingPlugin.h>
+	<AppleDiskPartitions.h>
+	<Power.h>
+	<SCSI.h>
+	<SystemSound.h>
+	<IconStorage.h>
+	<CFBase.h>
+	<CFArray.h>
+	<CFBag.h>
+	<CFBundle.h>
+	<CFCharacterSet.h>
+	<CFData.h>
+	<CFDate.h>
+	<CFDictionary.h>
+	<CFNumber.h>
+	<CFPlugIn.h>
+	<CFPreferences.h>
+	<CFPropertyList.h>
+	<CFSet.h>
+	<CFString.h>
+	<CFStringEncodingExt.h>
+	<CFTimeZone.h>
+	<CFTree.h>
+	<CFURL.h>
+	<CFURLAccess.h>
+	<CFUUID.h>
+	<CFXMLNode.h>
+	<CFXMLParser.h>
+	<CFPlugInCOM.h>
+	<CFBinaryHeap.h>
+	<CFBitVector.h>
+	<CFMachPort.h>
+	<CFMessagePort.h>
+	<CFNotificationCenter.h>
+	<CFRunLoop.h>
+	<CFSocket.h>
+	<CFStream.h>
+	<CFNetwork.h>
+	<WSMethodInvocation.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\fixmath.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\script.h
+	<MacTypes.h>
+	<IntlResources.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\gestalt.h
+	<MacTypes.h>
+	<MixedMode.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\math64.h
+	<ConditionalMacros.h>
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\resources.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<Files.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\maclocales.h
+	<MacTypes.h>
+	<MacErrors.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\debugging.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<MacErrors.h>
+	<Events.h>
+	<Gestalt.h>
+	<AssertMacros.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\assertmacros.h
+	<syslog.h>
+	<stdio.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\plstringfuncs.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\driversynchronization.h
+	<ConditionalMacros.h>
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\devices.h
+	<OSUtils.h>
+	<Files.h>
+	<NameRegistry.h>
+	<CodeFragments.h>
+	<Multiprocessing.h>
+	<Quickdraw.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\nameregistry.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\driverservices.h
+	<ConditionalMacros.h>
+	<MacTypes.h>
+	<MacErrors.h>
+	<MachineExceptions.h>
+	<Devices.h>
+	<DriverSynchronization.h>
+	<NameRegistry.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\machineexceptions.h
+	<MacTypes.h>
+	<MixedMode.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\numberformatting.h
+	<ConditionalMacros.h>
+	<MacTypes.h>
+	<IntlResources.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\stringcompare.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<TextCommon.h>
+	<Script.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\textutils.h
+	<MacTypes.h>
+	<NumberFormatting.h>
+	<StringCompare.h>
+	<DateTimeUtils.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\toolutils.h
+	<MacTypes.h>
+	<FixMath.h>
+	<TextUtils.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\unicodeutilities.h
+	<MacTypes.h>
+	<MacLocales.h>
+	<TextCommon.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\fp.h
+	<ConditionalMacros.h>
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\textencodingconverter.h
+	<MacTypes.h>
+	<TextCommon.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\unicodeconverter.h
+	<MacTypes.h>
+	<TextCommon.h>
+	<MixedMode.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\threads.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<MacErrors.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\folders.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<Files.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\timer.h
+	<ConditionalMacros.h>
+	<MacTypes.h>
+	<OSUtils.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\multiprocessinginfo.h
+	<MacTypes.h>
+	<Multiprocessing.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\avltree.h
+	<MacTypes.h>
+	<MixedMode.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\pefbinaryformat.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\hfsvolumes.h
+	<MacTypes.h>
+	<Files.h>
+	<Finder.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\aiff.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\textencodingplugin.h
+	<MacTypes.h>
+	<TextCommon.h>
+	<TextEncodingConverter.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\applediskpartitions.h
+	<MacTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\power.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<Multiprocessing.h>
+	<NameRegistry.h>
+	<MacErrors.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\scsi.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<AppleDiskPartitions.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\systemsound.h
+	<MacTypes.h>
+	<Files.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfarray.h
+	<CoreFoundation/CFArray.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfbag.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfcharacterset.h
+	<CoreFoundation/CFCharacterSet.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfdata.h
+	<CoreFoundation/CFData.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfdictionary.h
+	<CoreFoundation/CFDictionary.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfnumber.h
+	<CoreFoundation/CFNumber.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corefoundation\cfnumber.h
+	<CoreFoundation/CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfplugin.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfpreferences.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfpropertylist.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfset.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfstringencodingext.h
+	<CoreFoundation/CFStringEncodingExt.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corefoundation\cfstringencodingext.h
+	<CoreFoundation/CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cftimezone.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cftree.h
+	<CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfurlaccess.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfxmlnode.h
+	<CFTree.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfxmlparser.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfplugincom.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfbinaryheap.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfbitvector.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfmachport.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfmessageport.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfnotificationcenter.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfrunloop.h
+	<CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cfsocket.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfstream.h
+
+1365410802 e:\of007pc\libs\quicktime\include\cfnetwork.h
+
+1365410802 e:\of007pc\libs\quicktime\include\wsmethodinvocation.h
+	<MixedMode.h>
+	<CFString.h>
+	<CFURL.h>
+	<CFRunLoop.h>
+	<CFXMLParser.h>
+	<CFXMLNode.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corefoundation.h
+	<CFBase.h>
+	<CFArray.h>
+	<CFBag.h>
+	<CFBundle.h>
+	<CFCharacterSet.h>
+	<CFData.h>
+	<CFDate.h>
+	<CFDictionary.h>
+	<CFNumber.h>
+	<CFPlugIn.h>
+	<CFPreferences.h>
+	<CFPropertyList.h>
+	<CFSet.h>
+	<CFString.h>
+	<CFStringEncodingExt.h>
+	<CFTimeZone.h>
+	<CFTree.h>
+	<CFURL.h>
+	<CFURLAccess.h>
+	<CFUUID.h>
+	<CFXMLNode.h>
+	<CFXMLParser.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\hitoolbar.h
+	<Icons.h>
+	<HIObject.h>
+	<Menus.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\quicktimecomponents.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<Components.h>
+	<Quickdraw.h>
+	<Video.h>
+	<Sound.h>
+	<CFBase.h>
+	<ImageCompression.h>
+	<Movies.h>
+	<QuickTimeMusic.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\video.h
+	<Quickdraw.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\sound.h
+	<MacTypes.h>
+	<Components.h>
+	<MixedMode.h>
+	<Dialogs.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\dialogs.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<MacErrors.h>
+	<Events.h>
+	<MacWindows.h>
+	<TextEdit.h>
+	<Controls.h>
+	<CarbonEvents.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\textedit.h
+	<MacTypes.h>
+	<MixedMode.h>
+	<Quickdraw.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\controls.h
+	<MacTypes.h>
+	<Quickdraw.h>
+	<Collections.h>
+	<MacErrors.h>
+	<CFString.h>
+	<Icons.h>
+	<HIObject.h>
+	<Menus.h>
+	<TextEdit.h>
+	<Drag.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\carbonevents.h
+	<CFString.h>
+	<AERegistry.h>
+	<AEDataModel.h>
+	<CarbonEventsCore.h>
+	<Events.h>
+	<Menus.h>
+	<Controls.h>
+	<MacWindows.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\imagecompression.h
+	<MacTypes.h>
+	<Quickdraw.h>
+	<QDOffscreen.h>
+	<Components.h>
+	<Dialogs.h>
+	<StandardFile.h>
+	<OpenGL/OpenGL.h>
+	<QuartzCore/CoreVideo.h>
+	<CoreVideo.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\standardfile.h
+	<MacTypes.h>
+	<Dialogs.h>
+	<Files.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\corevideo.h
+	<TargetConditionals.h>
+	<AvailabilityMacros.h>
+	<QuartzCore/CVReturn.h>
+	<QuartzCore/CVBase.h>
+	<QuartzCore/CVHostTime.h>
+	<QuartzCore/CVDisplayLink.h>
+	<QuartzCore/CVBuffer.h>
+	<QuartzCore/CVPixelBuffer.h>
+	<QuartzCore/CVPixelBufferPool.h>
+	<QuartzCore/CVOpenGLBuffer.h>
+	<QuartzCore/CVOpenGLBufferPool.h>
+	<QuartzCore/CVOpenGLTexture.h>
+	<QuartzCore/CVOpenGLTextureCache.h>
+	<QuartzCore/CVPixelFormatDescription.h>
+	<CVReturn.h>
+	<CVBase.h>
+	<CVHostTime.h>
+	<CVBuffer.h>
+	<CVPixelBuffer.h>
+	<CVPixelBufferPool.h>
+	<CVPixelFormatDescription.h>
+	<CVDirect3DBuffer.h>
+	<CVDirect3DBufferPool.h>
+	<CVDirect3DTexture.h>
+	<CVDirect3DTextureCache.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvreturn.h
+	<TargetConditionals.h>
+	<QuartzCore/CVBase.h>
+	<CVBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvbase.h
+	<TargetConditionals.h>
+	<AvailabilityMacros.h>
+	<CoreFoundation/CFBase.h>
+	<MacTypes.h>
+	<CFBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvhosttime.h
+	<TargetConditionals.h>
+	<QuartzCore/CVBase.h>
+	<CVBase.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvbuffer.h
+	<TargetConditionals.h>
+	<QuartzCore/CVBase.h>
+	<QuartzCore/CVReturn.h>
+	<CoreFoundation/CFDictionary.h>
+	<stddef.h>
+	<stdint.h>
+	<CVBase.h>
+	<CVReturn.h>
+	<CFDictionary.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvpixelbuffer.h
+	<TargetConditionals.h>
+	<QuartzCore/CVImageBuffer.h>
+	<CoreFoundation/CFArray.h>
+	<CVImageBuffer.h>
+	<CFArray.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvimagebuffer.h
+	<TargetConditionals.h>
+	<ApplicationServices/ApplicationServices.h>
+	<QuartzCore/CVBuffer.h>
+	<CVBuffer.h>
+	<CGGeometry.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvpixelbufferpool.h
+	<TargetConditionals.h>
+	<QuartzCore/CVBase.h>
+	<QuartzCore/CVReturn.h>
+	<QuartzCore/CVPixelBuffer.h>
+	<CVBase.h>
+	<CVReturn.h>
+	<CVPixelBuffer.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvpixelformatdescription.h
+	<TargetConditionals.h>
+	<QuartzCore/CoreVideo.h>
+	<CoreFoundation/CFDictionary.h>
+	<CoreFoundation/CFArray.h>
+	<CoreVideo.h>
+	<CFDictionary.h>
+	<CFArray.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvdirect3dbuffer.h
+	<CVImageBuffer.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvdirect3dbufferpool.h
+	<CVBase.h>
+	<CVReturn.h>
+	<CVDirect3DBuffer.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvdirect3dtexture.h
+	<CVBase.h>
+	<CVReturn.h>
+	<CVImageBuffer.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\cvdirect3dtexturecache.h
+	<CVBase.h>
+	<CVReturn.h>
+	<CVBuffer.h>
+	<CVDirect3DTexture.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\movies.h
+	<Quickdraw.h>
+	<Aliases.h>
+	<Events.h>
+	<Menus.h>
+	<Components.h>
+	<Sound.h>
+	<ImageCompression.h>
+	<QuickTimeErrors.h>
+	<CoreAudioTypes.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\quicktimeerrors.h
+
+1365410802 e:\of007pc\libs\quicktime\include\coreaudiotypes.h
+	<TargetConditionals.h>
+	<CoreServices/../Frameworks/CarbonCore.framework/Headers/MacTypes.h>
+	<MacTypes.h>
+	<string.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\quicktimemusic.h
+	<Components.h>
+	<Quickdraw.h>
+	<Video.h>
+	<MacMemory.h>
+	<Sound.h>
+	<Endian.h>
+	<ImageCompression.h>
+	<Movies.h>
+
+1365410802 e:\of007pc\libs\quicktime\include\mediahandlers.h
+	<ConditionalMacros.h>
+	<MacTypes.h>
+	<Components.h>
+	<Sound.h>
+	<Movies.h>
+
+1365410798 e:\of007pc\libs\openframeworks\video\ofqtkitgrabber.h
+	"ofMain.h"
+
+1365410798 e:\of007pc\libs\openframeworks\video\ofdirectshowgrabber.h
+	"ofConstants.h"
+	"ofTexture.h"
+	"ofBaseTypes.h"
+	"ofPixels.h"
+	"videoInput.h"
+
+1365410802 e:\of007pc\libs\videoinput\include\videoinput.h
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	<string.h>
+	<wchar.h>
+	<windows.h>
+
+1365410798 e:\of007pc\libs\openframeworks\video\ofgstvideograbber.h
+	"ofGstUtils.h"
+
+1365410798 e:\of007pc\libs\openframeworks\video\ofgstutils.h
+	"ofConstants.h"
+	"ofConstants.h"
+	"ofBaseTypes.h"
+	"ofPixels.h"
+	"ofTypes.h"
+	"ofEvents.h"
+	<gst/gst.h>
+	<gst/gstpad.h>
+
+1365410798 e:\of007pc\libs\openframeworks\video\ofvideoplayer.h
+	"ofConstants.h"
+	"ofTexture.h"
+	"ofBaseTypes.h"
+	"ofTypes.h"
+	"ofGstVideoPlayer.h"
+	"ofQuickTimePlayer.h"
+	"ofQTKitPlayer.h"
+	"ofiPhoneVideoPlayer.h"
+
+1365410798 e:\of007pc\libs\openframeworks\video\ofgstvideoplayer.h
+	"ofGstUtils.h"
+
+1365410798 e:\of007pc\libs\openframeworks\video\ofquicktimeplayer.h
+	"ofConstants.h"
+	"ofBaseTypes.h"
+	"ofPixels.h"
+	<map>
+	"ofQtUtils.h"
+
+1365410798 e:\of007pc\libs\openframeworks\video\ofqtkitplayer.h
+	"ofMain.h"
+
+1365410798 e:\of007pc\libs\openframeworks\3d\ofcamera.h
+	"ofRectangle.h"
+	"ofAppRunner.h"
+	"ofNode.h"
+
+1365410798 e:\of007pc\libs\openframeworks\3d\ofeasycam.h
+	"ofCamera.h"
+	"ofEvents.h"
+
+1312018975 e:\of007pc\addons\goutils\src\goutils.h
+	"ofMain.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\directoryiterator.h
+	"Poco/Foundation.h"
+	"Poco/File.h"
+	"Poco/Path.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\path.h
+	"Poco/Foundation.h"
+	<vector>
+
+1365410799 e:\of007pc\libs\poco\include\poco\datetimeformatter.h
+	"Poco/Foundation.h"
+	"Poco/DateTime.h"
+	"Poco/LocalDateTime.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\datetime.h
+	"Poco/Foundation.h"
+	"Poco/Timestamp.h"
+	"Poco/Timespan.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\timespan.h
+	"Poco/Foundation.h"
+	"Poco/Timestamp.h"
+
+1317284549 e:\of007pc\libs\poco\include\poco\localdatetime.h
+	"Poco/Foundation.h"
+	"Poco/DateTime.h"
+
+1365410799 e:\of007pc\libs\poco\include\poco\datetimeformat.h
+	"Poco/Foundation.h"
+
+1318427457 source:e:\of007pc\addons\gothreadedvideo\src\gothreadedvideo.cpp
+	"goThreadedVideo.h"
+
+1366092676 e:\of007pc\addons\gothreadedvideo\src\gothreadedvideo.h
+	"ofMain.h"
+	"string.h"
+	"goVideoPlayer.h"
+
+1366092742 e:\of007pc\addons\govideoplayer\src\govideoplayer.h
+	"ofConstants.h"
+	"ofTexture.h"
+	"ofGstUtils.h"
+	"goQtUtils.h"
+
+1317790852 e:\of007pc\addons\govideoplayer\src\goqtutils.h
+	"ofConstants.h"
+	"ofGraphics.h"
+	<QuickTime/QuickTime.h>
+	<CoreServices/CoreServices.h>
+	<ApplicationServices/ApplicationServices.h>
+	<QTML.h>
+	<FixMath.h>
+	<QuickTimeComponents.h>
+	<TextUtils.h>
+	<MediaHandlers.h>
+
+1312018975 source:e:\of007pc\addons\goutils\src\goutils.cpp
+	"goUtils.h"
+
+1312967811 source:e:\of007pc\addons\govideograbber\src\govideograbber.cpp
+	"goVideoGrabber.h"
+	"ofUtils.h"
+
+1318306683 e:\of007pc\addons\govideograbber\src\govideograbber.h
+	"ofConstants.h"
+	"ofTexture.h"
+	"ofGraphics.h"
+	"ofTypes.h"
+	"goQtUtils.h"
+	"videoInput.h"
+	<map>
+	"ofUCUtils.h"
+	"ofGstUtils.h"
+
+1317789490 source:e:\of007pc\addons\govideoplayer\src\goqtutils.cpp
+	"goQtUtils.h"
+	"ofUtils.h"
+	<cstdlib>
+
+1318427304 source:e:\of007pc\addons\govideoplayer\src\govideoplayer.cpp
+	"goVideoPlayer.h"
+	"ofUtils.h"
+	<gst/video/video.h>
+
+1322014909 source:e:\of007pc\addons\ofxfenster\src\ofxdisplay.cpp
+	"ofxDisplay.h"
+
+1329114837 e:\of007pc\addons\ofxfenster\src\ofxdisplay.h
+	"ofMain.h"
+	<X11/extensions/Xrandr.h>
+
+1317284546 source:e:\of007pc\addons\ofxosc\src\ofxoscbundle.cpp
+	"ofxOscBundle.h"
+
+1317284546 e:\of007pc\addons\ofxosc\src\ofxoscbundle.h
+	<vector>
+	"ofxOscMessage.h"
+
+1365410797 e:\of007pc\addons\ofxosc\src\ofxoscmessage.h
+	"ofxOscArg.h"
+	<vector>
+	<string>
+
+1365410797 e:\of007pc\addons\ofxosc\src\ofxoscarg.h
+	"ofConstants.h"
+	<string>
+
+1317284546 source:e:\of007pc\addons\ofxxmlsettings\libs\tinyxml.cpp
+	<ctype.h>
+	<sstream>
+	<iostream>
+	"tinyxml.h"
+
+1317284546 e:\of007pc\addons\ofxxmlsettings\libs\tinyxml.h
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1317284546 source:e:\of007pc\addons\ofxxmlsettings\libs\tinyxmlerror.cpp
+	"tinyxml.h"
+
 1315558836 source:c:\users\gameover\code\of007pc\addons\godirlist\src\godirlist.cpp
 	"goDirList.h"
 
@@ -8521,6 +10444,43 @@
 	"ofMain.h"
 	<X11/extensions/Xrandr.h>
 
+1317284546 source:c:\users\gameover\code\of007pc\addons\ofxosc\src\ofxoscbundle.cpp
+	"ofxOscBundle.h"
+
+1317284546 c:\users\gameover\code\of007pc\addons\ofxosc\src\ofxoscbundle.h
+	<vector>
+	"ofxOscMessage.h"
+
+1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\src\ofxoscmessage.h
+	"ofLog.h"
+	"ofxOscArg.h"
+	<vector>
+	<string>
+
+1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\src\ofxoscarg.h
+	"ofConstants.h"
+	<string>
+
+1317284546 source:c:\users\gameover\code\of007pc\addons\ofxxmlsettings\libs\tinyxml.cpp
+	<ctype.h>
+	<sstream>
+	<iostream>
+	"tinyxml.h"
+
+1366104332 c:\users\gameover\code\of007pc\addons\ofxxmlsettings\libs\tinyxml.h
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1317284546 source:c:\users\gameover\code\of007pc\addons\ofxxmlsettings\libs\tinyxmlerror.cpp
+	"tinyxml.h"
+
 1329114837 source:c:\users\gameover\code\of007pc\addons\ofxfenster\src\ofxdisplaymanager.cpp
 	"ofMain.h"
 	"ofxDisplayManager.h"
@@ -8645,17 +10605,6 @@
 	<string.h>
 	"tinyxml.h"
 
-1366104332 c:\users\gameover\code\of007pc\addons\ofxxmlsettings\libs\tinyxml.h
-	<ctype.h>
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<assert.h>
-	<string>
-	<iostream>
-	<sstream>
-	"tinystr.h"
-
 1320121498 source:c:\users\gameover\code\of007pc\addons\ofxhgui\src\halert.cpp
 	"hAlert.h"
 	"hAlertLabel.h"
@@ -8744,10 +10693,6 @@
 	"hStringUtils.h"
 	"hWidget.h"
 	<vector>
-
-1366189697 c:\users\gameover\code\of007pc\addons\ofxhutils\src\hstringutils\hstringutils.h
-	<windows.h>
-	<string>
 
 1320121618 c:\users\gameover\code\of007pc\addons\ofxhgui\src\hdialogbutton.h
 	"hButton.h"
@@ -8969,6 +10914,10 @@
 	"hStringUtils.h"
 	<sstream>
 	"ofUtils.h"
+
+1366189697 c:\users\gameover\code\of007pc\addons\ofxhutils\src\hstringutils\hstringutils.h
+	<windows.h>
+	<string>
 
 1320121434 source:c:\users\gameover\code\of007pc\addons\ofxhutils\src\hevents\hsymbols.cpp
 	"hSymbols.h"
@@ -10652,23 +12601,6 @@
 	"ofxCvFloatImage.h"
 	"ofxCvShortImage.h"
 
-1317284546 source:c:\users\gameover\code\of007pc\addons\ofxosc\src\ofxoscbundle.cpp
-	"ofxOscBundle.h"
-
-1317284546 c:\users\gameover\code\of007pc\addons\ofxosc\src\ofxoscbundle.h
-	<vector>
-	"ofxOscMessage.h"
-
-1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\src\ofxoscmessage.h
-	"ofLog.h"
-	"ofxOscArg.h"
-	<vector>
-	<string>
-
-1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\src\ofxoscarg.h
-	"ofConstants.h"
-	<string>
-
 1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\src\ofxoscmessage.cpp
 	"ofxOscMessage.h"
 	"ofLog.h"
@@ -10691,6 +12623,30 @@
 	"UdpSocket.h"
 	"ofxOscMessage.h"
 
+1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\osctypes.h
+
+1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscpacketlistener.h
+	"OscReceivedElements.h"
+	"../ip/PacketListener.h"
+
+1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscreceivedelements.h
+	<cstddef>
+	"OscTypes.h"
+	"OscException.h"
+
+1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscexception.h
+	<exception>
+
+1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\packetlistener.h
+
+1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\udpsocket.h
+	"NetworkingUtils.h"
+	"IpEndpointName.h"
+
+1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\networkingutils.h
+
+1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\ipendpointname.h
+
 1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\src\ofxoscsender.cpp
 	"ofxOscSender.h"
 	"ofUtils.h"
@@ -10707,14 +12663,9 @@
 	"ofParameter.h"
 	"ofParameterGroup.h"
 
-1317284546 source:c:\users\gameover\code\of007pc\addons\ofxxmlsettings\libs\tinyxml.cpp
-	<ctype.h>
-	<sstream>
-	<iostream>
-	"tinyxml.h"
-
-1317284546 source:c:\users\gameover\code\of007pc\addons\ofxxmlsettings\libs\tinyxmlerror.cpp
-	"tinyxml.h"
+1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscoutboundpacketstream.h
+	"OscTypes.h"
+	"OscException.h"
 
 1366104332 source:c:\users\gameover\code\of007pc\addons\ofxxmlsettings\libs\tinyxmlparser.cpp
 	<ctype.h>
@@ -10728,95 +12679,10 @@
 	<string>
 	<iostream>
 
-1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\ipendpointname.cpp
-	"IpEndpointName.h"
-	<cstdio>
-	"NetworkingUtils.h"
-
-1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\ipendpointname.h
-
-1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\networkingutils.h
-
-1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\win32\networkingutilswin.cpp
-	"ip/NetworkingUtils.h"
-	<winsock2.h>
-	<windows.h>
-	<stdlib.h>
-	<stdio.h>
-
-1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\win32\udpsocketwin.cpp
-	"ip/UdpSocket.h"
-	<winsock2.h>
-	<windows.h>
-	<mmsystem.h>
-	<vector>
-	<algorithm>
-	<stdexcept>
-	<assert.h>
-	<signal.h>
-	"ip/NetworkingUtils.h"
-	"ip/PacketListener.h"
-	"ip/TimerListener.h"
-
-1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\udpsocket.h
-	"NetworkingUtils.h"
-	"IpEndpointName.h"
-
-1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\packetlistener.h
-
-1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\timerlistener.h
-
-1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscoutboundpacketstream.cpp
-	"OscOutboundPacketStream.h"
-	<string.h>
-	<stdlib.h>
-	<assert.h>
-	<malloc.h>
-	"OscHostEndianness.h"
-
-1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscoutboundpacketstream.h
-	"OscTypes.h"
-	"OscException.h"
-
-1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\osctypes.h
-
-1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscexception.h
-	<exception>
-
-1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oschostendianness.h
-
-1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscprintreceivedelements.cpp
-	"OscPrintReceivedElements.h"
-	<iostream>
-	<iomanip>
-	<ctime>
-	<cstring>
-
-1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscprintreceivedelements.h
-	<iosfwd>
-	"OscReceivedElements.h"
-
-1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscreceivedelements.h
-	<cstddef>
-	"OscTypes.h"
-	"OscException.h"
-
-1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscreceivedelements.cpp
-	"OscReceivedElements.h"
-	<cassert>
-	"OscHostEndianness.h"
-
-1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\osctypes.cpp
-	"OscTypes.h"
-
-1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscpacketlistener.h
-	"OscReceivedElements.h"
-	"../ip/PacketListener.h"
-
-1322714888 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\appcontroller.cpp
+1322747288 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.cpp
 	"AppController.h"
 
-1322452384 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\appcontroller.h
+1322484784 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.h
 	"ofMain.h"
 	"AppModel.h"
 	"BaseState.h"
@@ -10831,9 +12697,8 @@
 	"GuiView.h"
 	"DebugView.h"
 
-1322798904 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\appmodel.h
-	"goThreadedVideo.h"
-	"goVideoGrabber.h"
+1366193073 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.h
+	"ofxThreadedVideo.h"
 	"Singleton.h"
 	"FunctionModel.h"
 	"SceneDataType.h"
@@ -10845,11 +12710,11 @@
 	<assert.h>
 	<string>
 
-1312644761 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\singleton.h
+1312673561 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\singleton.h
 	"assert.h"
 	<cstdlib>
 
-1314837310 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\functionmodel.h
+1314866110 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\functionmodel.h
 	"Singleton.h"
 	"Logger.h"
 	"FunctionDataTypes.h"
@@ -10858,14 +12723,14 @@
 	<assert.h>
 	<string>
 
-1314016191 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\logger.h
+1314044991 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\logger.h
 	<iostream>
 	<fstream>
 	<typeinfo>
 	"Singleton.h"
 	"ofUtils.h"
 
-1322732081 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\functiondatatypes.h
+1322764481 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\functiondatatypes.h
 	"ofMain.h"
 	"FastDelegate.h"
 	"FastDelegateBind.h"
@@ -10884,7 +12749,7 @@
 	"ofxOscSender.h"
 	"ofxOscReceiver.h"
 
-1322644165 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\scenedatatype.h
+1366193049 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\scenedatatype.h
 	"FunctionModel.h"
 	"SerializationUtils.h"
 	"ofxTCPServer.h"
@@ -10893,7 +12758,7 @@
 	<assert.h>
 	<string>
 
-1322544813 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\serializationutils.h
+1322577213 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\serializationutils.h
 	<boost/serialization/serialization.hpp>
 	<boost/serialization/vector.hpp>
 	<boost/archive/text_oarchive.hpp>
@@ -12807,13 +14672,13 @@
 	<boost/static_assert.hpp>
 	<cstring>
 
-1314283685 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\basestate.h
+1314312485 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\basestate.h
 	"AppModel.h"
 	"Logger.h"
 	<map>
 	<string>
 
-1322532517 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\datacontroller.h
+1322564917 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\datacontroller.h
 	<boost/serialization/vector.hpp>
 	<boost/archive/text_oarchive.hpp>
 	<boost/archive/text_iarchive.hpp>
@@ -13962,45 +15827,45 @@
 	<boost/algorithm/string/finder.hpp>
 	<boost/algorithm/string/formatter.hpp>
 
-1312644780 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\propertyxmlparser.h
+1312673580 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\propertyxmlparser.h
 	"IXMLParser.h"
 	"AppModel.h"
 
-1314153016 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\ixmlparser.h
+1314181816 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\ixmlparser.h
 	"ofxXmlSettings.h"
 	"Logger.h"
 	"AppExceptions.h"
 
-1314153040 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\appexceptions.h
+1314181840 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appexceptions.h
 	<string>
 	<vector>
 
-1312644780 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\propertyxmlbuilder.h
+1312673580 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\propertyxmlbuilder.h
 	"IXMLBuilder.h"
 	"AppModel.h"
 
-1312644780 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\ixmlbuilder.h
+1312673580 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\ixmlbuilder.h
 	"ofxXmlSettings.h"
 	"Logger.h"
 
-1322204785 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\keyboardcontroller.h
+1322237185 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\keyboardcontroller.h
 	"ofMain.h"
 	"KeyboardModel.h"
 	"hGui_all.h"
 
-1314836655 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\keyboardmodel.h
+1314865455 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\keyboardmodel.h
 	"AppModel.h"
 
-1322098324 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\mousecontroller.h
+1322130724 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\mousecontroller.h
 	"AppModel.h"
 
-1322297548 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\midicontroller.h
+1322329948 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\midicontroller.h
 	"ofMain.h"
 	"AppModel.h"
 	"MidiModel.h"
 	"ofxMidi.h"
 
-1315364100 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\midimodel.h
+1315392900 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\midimodel.h
 	"AppModel.h"
 
 1329080519 c:\users\gameover\code\of007pc\addons\ofxmidi\src\ofxmidi.h
@@ -14011,79 +15876,79 @@
 	"ofxMidiIn.h"
 	"ofxMidiOut.h"
 
-1322366662 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\videocontroller.h
+1366192977 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\videocontroller.h
 	"AppModel.h"
 	"Logger.h"
 	"BaseState.h"
-	"goThreadedVideo.h"
+	"ofxThreadedVideo.h"
 
-1322452018 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\textcontroller.h
+1322484418 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\textcontroller.h
 	"AppModel.h"
 	"BaseState.h"
 
-1322098741 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\osccontroller.h
+1322131141 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\osccontroller.h
 	"ofMain.h"
 	"ofxOsc.h"
 	"AppModel.h"
 	"OscModel.h"
 
-1315468711 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\oscmodel.h
+1315497511 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\oscmodel.h
 	"AppModel.h"
 
-1322979587 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\appview.h
+1323011987 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.h
 	"BaseView.h"
 	"BaseState.h"
 	"SceneDataType.h"
 
-1322114889 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\baseview.h
+1322147289 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\baseview.h
 	"ViewPort.h"
 	"Logger.h"
 	"ofxFensterManager.h"
 	"ofxOpenCv.h"
 
-1315446623 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\viewport.h
+1315475423 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\viewport.h
 	"ofMain.h"
 
-1322728017 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\guiview.h
+1322760417 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.h
 	"BaseView.h"
 	"BaseState.h"
 	"MidiModel.h"
 	"hGui_all.h"
 	"hObject.h"
 
-1322706143 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\debugview.h
+1322738543 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.h
 	"BaseView.h"
 	"AppModel.h"
 	"KeyboardModel.h"
 
-1322799302 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\appmodel.cpp
+1366193885 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.cpp
 	"AppModel.h"
 
-1322979826 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\appview.cpp
+1366192000 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.cpp
 	"AppView.h"
 
-1314285428 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\basestate.cpp
+1314314228 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\basestate.cpp
 	"BaseState.h"
 
-1322553380 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\baseview.cpp
+1322585780 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\baseview.cpp
 	"BaseView.h"
 
-1322532517 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\datacontroller.cpp
+1322564917 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\datacontroller.cpp
 	"DataController.h"
 
-1322987148 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\debugview.cpp
+1366192125 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.cpp
 	"DebugView.h"
 
-1322805920 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\guiview.cpp
+1366194382 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.cpp
 	"GuiView.h"
 
-1366252739 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\keyboardcontroller.cpp
+1366179649 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\keyboardcontroller.cpp
 	"KeyboardController.h"
 
-1317284586 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\logger.cpp
+1317313386 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\logger.cpp
 	"Logger.h"
 
-1322184840 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\main.cpp
+1322217240 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\main.cpp
 	"ofMain.h"
 	"AppController.h"
 	"ofxFensterManager.h"
@@ -14096,6 +15961,96 @@
 	"ofEvents.h"
 	"ofTypes.h"
 
-1322297408 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra - copy\src\midicontroller.cpp
+1322329808 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\midicontroller.cpp
 	"MidiController.h"
+
+1366179684 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\mousecontroller.cpp
+	"MouseController.h"
+
+1322130724 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\osccontroller.cpp
+	"OscController.h"
+
+1314361385 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\propertyxmlbuilder.cpp
+	"PropertyXMLBuilder.h"
+
+1322342180 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\propertyxmlparser.cpp
+	"PropertyXMLParser.h"
+
+1322752203 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\textcontroller.cpp
+	"TextController.h"
+
+1366193885 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\videocontroller.cpp
+	"VideoController.h"
+
+1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscoutboundpacketstream.cpp
+	"OscOutboundPacketStream.h"
+	<string.h>
+	<stdlib.h>
+	<assert.h>
+	<malloc.h>
+	"OscHostEndianness.h"
+
+1366104332 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oschostendianness.h
+
+1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscprintreceivedelements.cpp
+	"OscPrintReceivedElements.h"
+	<iostream>
+	<iomanip>
+	<ctime>
+	<cstring>
+
+1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscprintreceivedelements.h
+	<iosfwd>
+	"OscReceivedElements.h"
+
+1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscreceivedelements.cpp
+	"OscReceivedElements.h"
+	<cassert>
+	"OscHostEndianness.h"
+
+1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\osctypes.cpp
+	"OscTypes.h"
+
+1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\ipendpointname.cpp
+	"IpEndpointName.h"
+	<cstdio>
+	"NetworkingUtils.h"
+
+1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\win32\networkingutilswin.cpp
+	"ip/NetworkingUtils.h"
+	<winsock2.h>
+	<windows.h>
+	<stdlib.h>
+	<stdio.h>
+
+1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\win32\udpsocketwin.cpp
+	"ip/UdpSocket.h"
+	<winsock2.h>
+	<windows.h>
+	<mmsystem.h>
+	<vector>
+	<algorithm>
+	<stdexcept>
+	<assert.h>
+	<signal.h>
+	"ip/NetworkingUtils.h"
+	"ip/PacketListener.h"
+	"ip/TimerListener.h"
+
+1366104347 c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\ip\timerlistener.h
+
+1366192581 source:c:\users\gameover\code\of007pc\addons\ofxthreadedvideo\src\ofxthreadedvideo.cpp
+	"ofxThreadedVideo.h"
+
+1366192581 c:\users\gameover\code\of007pc\addons\ofxthreadedvideo\src\ofxthreadedvideo.h
+	<set>
+	<queue>
+	"ofLog.h"
+	"ofConstants.h"
+	"ofPixels.h"
+	"ofTexture.h"
+	"ofThread.h"
+	"ofEvents.h"
+	"ofVideoPlayer.h"
+	"ofAppRunner.h"
 

@@ -16,7 +16,7 @@ AppView::AppView(float x, float y, float width, float height, ofxFenster* window
     _functionModel->registerFunction("AppView::toggleFullscreen", MakeDelegate(this, &AppView::toggleFullscreen));
     _functionModel->registerFunction("AppView::changePattern", MakeDelegate(this, &AppView::changePattern));
 
-    _shader.load(ofToDataPath("shaders/deinterlace.vert"), ofToDataPath("shaders/deinterlace.frag"));
+    //_shader.load(ofToDataPath("shaders/deinterlace.vert"), ofToDataPath("shaders/deinterlace.frag"));
 
 //    currentPatternIndex = -1;
 //    currentPattern = nextPattern = NULL;
@@ -68,9 +68,9 @@ void AppView::update() {
                     videoObjects[i]->_player->draw(x,y,w,h);
                     break;
                 case GO_VIDEO_CAMERA:
-                    if (i == 1) _shader.begin(); // 1 is TP1 (ie presenter)
+                    //if (i == 1) _shader.begin(); // 1 is TP1 (ie presenter)
                     videoObjects[i]->_camera->draw(x,y,w,h);
-                    if (i == 1) _shader.end();
+                    //if (i == 1) _shader.end();
                     break;
 
             }

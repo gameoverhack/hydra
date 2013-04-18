@@ -13,8 +13,7 @@
 #define MAX_CAMERAS 4
 #define MAX_SERVERS 3
 
-#include "goThreadedVideo.h"
-#include "goVideoGrabber.h"
+#include "ofxThreadedVideo.h"
 
 #include "Singleton.h"
 #include "FunctionModel.h"
@@ -101,8 +100,8 @@ public:
 //    void                    pasteViewPort(ViewPort* toPaste);
 
     // video types
-    map< string, goVideoGrabber* >&     getCameras();
-    goVideoGrabber*                     getCamera(string cameraName);
+    map< string, ofVideoGrabber* >&     getCameras();
+    ofVideoGrabber*                     getCamera(string cameraName);
     int                                 listVideoFolder(string path);
     ofDirectory&                        getVideoDirectory() {return _videoDirectory;};
 
@@ -136,8 +135,8 @@ public:
     TextServer*                     getServer(string portName);
     TextServer*                     getServer(int portIndex);
 
-    map< string, goThreadedVideo* >&       getOffScreenVideos() {return _offScreenVideos;};
-    map< string, goThreadedVideo* >&       getAllVideos() {return _allVideos;};
+    map< string, ofxThreadedVideo* >&       getOffScreenVideos() {return _offScreenVideos;};
+    map< string, ofxThreadedVideo* >&       getAllVideos() {return _allVideos;};
 
 private:
 
@@ -158,7 +157,7 @@ private:
 	map<string, string>		_allStates;
 
     // video types
-    map< string, goVideoGrabber* >     _cameras;
+    map< string, ofVideoGrabber* >     _cameras;
 
 //    ViewPort*               _copyOfViewport;
 
@@ -174,8 +173,8 @@ private:
 
     map< string, string >               _texts;
 
-    map< string, goThreadedVideo* >     _offScreenVideos;
-    map< string, goThreadedVideo* >     _allVideos;
+    map< string, ofxThreadedVideo* >     _offScreenVideos;
+    map< string, ofxThreadedVideo* >     _allVideos;
 
 
 };

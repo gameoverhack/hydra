@@ -137,17 +137,19 @@ bool AppModel::loadScenes(string path) {
                 if (videoObjects[j]->_inputType == GO_VIDEO_CAMERA) videoObjects[j]->_bAssigned = false;
                 if (videoObjects[j]->_inputType == GO_VIDEO_PLAYER) {
                     LOG_VERBOSE("Load video: " + videoObjects[j]->_videoName);
-                    map< string, goThreadedVideo* >::iterator it = _allVideos.find(videoObjects[j]->_videoName);
+                    map< string, ofxThreadedVideo* >::iterator it = _allVideos.find(videoObjects[j]->_videoName);
                     if (it == _allVideos.end()) {
                         videoObjects[j]->_bAssigned = true;
-                        videoObjects[j]->_player = new goThreadedVideo();
+                        videoObjects[j]->_player = new ofxThreadedVideo();
+                        //videoObjects[j]->_player->setPixelFormat(OF_PIXELS_BGRA);
                         videoObjects[j]->_player->loadMovie(videoObjects[j]->_videoPath);
+                        videoObjects[j]->_player->update();
                         while(videoObjects[j]->_player->isLoading()) {
-                            videoObjects[j]->_player->psuedoUpdate();
-                            videoObjects[j]->_player->psuedoDraw();
+                            videoObjects[j]->_player->update();
+                            videoObjects[j]->_player->draw();
                         }
                         videoObjects[j]->_player->setLoopState(OF_LOOP_NONE);
-                        _allVideos.insert(pair< string, goThreadedVideo* >(videoObjects[j]->_videoName, videoObjects[j]->_player));
+                        _allVideos.insert(pair< string, ofxThreadedVideo* >(videoObjects[j]->_videoName, videoObjects[j]->_player));
                     } else {
                         videoObjects[j]->_player = it->second;
                     }
@@ -526,12 +528,12 @@ int AppModel::getPatternIndex(string patternName) {
     return patternIndex;
 }
 
-map< string, goVideoGrabber* >& AppModel::getCameras() {
+map< string, ofVideoGrabber* >& AppModel::getCameras() {
     return _cameras;
 }
 
-goVideoGrabber* AppModel::getCamera(string cameraName) {
-    map< string, goVideoGrabber* >::iterator it;
+ofVideoGrabber* AppModel::getCamera(string cameraName) {
+    map< string, ofVideoGrabber* >::iterator it;
 	it = _cameras.find(cameraName);
 	assert(it != _cameras.end());
 	return it->second;

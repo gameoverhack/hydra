@@ -75,9 +75,9 @@ public:
     string _videoPath;
     string _videoName;
 
-    goThreadedVideo*  _player;
-    goThreadedVideo*  _overlay;
-    goVideoGrabber*   _camera;
+    ofxThreadedVideo* _player;
+    ofxThreadedVideo* _overlay;
+    ofVideoGrabber*   _camera;
 
 private:
 

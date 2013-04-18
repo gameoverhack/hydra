@@ -15,11 +15,14 @@ AppController::AppController() {
 	LOG_NOTICE("Constructing AppController");
 
     ofSetLogLevel(OF_LOG_VERBOSE);
+    //ofSetVerticalSync(true);
 
 	registerStates();
 
 	_dataController = new DataController();
 	_dataController->loadProperties("config.xml");
+
+	_appModel->setProperty("showGui", true);
 
 //	_appModel->setProperty("showProps", true);
 //	_appModel->setProperty("showDebug", false);
@@ -130,6 +133,7 @@ AppController::AppController() {
 //    _keyModel->registerEvent('v', kKEY_DOWN, "paste current viewport", "AppController::pasteCurrentViewport");
 //
 	_keyModel->registerEvent('f', kKEY_DOWN, "toggle fullscreen/window", "AppView::toggleFullscreen");
+	_keyModel->registerEvent('g', kKEY_DOWN, "toggle show/hide gui", "AppModel::toggleBooleanProperty", (string)"showGui");
 	_keyModel->registerEvent('c', kKEY_DOWN, "change to random pattern", "AppView::changePattern");
 	_keyModel->registerEvent('p', kKEY_DOWN, "show all properties in debug view", "AppModel::toggleBooleanProperty", (string)"showProps");
 	_keyModel->registerEvent('d', kKEY_DOWN, "show/hide debug view", "AppModel::toggleBooleanProperty", (string)"showDebug");

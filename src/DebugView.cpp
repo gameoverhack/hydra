@@ -56,7 +56,7 @@ void DebugView::update() {
     glPopMatrix();
 
     glPushMatrix();
-	ofSetColor(0, 255, 255);
+	ofSetColor(255, 255, 255);
 	ofDrawBitmapString(msg, 20, 20);
 	ofSetColor(255, 255, 255);
     glPopMatrix();
@@ -98,11 +98,11 @@ void DebugView::drawOutputView() {
 }
 
 void DebugView::drawCameraViews() {
-    map< string, goVideoGrabber* >& cameras = _appModel->getCameras();
-    map< string, goVideoGrabber* >::iterator it;
+    map< string, ofVideoGrabber* >& cameras = _appModel->getCameras();
+    map< string, ofVideoGrabber* >::iterator it;
     int position = 0;
     for (it = cameras.begin(); it != cameras.end(); it++, position++) {
-        goVideoGrabber* camera = it->second;
+        ofVideoGrabber* camera = it->second;
         if (camera == NULL) continue;
         int camWidth = 720;//camera->getWidth();
         int camHeight = 480;//camera->getHeight();
