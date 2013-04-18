@@ -16,7 +16,7 @@ AppView::AppView(float x, float y, float width, float height, ofxFenster* window
     _functionModel->registerFunction("AppView::toggleFullscreen", MakeDelegate(this, &AppView::toggleFullscreen));
     _functionModel->registerFunction("AppView::changePattern", MakeDelegate(this, &AppView::changePattern));
 
-    //_shader.load(ofToDataPath("shaders/deinterlace.vert"), ofToDataPath("shaders/deinterlace.frag"));
+    _shader.load(ofToDataPath("shaders/deinterlace.vert"), ofToDataPath("shaders/deinterlace.frag"));
 
 //    currentPatternIndex = -1;
 //    currentPattern = nextPattern = NULL;
@@ -57,7 +57,7 @@ void AppView::update() {
     {
         ofSetColor(255,255,255,255);
         for (int i = 0; i < videoObjects.size(); i++) {
-
+            //if(!videoObjects[i]->isFrameNew()) continue;
             float x = currentPattern[i]->x;
             float y = currentPattern[i]->y;
             float w = currentPattern[i]->width;
@@ -68,9 +68,13 @@ void AppView::update() {
                     videoObjects[i]->_player->draw(x,y,w,h);
                     break;
                 case GO_VIDEO_CAMERA:
-                    //if (i == 1) _shader.begin(); // 1 is TP1 (ie presenter)
-                    videoObjects[i]->_camera->draw(x,y,w,h);
-                    //if (i == 1) _shader.end();
+                    if(videoObjects[i]->_camera->getWidth() == 720){
+                        _shader.begin(); // 1 is TP1 (ie presenter)
+                        videoObjects[i]->_camera->getTextureReference().drawSubsection(x, y, w * 1024.0/720.0f, h, 12, 5, w - 10, h - 10);
+                        _shader.end();
+                    }else{
+                        videoObjects[i]->_camera->draw(x,y,w,h);
+                    }
                     break;
 
             }
