@@ -1,0 +1,275 @@
+22 serialization::archive 9 0 0 29 0 1 1 0
+0 15 00-00QuadCamera 6 4_quad 3 -1 -1 0 0 10 0 3 1 0
+1 1 0 0 0 8 camera_1 8 camera_1 3
+2 1 0 0 0 8 camera_2 8 camera_2 3
+3 1 0 0 0 8 camera_3 8 camera_3 3
+4 1 0 0 0 8 camera_4 8 camera_4 3
+5 0 0 0 0 0  0  3
+6 0 0 0 0 0  0  3
+7 0 0 0 0 0  0  3
+8 0 0 0 0 0  0  3
+9 0 0 0 0 0  0  3
+10 0 0 0 0 0  0  1
+11 13 00-01Camera01 8 1_single 0 -1 -1 7 0 3
+12 1 0 0 0 8 camera_1 8 camera_1 3
+13 0 0 0 0 0  0  3
+14 0 0 0 0 0  0  3
+15 0 0 0 0 0  0  3
+16 0 0 0 0 0  0  3
+17 0 0 0 0 0  0  3
+18 0 0 0 0 0  0  1
+19 13 00-02Camera02 8 1_single 0 -1 -1 7 0 3
+20 1 0 0 0 8 camera_2 8 camera_2 3
+21 0 0 0 0 0  0  3
+22 0 0 0 0 0  0  3
+23 0 0 0 0 0  0  3
+24 0 0 0 0 0  0  3
+25 0 0 0 0 0  0  3
+26 0 0 0 0 0  0  1
+27 13 00-03Camera03 8 1_single 0 -1 -1 7 0 3
+28 1 0 0 0 8 camera_3 8 camera_3 3
+29 0 0 0 0 0  0  3
+30 0 0 0 0 0  0  3
+31 0 0 0 0 0  0  3
+32 0 0 0 0 0  0  3
+33 0 0 0 0 0  0  3
+34 0 0 0 0 0  0  1
+35 13 00-04Camera04 8 1_single 0 -1 -1 7 0 3
+36 1 0 0 0 8 camera_4 8 camera_4 3
+37 0 0 0 0 0  0  3
+38 0 0 0 0 0  0  3
+39 0 0 0 0 0  0  3
+40 0 0 0 0 0  0  3
+41 0 0 0 0 0  0  3
+42 0 0 0 0 0  0  1
+43 10 01-00BLACK 8 1_single 0 -1 -1 7 0 3
+44 2 0 1 0 31 D:\HYDRA_VIDEO_FINALS\black.mov 9 black.mov 3
+45 0 0 0 0 0  0  3
+46 0 0 0 0 0  0  3
+47 0 0 0 0 0  0  3
+48 0 0 0 0 0  0  3
+49 0 0 0 0 0  0  3
+50 0 0 0 0 0  0  1
+51 10 01-02Intro 8 1_single 0 -1 -1 7 0 3
+52 2 0 1 0 47 D:\HYDRA_VIDEO_FINALS\MotionGraphicsNoTitle.mov 25 MotionGraphicsNoTitle.mov 3
+53 0 0 0 0 0  0  3
+54 0 0 0 0 0  0  3
+55 0 0 0 0 0  0  3
+56 0 0 0 0 0  0  3
+57 0 0 0 0 0  0  3
+58 0 0 0 0 0  0  1
+59 12 02-01Angelus 11 5_quadinset 1 -1 -1 10 0 3
+60 1 0 0 0 8 camera_1 8 camera_1 3
+61 2 0 1 0 53 D:\HYDRA_VIDEO_FINALS\user1[Allison]_201197171638.mov 31 user1[Allison]_201197171638.mov 3
+62 0 0 0 0 0  0  3
+63 0 0 0 0 0  0  3
+64 0 0 0 0 0  0  3
+65 0 0 0 0 0  0  3
+66 0 0 0 0 0  0  3
+67 0 0 0 0 0  0  3
+68 0 0 0 0 0  0  3
+69 0 0 0 0 0  0  1
+70 12 02-02Angelus 8 1_single 6 -1 -1 7 0 3
+71 1 0 0 0 8 camera_1 8 camera_1 3
+72 0 0 0 0 0  0  3
+73 0 0 0 0 0  0  3
+74 0 0 0 0 0  0  3
+75 0 0 0 0 0  0  3
+76 0 0 0 0 0  0  3
+77 2 0 1 0 53 D:\HYDRA_VIDEO_FINALS\user1[Allison]_201197171638.mov 31 user1[Allison]_201197171638.mov 1
+78 12 02-03Angelus 11 5_quadinset 1 -1 -1 10 0 3
+79 1 0 0 0 8 camera_1 8 camera_1 3
+80 1 0 0 0 8 camera_3 8 camera_3 3
+81 0 0 0 0 0  0  3
+82 0 0 0 0 0  0  3
+83 0 0 0 0 0  0  3
+84 0 0 0 0 0  0  3
+85 0 0 0 0 0  0  3
+86 0 0 0 0 0  0  3
+87 0 0 0 0 0  0  3
+88 2 0 1 0 53 D:\HYDRA_VIDEO_FINALS\user1[Allison]_201197171638.mov 31 user1[Allison]_201197171638.mov 1
+89 12 02-04Angelus 11 5_quadinset 2 -1 -1 10 0 3
+90 1 0 0 0 8 camera_1 8 camera_1 3
+91 2 0 1 0 51 D:\HYDRA_VIDEO_FINALS\user0[sete]_2011116205128.mov 29 user0[sete]_2011116205128.mov 3
+92 2 0 1 0 53 D:\HYDRA_VIDEO_FINALS\user1[Allison]_201197171638.mov 31 user1[Allison]_201197171638.mov 3
+93 1 0 0 0 8 camera_3 8 camera_3 3
+94 0 0 0 0 0  0  3
+95 0 0 0 0 0  0  3
+96 0 0 0 0 0  0  3
+97 0 0 0 0 0  0  3
+98 0 0 0 0 0  0  3
+99 0 0 0 0 0  0  1
+100 12 02-05Angelus 8 3_triple 8 -1 -1 9 0 3
+101 2 0 1 0 37 D:\HYDRA_VIDEO_FINALS\Marcela_2_1.mov 15 Marcela_2_1.mov 3
+102 2 0 1 0 52 D:\HYDRA_VIDEO_FINALS\user0[Allison]_20119716254.mov 30 user0[Allison]_20119716254.mov 3
+103 2 0 1 0 53 D:\HYDRA_VIDEO_FINALS\user5[dickie]_2011912212958.mov 31 user5[dickie]_2011912212958.mov 3
+104 0 0 0 0 0  0  3
+105 0 0 0 0 0  0  3
+106 0 0 0 0 0  0  3
+107 0 0 0 0 0  0  3
+108 0 0 0 0 0  0  3
+109 2 0 1 0 53 D:\HYDRA_VIDEO_FINALS\user1[Allison]_201197171638.mov 31 user1[Allison]_201197171638.mov 1
+110 11 03-01Purple 8 1_single 0 -1 -1 7 0 3
+111 2 0 1 0 39 D:\HYDRA_VIDEO_FINALS\Movie 461_0_1.mov 17 Movie 461_0_1.mov 3
+112 0 0 0 0 0  0  3
+113 0 0 0 0 0  0  3
+114 0 0 0 0 0  0  3
+115 0 0 0 0 0  0  3
+116 0 0 0 0 0  0  3
+117 0 0 0 0 0  0  1
+118 14 04-01Remediate 8 2_double 5 -1 -1 8 0 3
+119 2 0 1 0 55 D:\HYDRA_VIDEO_FINALS\user0[Allison]_20111018172220.mov 33 user0[Allison]_20111018172220.mov 3
+120 1 0 0 0 8 camera_3 8 camera_3 3
+121 0 0 0 0 0  0  3
+122 0 0 0 0 0  0  3
+123 0 0 0 0 0  0  3
+124 2 0 1 0 37 D:\HYDRA_VIDEO_FINALS\Marcela_6_1.mov 15 Marcela_6_1.mov 3
+125 2 0 1 0 52 D:\HYDRA_VIDEO_FINALS\user0[sete]_20111115163128.mov 30 user0[sete]_20111115163128.mov 3
+126 2 0 1 0 53 D:\HYDRA_VIDEO_FINALS\user5[dickie]_2011912214056.mov 31 user5[dickie]_2011912214056.mov 1
+127 14 04-02Remediate 6 4_quad 9 -1 -1 10 0 3
+128 2 0 1 0 55 D:\HYDRA_VIDEO_FINALS\user0[Allison]_20111018172220.mov 33 user0[Allison]_20111018172220.mov 3
+129 1 0 0 0 8 camera_3 8 camera_3 3
+130 2 0 1 0 37 D:\HYDRA_VIDEO_FINALS\Marcela_6_1.mov 15 Marcela_6_1.mov 3
+131 2 0 1 0 52 D:\HYDRA_VIDEO_FINALS\user0[sete]_20111115163128.mov 30 user0[sete]_20111115163128.mov 3
+132 0 0 0 0 0  0  3
+133 0 0 0 0 0  0  3
+134 0 0 0 0 0  0  3
+135 0 0 0 0 0  0  3
+136 0 0 0 0 0  0  3
+137 2 0 1 0 53 D:\HYDRA_VIDEO_FINALS\user5[dickie]_2011912214056.mov 31 user5[dickie]_2011912214056.mov 1
+138 14 04-03Remediate 11 5_quadinset 9 -1 -1 10 0 3
+139 2 0 1 0 55 D:\HYDRA_VIDEO_FINALS\user0[Allison]_20111018172220.mov 33 user0[Allison]_20111018172220.mov 3
+140 1 0 0 0 8 camera_3 8 camera_3 3
+141 2 0 1 0 53 D:\HYDRA_VIDEO_FINALS\user5[dickie]_2011912214056.mov 31 user5[dickie]_2011912214056.mov 3
+142 2 0 1 0 37 D:\HYDRA_VIDEO_FINALS\Marcela_6_1.mov 15 Marcela_6_1.mov 3
+143 0 0 0 0 0  0  3
+144 0 0 0 0 0  0  3
+145 0 0 0 0 0  0  3
+146 0 0 0 0 0  0  3
+147 0 0 0 0 0  0  3
+148 2 0 1 0 52 D:\HYDRA_VIDEO_FINALS\user0[sete]_20111115163128.mov 30 user0[sete]_20111115163128.mov 1
+149 10 05-01Magma 8 2_double 1 -1 -1 8 0 3
+150 1 0 0 0 8 camera_3 8 camera_3 3
+151 2 0 1 0 52 D:\HYDRA_VIDEO_FINALS\user0[dickie]_201111150856.mov 30 user0[dickie]_201111150856.mov 3
+152 0 0 0 0 0  0  3
+153 0 0 0 0 0  0  3
+154 0 0 0 0 0  0  3
+155 0 0 0 0 0  0  3
+156 0 0 0 0 0  0  3
+157 0 0 0 0 0  0  1
+158 10 05-02Magma 8 1_single 6 -1 -1 7 0 3
+159 1 0 0 0 8 camera_3 8 camera_3 3
+160 0 0 0 0 0  0  3
+161 0 0 0 0 0  0  3
+162 0 0 0 0 0  0  3
+163 0 0 0 0 0  0  3
+164 0 0 0 0 0  0  3
+165 2 0 1 0 52 D:\HYDRA_VIDEO_FINALS\user0[Allison]_20119715841.mov 30 user0[Allison]_20119715841.mov 1
+166 14 06-00Interview 8 1_single 6 -1 -1 7 0 3
+167 1 0 0 0 8 camera_2 8 camera_2 3
+168 0 0 0 0 0  0  3
+169 0 0 0 0 0  0  3
+170 0 0 0 0 0  0  3
+171 0 0 0 0 0  0  3
+172 0 0 0 0 0  0  3
+173 2 0 1 0 35 D:\HYDRA_VIDEO_FINALS\Interview.mov 13 Interview.mov 1
+174 14 06-01Interview 8 2_double 1 -1 -1 8 0 3
+175 1 0 0 0 8 camera_2 8 camera_2 3
+176 2 0 1 0 35 D:\HYDRA_VIDEO_FINALS\Interview.mov 13 Interview.mov 3
+177 0 0 0 0 0  0  3
+178 0 0 0 0 0  0  3
+179 0 0 0 0 0  0  3
+180 0 0 0 0 0  0  3
+181 0 0 0 0 0  0  3
+182 0 0 0 0 0  0  1
+183 14 06-02Interview 8 1_single 0 -1 -1 7 0 3
+184 2 0 1 0 35 D:\HYDRA_VIDEO_FINALS\Interview.mov 13 Interview.mov 3
+185 0 0 0 0 0  0  3
+186 0 0 0 0 0  0  3
+187 0 0 0 0 0  0  3
+188 0 0 0 0 0  0  3
+189 0 0 0 0 0  0  3
+190 0 0 0 0 0  0  1
+191 15 07-01Hysterical 6 4_quad 3 -1 -1 10 0 3
+192 2 0 1 0 52 D:\HYDRA_VIDEO_FINALS\user5[dickie]_201191222445.mov 30 user5[dickie]_201191222445.mov 3
+193 1 0 0 0 8 camera_4 8 camera_4 3
+194 1 0 0 0 8 camera_3 8 camera_3 3
+195 2 0 1 0 42 D:\HYDRA_VIDEO_FINALS\suffering_chin_1.mov 20 suffering_chin_1.mov 3
+196 0 0 0 0 0  0  3
+197 0 0 0 0 0  0  3
+198 0 0 0 0 0  0  3
+199 0 0 0 0 0  0  3
+200 0 0 0 0 0  0  3
+201 0 0 0 0 0  0  1
+202 15 07-02Hysterical 6 4_quad 1 -1 -1 10 0 3
+203 1 0 0 0 8 camera_3 8 camera_3 3
+204 2 0 1 0 47 D:\HYDRA_VIDEO_FINALS\sete online improv2_1.mov 25 sete online improv2_1.mov 3
+205 2 0 1 0 54 D:\HYDRA_VIDEO_FINALS\user0[Allison]_2011112292728.mov 32 user0[Allison]_2011112292728.mov 3
+206 1 0 0 0 8 camera_4 8 camera_4 3
+207 0 0 0 0 0  0  3
+208 0 0 0 0 0  0  3
+209 0 0 0 0 0  0  3
+210 0 0 0 0 0  0  3
+211 0 0 0 0 0  0  3
+212 0 0 0 0 0  0  1
+213 15 07-03Hysterical 8 3_triple 2 -1 -1 9 0 3
+214 1 0 0 0 8 camera_4 8 camera_4 3
+215 2 0 1 0 47 D:\HYDRA_VIDEO_FINALS\sete online improv2_1.mov 25 sete online improv2_1.mov 3
+216 1 0 0 0 8 camera_3 8 camera_3 3
+217 0 0 0 0 0  0  3
+218 0 0 0 0 0  0  3
+219 0 0 0 0 0  0  3
+220 0 0 0 0 0  0  3
+221 0 0 0 0 0  0  3
+222 0 0 0 0 0  0  1
+223 15 07-04Hysterical 11 5_quadinset 3 -1 -1 10 0 3
+224 1 0 0 0 8 camera_3 8 camera_3 3
+225 2 0 1 0 40 D:\HYDRA_VIDEO_FINALS\Dickie_replace.mov 18 Dickie_replace.mov 3
+226 2 0 1 0 44 D:\HYDRA_VIDEO_FINALS\Aliison_intro_chop.mov 22 Aliison_intro_chop.mov 3
+227 2 0 1 0 44 D:\HYDRA_VIDEO_FINALS\Marcela_HumanMic_0.mov 22 Marcela_HumanMic_0.mov 3
+228 0 0 0 0 0  0  3
+229 0 0 0 0 0  0  3
+230 0 0 0 0 0  0  3
+231 0 0 0 0 0  0  3
+232 0 0 0 0 0  0  3
+233 0 0 0 0 0  0  1
+234 15 07-05Hysterical 8 6_sextet 5 -1 -1 12 0 3
+235 2 0 1 0 49 D:\HYDRA_VIDEO_FINALS\Dickie_voice_w_anthro_1.mov 27 Dickie_voice_w_anthro_1.mov 3
+236 1 0 0 0 8 camera_3 8 camera_3 3
+237 2 0 1 0 35 D:\HYDRA_VIDEO_FINALS\Marcela_1.mov 13 Marcela_1.mov 3
+238 2 0 1 0 43 D:\HYDRA_VIDEO_FINALS\Allison_poem_chop.mov 21 Allison_poem_chop.mov 3
+239 2 0 1 0 39 D:\HYDRA_VIDEO_FINALS\Sete_poemchop.mov 17 Sete_poemchop.mov 3
+240 1 0 0 0 8 camera_4 8 camera_4 3
+241 0 0 0 0 0  0  3
+242 0 0 0 0 0  0  3
+243 0 0 0 0 0  0  3
+244 0 0 0 0 0  0  3
+245 0 0 0 0 0  0  3
+246 0 0 0 0 0  0  1
+247 15 07-06Hysterical 6 4_quad 3 -1 -1 10 0 3
+248 2 0 1 0 37 D:\HYDRA_VIDEO_FINALS\Movie 424_1.mov 15 Movie 424_1.mov 3
+249 2 0 1 0 44 D:\HYDRA_VIDEO_FINALS\iphonebodyscape7_1.mov 22 iphonebodyscape7_1.mov 3
+250 2 0 1 0 36 D:\HYDRA_VIDEO_FINALS\IMG_1497_1.mov 14 IMG_1497_1.mov 3
+251 1 0 0 0 8 camera_4 8 camera_4 3
+252 0 0 0 0 0  0  3
+253 0 0 0 0 0  0  3
+254 0 0 0 0 0  0  3
+255 0 0 0 0 0  0  3
+256 0 0 0 0 0  0  3
+257 0 0 0 0 0  0  1
+258 14 09-00ExtraKiss 8 1_single 0 -1 -1 7 0 3
+259 2 0 1 0 40 D:\HYDRA_VIDEO_FINALS\InterviewCutUp.mov 18 InterviewCutUp.mov 3
+260 0 0 0 0 0  0  3
+261 0 0 0 0 0  0  3
+262 0 0 0 0 0  0  3
+263 0 0 0 0 0  0  3
+264 0 0 0 0 0  0  3
+265 0 0 0 0 0  0  1
+266 20 09-01ExtraHysterical 8 1_single 0 -1 -1 7 0 3
+267 1 0 0 0 8 camera_4 8 camera_4 3
+268 0 0 0 0 0  0  3
+269 0 0 0 0 0  0  3
+270 0 0 0 0 0  0  3
+271 0 0 0 0 0  0  3
+272 0 0 0 0 0  0  3
+273 0 0 0 0 0  0 

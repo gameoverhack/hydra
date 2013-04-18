@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="hydra" />
+		<Option makefile="makefile" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="src\;" />
+		<Build>
+			<Target title="release">
+				<Option output="bin/$(PROJECT_NAME)" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/release" />
+				<Option external_deps="../../../libs/openFrameworksCompiled/lib/win_cb/openFrameworks.lib;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="../../../libs/openFrameworksCompiled/lib/win_cb/openFrameworks.lib" />
+				</Linker>
+			</Target>
+			<Target title="debug">
+				<Option output="bin/$(PROJECT_NAME)_DEBUG" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/debug/" />
+				<Option external_deps="../../../libs/openFrameworksCompiled/lib/win_cb/openFrameworksDebug.lib;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="../../../libs/openFrameworksCompiled/lib/win_cb/openFrameworksDebug.lib" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wno-multichar" />
+			<Add directory="../../../libs/glu/include" />
+			<Add directory="../../../libs/freetype/include" />
+			<Add directory="../../../libs/freetype/include/freetype2" />
+			<Add directory="../../../libs/FreeImage/include" />
+			<Add directory="../../../libs/quicktime/include" />
+			<Add directory="../../../libs/rtAudio/include" />
+			<Add directory="../../../libs/fmodex/include" />
+			<Add directory="../../../libs/videoInput/include" />
+			<Add directory="../../../libs/glew/include" />
+			<Add directory="../../../libs/glut/include" />
+			<Add directory="../../../libs/openFrameworks" />
+			<Add directory="../../../libs/openFrameworks/3d" />
+			<Add directory="../../../libs/openFrameworks/app" />
+			<Add directory="../../../libs/openFrameworks/communication" />
+			<Add directory="../../../libs/openFrameworks/events" />
+			<Add directory="../../../libs/openFrameworks/gl" />
+			<Add directory="../../../libs/openFrameworks/graphics" />
+			<Add directory="../../../libs/openFrameworks/math" />
+			<Add directory="../../../libs/openFrameworks/sound" />
+			<Add directory="../../../libs/openFrameworks/types" />
+			<Add directory="../../../libs/openFrameworks/utils" />
+			<Add directory="../../../libs/openFrameworks/video" />
+			<Add directory="../../../libs/poco/include" />
+			<Add directory="../../../libs/tess2/include" />
+			<Add directory="../../../libs/cairo/include/cairo" />
+			<Add directory="../../../addons/ofxFenster/libs/ghost/include" />
+			<Add directory="../../../addons/ofxFenster/libs/ghost/lib" />
+			<Add directory="../../../addons/ofxFenster/src" />
+			<Add directory="../../../addons/ofxFenster/libs/string/include" />
+			<Add directory="../../../addons/goThreadedVideo/src" />
+			<Add directory="../../../addons/goVideoPlayer/src" />
+			<Add directory="../../../addons/FastDelegate" />
+			<Add directory="../../../addons/ofxOsc/src" />
+			<Add directory="../../../addons/ofxOsc/libs/oscpack/include/osc" />
+			<Add directory="../../../addons/ofxOsc/libs/oscpack/include/ip" />
+			<Add directory="../../../addons/ofxBoost/src/lib" />
+			<Add directory="../../../addons/ofxXmlSettings/libs" />
+			<Add directory="../../../addons/ofxXmlSettings/src" />
+			<Add directory="../../../addons/goDirList/src" />
+			<Add directory="../../../addons/goUtils/src" />
+			<Add directory="../../../addons/ofxMidi/src" />
+			<Add directory="../../../addons/ofxMidi/libs" />
+			<Add directory="../../../addons/ofxOpenCv/src" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/calib3d" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/contrib" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/core" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/features2d" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/gpu" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/imgproc" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/highgui" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/legacy" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/ml" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/objdetect" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include/opencv2/video" />
+			<Add directory="../../../addons/ofxOpenCv/libs" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/include" />
+			<Add directory="../../../addons/ofxOpenCv/libs/opencv/libs" />
+			<Add directory="../../../addons/ofxhGui/src" />
+			<Add directory="../../../addons/ofxhUtils/src/hEvents" />
+			<Add directory="../../../addons/ofxhUtils/src/hStringUtils" />
+			<Add directory="../../../addons/ofxhUtils/src/hTable" />
+			<Add directory="../../../addons/goVideoGrabber/src" />
+			<Add directory="../../../addons/ofxNetwork/src" />
+			<Add directory="../../../addons/ofxOsc/libs/oscpack/src" />
+			<Add directory="../../../addons/ofxOsc/libs/oscpack/src/osc" />
+			<Add directory="../../../addons/ofxOsc/libs/oscpack/src/ip" />
+			<Add directory="../../../addons/ofxOsc/libs/oscpack/src/ip/win32" />
+		</Compiler>
+		<Linker>
+			<Add library="..\..\..\libs\FreeImage\lib\win_cb\FreeImage.lib" />
+			<Add library="..\..\..\libs\rtAudio\lib\win_cb\librtaudio.a" />
+			<Add library="..\..\..\libs\quicktime\lib\win_cb\qtmlClient.lib" />
+			<Add library="..\..\..\libs\cairo\lib\win_cb\libcairo.a" />
+			<Add library="..\..\..\libs\cairo\lib\win_cb\libpixman-1.a" />
+			<Add library="..\..\..\libs\freetype\lib\win_cb\libfreetype.a" />
+			<Add library="..\..\..\libs\glut\lib\win_cb\libglut.a" />
+			<Add library="..\..\..\libs\videoInput\lib\win_cb\videoInputLib.a" />
+			<Add library="..\..\..\libs\fmodex\lib\win_cb\libfmodex.a" />
+			<Add library="..\..\..\libs\glew\lib\win_cb\glew32s.lib" />
+			<Add library="..\..\..\libs\glu\lib\win_cb\glu32.lib" />
+			<Add library="..\..\..\libs\poco\lib\win_cb\libPocoNet.a" />
+			<Add library="..\..\..\libs\poco\lib\win_cb\libPocoUtil.a" />
+			<Add library="..\..\..\libs\poco\lib\win_cb\libPocoXML.a" />
+			<Add library="..\..\..\libs\poco\lib\win_cb\libPocoFoundation.a" />
+			<Add library="..\..\..\libs\tess2\lib\win_cb\libtess2.a" />
+			<Add library="..\..\..\addons\ofxFenster\libs\ghost\lib\win_cb\libGhost32.a" />
+			<Add library="gdi32" />
+			<Add library="msimg32" />
+			<Add library="glu32" />
+			<Add library="dsound" />
+			<Add library="winmm" />
+			<Add library="dxguid" />
+			<Add library="strmbase" />
+			<Add library="strmiids" />
+			<Add library="z" />
+			<Add library="uuid" />
+			<Add library="ole32" />
+			<Add library="oleaut32" />
+			<Add library="setupapi" />
+			<Add library="wsock32" />
+			<Add library="ws2_32" />
+			<Add library="Iphlpapi" />
+			<Add library="opengl32" />
+			<Add library="..\..\..\addons\ofxBoost\lib\win\libboost_serialization-mgw47-mt-1_47.a" />
+			<Add library="..\..\..\addons\ofxBoost\lib\win\libboost_serialization-mgw47-mt-d-1_47.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_legacy231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_haartraining_engine.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_calib3d231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_objdetect231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_features2d231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_imgproc231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_video231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_highgui231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_ml231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_contrib231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_core231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_flann231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_gpu231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libopencv_ts231.a" />
+			<Add library="..\..\..\addons\ofxOpenCv\libs\opencv\lib\win_cb\libzlib.a" />
+		</Linker>
+		<ExtraCommands>
+			<Add after='xcopy /e /i /y &quot;$(PROJECT_DIR)..\..\..\export\win_cb\*.dll&quot;  &quot;$(PROJECT_DIR)bin&quot;' />
+			<Add after='cmd /c if not exist &quot;$(PROJECT_DIR)bin/data&quot; mkdir &quot;$(PROJECT_DIR)bin/data&quot;' />
+			<Mode after="always" />
+		</ExtraCommands>
+		<Unit filename="../../../addons/FastDelegate/FastDelegate.h" />
+		<Unit filename="../../../addons/FastDelegate/FastDelegateBind.h" />
+		<Unit filename="../../../addons/goDirList/src/goDirList.cpp" />
+		<Unit filename="../../../addons/goDirList/src/goDirList.h" />
+		<Unit filename="../../../addons/goThreadedVideo/src/goThreadedVideo.cpp" />
+		<Unit filename="../../../addons/goThreadedVideo/src/goThreadedVideo.h" />
+		<Unit filename="../../../addons/goUtils/src/goUtils.cpp" />
+		<Unit filename="../../../addons/goUtils/src/goUtils.h" />
+		<Unit filename="../../../addons/goVideoGrabber/src/goVideoGrabber.cpp" />
+		<Unit filename="../../../addons/goVideoGrabber/src/goVideoGrabber.h" />
+		<Unit filename="../../../addons/goVideoPlayer/src/goQtUtils.cpp" />
+		<Unit filename="../../../addons/goVideoPlayer/src/goQtUtils.h" />
+		<Unit filename="../../../addons/goVideoPlayer/src/goVideoPlayer.cpp" />
+		<Unit filename="../../../addons/goVideoPlayer/src/goVideoPlayer.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_Buttons.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_C-api.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_CallbackEventConsumer.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_Debug.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_DisplayManager.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_DisplayManagerNULL.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_Event.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_EventButton.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_EventCursor.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_EventDragnDrop.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_EventKey.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_EventManager.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_EventNDOF.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_EventPrinter.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_EventString.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_EventTrackpad.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_EventWheel.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_IEvent.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_IEventConsumer.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_ISystem.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_ISystemPaths.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_ITimerTask.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_IWindow.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_ModifierKeys.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_Path-api.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_Rect.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_System.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_SystemNULL.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_SystemPaths.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_TimerManager.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_TimerTask.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_Types.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_Window.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_WindowManager.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/GHOST_WindowNULL.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/WIN32/GHOST_DisplayManagerWin32.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/WIN32/GHOST_DropTargetWin32.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/WIN32/GHOST_SystemPathsWin32.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/WIN32/GHOST_SystemWin32.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/WIN32/GHOST_TaskbarWin32.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/WIN32/GHOST_WindowWin32.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/WIN32/pktdef.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/ghost/include/WIN32/wintab.h" />
+		<Unit filename="../../../addons/ofxFenster/libs/string/include/STR_String.h" />
+		<Unit filename="../../../addons/ofxFenster/src/ofxDisplay.cpp" />
+		<Unit filename="../../../addons/ofxFenster/src/ofxDisplay.h" />
+		<Unit filename="../../../addons/ofxFenster/src/ofxDisplayMac.h" />
+		<Unit filename="../../../addons/ofxFenster/src/ofxDisplayManager.cpp" />
+		<Unit filename="../../../addons/ofxFenster/src/ofxDisplayManager.h" />
+		<Unit filename="../../../addons/ofxFenster/src/ofxFenster.cpp" />
+		<Unit filename="../../../addons/ofxFenster/src/ofxFenster.h" />
+		<Unit filename="../../../addons/ofxFenster/src/ofxFensterManager.cpp" />
+		<Unit filename="../../../addons/ofxFenster/src/ofxFensterManager.h" />
+		<Unit filename="../../../addons/ofxMidi/libs/RtError.h" />
+		<Unit filename="../../../addons/ofxMidi/libs/RtMidi.cpp" />
+		<Unit filename="../../../addons/ofxMidi/libs/RtMidi.h" />
+		<Unit filename="../../../addons/ofxMidi/src/ofxMidi.h" />
+		<Unit filename="../../../addons/ofxMidi/src/ofxMidiConstants.h" />
+		<Unit filename="../../../addons/ofxMidi/src/ofxMidiEvents.h" />
+		<Unit filename="../../../addons/ofxMidi/src/ofxMidiIn.cpp" />
+		<Unit filename="../../../addons/ofxMidi/src/ofxMidiIn.h" />
+		<Unit filename="../../../addons/ofxMidi/src/ofxMidiOut.cpp" />
+		<Unit filename="../../../addons/ofxMidi/src/ofxMidiOut.h" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxNetwork.h" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxNetworkUtils.h" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPClient.cpp" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPClient.h" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPManager.cpp" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPManager.h" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPServer.cpp" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPServer.h" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxUDPManager.cpp" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxUDPManager.h" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvBlob.h" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvColorImage.cpp" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvColorImage.h" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvConstants.h" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvContourFinder.cpp" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvContourFinder.h" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvFloatImage.cpp" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvFloatImage.h" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvGrayscaleImage.cpp" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvGrayscaleImage.h" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvHaarFinder.cpp" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvImage.cpp" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvImage.h" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvMain.h" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvShortImage.cpp" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxCvShortImage.h" />
+		<Unit filename="../../../addons/ofxOpenCv/src/ofxOpenCv.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.cpp" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/ip/PacketListener.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/ip/TimerListener.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/ip/win32/NetworkingUtilsWin.cpp" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/ip/win32/UdpSocketWin.cpp" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/MessageMappingOscPacketListener.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/OscException.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/OscHostEndianness.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.cpp" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/OscPacketListener.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/OscPrintReceivedElements.cpp" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/OscPrintReceivedElements.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.cpp" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.h" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.cpp" />
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.h" />
+		<Unit filename="../../../addons/ofxOsc/src/ofxOsc.h" />
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscArg.h" />
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscBundle.cpp" />
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscBundle.h" />
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscMessage.cpp" />
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscMessage.h" />
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscReceiver.cpp" />
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscReceiver.h" />
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscSender.cpp" />
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscSender.h" />
+		<Unit filename="../../../addons/ofxXmlSettings/libs/tinyxml.cpp" />
+		<Unit filename="../../../addons/ofxXmlSettings/libs/tinyxml.h" />
+		<Unit filename="../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp" />
+		<Unit filename="../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp" />
+		<Unit filename="../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp" />
+		<Unit filename="../../../addons/ofxXmlSettings/src/ofxXmlSettings.h" />
+		<Unit filename="../../../addons/ofxhGui/src/h2DSlider.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/h2DSlider.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hAlert.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hAlert.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hAlertLabel.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hAlertLabel.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hButton.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hButton.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hButtonBox.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hButtonBox.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hButtonBoxItem.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hButtonBoxItem.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hCheckBox.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hCheckBox.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hCounterLabel.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hCounterLabel.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hDialog.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hDialog.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hDialogButton.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hDialogButton.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hDrawingPrimitives.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hDrawingPrimitives.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hGui.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hGui.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hGui_all.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hIncButton.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hIncButton.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hLabel.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hLabel.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hListBox.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hListBox.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hListItem.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hListItem.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hMessageBox.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hMessageBox.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hNumberBox.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hNumberBox.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hPanel.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hPanel.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hScrollBar.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hScrollBar.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hScrollButton.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hScrollButton.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hSlider.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hSlider.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hSliderBox.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hSliderBox.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hStatusBar.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hStatusBar.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hTScrollBar.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hTScrollBar.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hTabBox.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hTabBox.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hTabBoxItem.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hTabBoxItem.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hTextArea.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hTextArea.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hTextAreaButton.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hTextAreaButton.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hTextBox.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hTextBox.h" />
+		<Unit filename="../../../addons/ofxhGui/src/hWidget.cpp" />
+		<Unit filename="../../../addons/ofxhGui/src/hWidget.h" />
+		<Unit filename="../../../addons/ofxhUtils/src/hEvents/hEvents.cpp" />
+		<Unit filename="../../../addons/ofxhUtils/src/hEvents/hEvents.h" />
+		<Unit filename="../../../addons/ofxhUtils/src/hEvents/hObject.h" />
+		<Unit filename="../../../addons/ofxhUtils/src/hEvents/hSymbols.cpp" />
+		<Unit filename="../../../addons/ofxhUtils/src/hEvents/hSymbols.h" />
+		<Unit filename="../../../addons/ofxhUtils/src/hStringUtils/hStringUtils.cpp" />
+		<Unit filename="../../../addons/ofxhUtils/src/hStringUtils/hStringUtils.h" />
+		<Unit filename="../../../addons/ofxhUtils/src/hTable/hTable.cpp" />
+		<Unit filename="../../../addons/ofxhUtils/src/hTable/hTable.h" />
+		<Unit filename="src/AppController.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/AppController.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/AppExceptions.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/AppModel.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/AppModel.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/AppView.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/AppView.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/BaseState.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/BaseState.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/BaseView.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/BaseView.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/DataController.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/DataController.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/DebugView.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/DebugView.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/FunctionDataTypes.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/FunctionModel.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/GuiView.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/GuiView.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/IXMLBuilder.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/IXMLParser.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/KeyboardController.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/KeyboardController.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/KeyboardModel.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/Logger.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/Logger.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/MidiController.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/MidiController.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/MidiModel.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/MouseController.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/MouseController.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/OscController.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/OscController.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/OscModel.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/PropertyXMLBuilder.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/PropertyXMLBuilder.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/PropertyXMLParser.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/PropertyXMLParser.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/SceneDataType.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/SerializationUtils.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/Singleton.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/TextController.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/TextController.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/VideoController.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/VideoController.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/ViewPort.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/main.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
