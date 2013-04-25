@@ -265,9 +265,9 @@ void GuiView::setup() {
 
     hListBox * cameraList = gui->addListBox("cameraList", layoutPanel, HGUI_NEXT_COL, gui->margin2 + patternLayout->getWidth() - 40, 17, 120);
     hLabel * cameraListLabel = gui->addLabel("cameraListLabel", layoutPanel, HGUI_RIGHT, -cameraList->getWidth(), -16, "camera");
-    cameraList->addItems(4, "");
+    cameraList->addItems(5, "");
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         cameraList->setElementLabel(i+1, "camera_" + ofToString(i+1));
     }
 
