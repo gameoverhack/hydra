@@ -141,7 +141,7 @@ bool AppModel::loadScenes(string path) {
                     if (it == _allVideos.end()) {
                         videoObjects[j]->_bAssigned = true;
                         videoObjects[j]->_player = new ofxThreadedVideo();
-                        //videoObjects[j]->_player->setPixelFormat(OF_PIXELS_BGRA);
+                        videoObjects[j]->_player->setPixelFormat(OF_PIXELS_BGRA);
                         videoObjects[j]->_player->loadMovie(videoObjects[j]->_videoPath);
                         videoObjects[j]->_player->update();
                         while(videoObjects[j]->_player->isLoading()) {

@@ -45,31 +45,39 @@ void DebugView::update() {
     }
 
 
-
 	begin();
+	{
+        if (boost::any_cast<bool>(_appModel->getProperty("showDebug"))) {
+            ofNoFill();
 
-    glPushMatrix();
-    glScalef(0.3f, 0.3f, 1.0f);
-    drawCameraViews();
-    glPopMatrix();
+            glPushMatrix();
+            glScalef(0.3f, 0.3f, 1.0f);
+            drawCameraViews();
+            glPopMatrix();
 
-    glPushMatrix();
-    glTranslatef(0, (2*480.0f+3.0f)*0.3f, 0);
-    glScalef(0.3f, 0.3f, 1.0f);
-    drawOutputView();
-    glPopMatrix();
+            glPushMatrix();
+            glTranslatef(0, (2*480.0f+3.0f)*0.3f, 0);
+            glScalef(0.3f, 0.3f, 1.0f);
+            drawOutputView();
+            ofRect(0,0,1920,1080);
+            glPopMatrix();
 
-    glPushMatrix();
-    glTranslatef(0.0f, (2*480.0f+3.0f)*2*0.3f, 0.0f);
-    glScalef(0.3f, 0.3f, 1.0f);
-    drawPrompterViews();
-    glPopMatrix();
+            glPushMatrix();
+            glTranslatef(0.0f, (2*480.0f+3.0f)*2*0.3f, 0.0f);
+            glScalef(0.3f, 0.3f, 1.0f);
+            drawPrompterViews();
+            glPopMatrix();
+        }
 
-    glPushMatrix();
-	ofSetColor(255, 255, 255);
-	ofDrawBitmapString(msg, 20, 700);
-	ofSetColor(255, 255, 255);
-    glPopMatrix();
+        glPushMatrix();
+        ofSetColor(255, 255, 255);
+        ofDrawBitmapString(msg, 20, 700);
+        ofSetColor(255, 255, 255);
+        glPopMatrix();
+	}
+
+
+
 
 	end();
 
@@ -116,9 +124,14 @@ void DebugView::drawCameraViews() {
         if (camera == NULL) continue;
         int camWidth = 720;//camera->getWidth();
         int camHeight = 480;//camera->getHeight();
-        int offsetX = (position == 0 || position == 2 ? 0 : camWidth);
+        int offsetX = camWidth;
+        if(position == 0 || position == 2) offsetX = 0;
+        if(position == 4) offsetX = camWidth * 2;
         int offsetY = (position < 2 ? 0 : camHeight);
+        ofNoFill();
+        ofSetColor(255, 255, 255);
         camera->draw(offsetX,offsetY,camWidth,camHeight);
+        ofRect(offsetX,offsetY,camWidth,camHeight);
     }
 }
 

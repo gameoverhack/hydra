@@ -455,33 +455,33 @@ void GuiView::update() {
     map< string, TextServer* >::iterator it;
 
     int portIndex = 1;
-    for (it = servers.begin(); it != servers.end(); it++, portIndex++) {
-
-        TextServer* textServer = it->second;
-        string portNumber = ofToString(portIndex);
-        string panelID = ofToString(portIndex-1);
-        events->sendEvent("port" + portNumber + "CB.setSelected", textServer->getServer()->isConnected());
-        events->sendEvent("port" + portNumber + "TextLabel.setLabel", "port " + portNumber + ":" + ofToString(textServer->getServer()->getNumClients()));
-        hSlider * textPosition = (hSlider*)gui->getWidget("textPosition" + panelID);
-
-        hButton * recordButton = (hButton*)gui->getWidget("record" + panelID);
-        hButton * playButton = (hButton*)gui->getWidget("play" + panelID);
-        TextObject* preset = textServer->getPreset();
-        if (preset == NULL) continue;
-
-        if (preset->getIsPlaying()) {
-            textPosition->setValue(preset->getPosition());
-            playButton->setLabel("stop play");
-        } else {
-            playButton->setLabel("start play");
-        }
-
-        if (preset->getIsRecording()) {
-            recordButton->setLabel("stop record");
-        } else {
-            recordButton->setLabel("start record");
-        }
-    }
+//    for (it = servers.begin(); it != servers.end(); it++, portIndex++) {
+//
+//        TextServer* textServer = it->second;
+//        string portNumber = ofToString(portIndex);
+//        string panelID = ofToString(portIndex-1);
+//        events->sendEvent("port" + portNumber + "CB.setSelected", textServer->getServer()->isConnected());
+//        events->sendEvent("port" + portNumber + "TextLabel.setLabel", "port " + portNumber + ":" + ofToString(textServer->getServer()->getNumClients()));
+//        hSlider * textPosition = (hSlider*)gui->getWidget("textPosition" + panelID);
+//
+//        hButton * recordButton = (hButton*)gui->getWidget("record" + panelID);
+//        hButton * playButton = (hButton*)gui->getWidget("play" + panelID);
+//        TextObject* preset = textServer->getPreset();
+//        if (preset == NULL) continue;
+//
+//        if (preset->getIsPlaying()) {
+//            textPosition->setValue(preset->getPosition());
+//            playButton->setLabel("stop play");
+//        } else {
+//            playButton->setLabel("start play");
+//        }
+//
+//        if (preset->getIsRecording()) {
+//            recordButton->setLabel("stop record");
+//        } else {
+//            recordButton->setLabel("start record");
+//        }
+//    }
 
     begin();
     {

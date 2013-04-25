@@ -33,10 +33,10 @@ BaseView::BaseView(float x, float y, float width, float height, ofxFenster* wind
 	_viewHeight = height;
 
 	// allocate the fbo texture
-	_viewFBO[0].allocate(_viewWidth, _viewHeight, GL_RGBA);
+	_viewFBO[0].allocate(_viewWidth, _viewHeight, GL_BGRA);
 
 	// allocate the fbo texture
-	_viewFBO[1].allocate(_viewWidth, _viewHeight, GL_RGBA);
+	_viewFBO[1].allocate(_viewWidth, _viewHeight, GL_BGRA);
 
 	_activeTextureIndex = 0;
 

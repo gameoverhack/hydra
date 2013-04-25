@@ -25,7 +25,7 @@ AppController::AppController() {
 	_appModel->setProperty("showGui", true);
 
 //	_appModel->setProperty("showProps", true);
-//	_appModel->setProperty("showDebug", false);
+	_appModel->setProperty("showDebug", true);
 //	_appModel->setProperty("showFullscreen", false);
 //	_appModel->setProperty("grabberWidth", 720);
 //	_appModel->setProperty("grabberHeight", 480);

@@ -37,20 +37,20 @@ void TextController::registerStates() {
 //--------------------------------------------------------------
 void TextController::update() {
 
-    map< string, TextServer* >& servers = _appModel->getServers();
-    map< string, TextServer* >::iterator it;
-
-    for (it = servers.begin(); it != servers.end(); it++) {
-        TextServer* server = it->second;
-        ofxTCPServer* tcpServer = server->getServer();
-        if (tcpServer->getNumClients() < 1) continue;
-        TextObject* preset = server->getPreset();
-        if (preset == NULL) continue;
-        TextCue* cue = preset->getCue();
-        if (cue == NULL) continue;
-        //LOG_VERBOSE("Send to " + it->first + " :: " + cue->getMessage());
-        if (cue->getMessage() == "STOP^" && preset->getIsPlaying()) preset->stopPlaying();
-        tcpServer->sendToAll(cue->getMessage());
-    }
+//    map< string, TextServer* >& servers = _appModel->getServers();
+//    map< string, TextServer* >::iterator it;
+//
+//    for (it = servers.begin(); it != servers.end(); it++) {
+//        TextServer* server = it->second;
+//        ofxTCPServer* tcpServer = server->getServer();
+//        if (tcpServer->getNumClients() < 1) continue;
+//        TextObject* preset = server->getPreset();
+//        if (preset == NULL) continue;
+//        TextCue* cue = preset->getCue();
+//        if (cue == NULL) continue;
+//        //LOG_VERBOSE("Send to " + it->first + " :: " + cue->getMessage());
+//        if (cue->getMessage() == "STOP^" && preset->getIsPlaying()) preset->stopPlaying();
+//        tcpServer->sendToAll(cue->getMessage());
+//    }
 
 }

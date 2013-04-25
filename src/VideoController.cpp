@@ -159,7 +159,7 @@ void VideoController::update() {
                     map< string, ofxThreadedVideo* >::iterator it = allVideos.find(videoObjects[i]->_videoName);
                     if (it == allVideos.end()) {
                         if (videoObjects[i]->_player == NULL) videoObjects[i]->_player = new ofxThreadedVideo();
-                        //videoObjects[i]->_player->setPixelFormat(OF_PIXELS_BGRA);
+                        videoObjects[i]->_player->setPixelFormat(OF_PIXELS_BGRA);
                         videoObjects[i]->_player->loadMovie(videoObjects[i]->_videoPath);
                         ofAddListener(videoObjects[i]->_player->threadedVideoEvent, this, &VideoController::threadedVideoEvent);
                         allVideos.insert(pair< string, ofxThreadedVideo* >(videoObjects[i]->_videoName, videoObjects[i]->_player));
@@ -167,9 +167,9 @@ void VideoController::update() {
                         videoObjects[i]->_player = it->second;
                     }
                 }
-                videoObjects[i]->_player->update();
                 if(videoObjects[i]->_player->getVolume() != videoObjects[i]->_fVolume) videoObjects[i]->_player->setVolume(videoObjects[i]->_fVolume);
                 if(videoObjects[i]->_player->getPan() != videoObjects[i]->_fPan) videoObjects[i]->_player->setPan(videoObjects[i]->_fPan);
+                videoObjects[i]->_player->update();
                 break;
         }
     }
@@ -227,7 +227,8 @@ void VideoController::threadedVideoEvent(ofxThreadedVideoEvent & e) {
 
     if(e.eventType == VIDEO_EVENT_LOAD_OK){
         LOG_NOTICE("Finsished loading: " + video->getPath());
-        video->setVolume(255);
+        video->setVolume(1.0f);
+        video->setPan(0.0f);
         video->setLoopState(OF_LOOP_NONE);
     }else{
         LOG_ERROR("Error loading:" + video->getEventTypeAsString(e.eventType));
