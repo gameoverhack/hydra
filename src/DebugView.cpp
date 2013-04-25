@@ -44,40 +44,31 @@ void DebugView::update() {
         }
     }
 
-
 	begin();
 	{
-        if (boost::any_cast<bool>(_appModel->getProperty("showDebug"))) {
-            ofNoFill();
+	    ofNoFill();
 
-            glPushMatrix();
-            glScalef(0.3f, 0.3f, 1.0f);
-            drawCameraViews();
-            glPopMatrix();
+        glPushMatrix();
+        ofSetColor(255,255,255,255);
+        glTranslatef(40, 40, 0);
+        glScalef(0.3f, 0.3f, 1.0f);
+        drawCameraViews();
+        glPopMatrix();
 
-            glPushMatrix();
-            glTranslatef(0, (2*480.0f+3.0f)*0.3f, 0);
-            glScalef(0.3f, 0.3f, 1.0f);
-            drawOutputView();
-            ofRect(0,0,1920,1080);
-            glPopMatrix();
-
-            glPushMatrix();
-            glTranslatef(0.0f, (2*480.0f+3.0f)*2*0.3f, 0.0f);
-            glScalef(0.3f, 0.3f, 1.0f);
-            drawPrompterViews();
-            glPopMatrix();
-        }
+        glPushMatrix();
+        ofSetColor(255,255,255,255);
+        glTranslatef(40, (2*480.0f+3.0f)*0.3f + 60, 0);
+        glScalef(0.3f, 0.3f, 1.0f);
+        drawOutputView();
+        ofRect(0,0,1920,1080);
+        glPopMatrix();
 
         glPushMatrix();
         ofSetColor(255, 255, 255);
-        ofDrawBitmapString(msg, 20, 700);
+        ofDrawBitmapString(msg, 40, 700);
         ofSetColor(255, 255, 255);
         glPopMatrix();
 	}
-
-
-
 
 	end();
 
@@ -130,7 +121,11 @@ void DebugView::drawCameraViews() {
         int offsetY = (position < 2 ? 0 : camHeight);
         ofNoFill();
         ofSetColor(255, 255, 255);
-        camera->draw(offsetX,offsetY,camWidth,camHeight);
+        if (boost::any_cast<bool>(_appModel->getProperty("showDebug"))) {
+            camera->draw(offsetX,offsetY,camWidth,camHeight);
+        }else{
+            ofSetColor(255, 0, 0);
+        }
         ofRect(offsetX,offsetY,camWidth,camHeight);
     }
 }
