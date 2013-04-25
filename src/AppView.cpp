@@ -73,7 +73,9 @@ void AppView::update() {
                         videoObjects[i]->_camera->getTextureReference().drawSubsection(x, y, w * 1024.0/720.0f, h, 12, 5, w - 10, h - 10);
                         _shader.end();
                     }else{
+                        _shader.begin();
                         videoObjects[i]->_camera->draw(x,y,w,h);
+                        _shader.end();
                     }
                     break;
 
