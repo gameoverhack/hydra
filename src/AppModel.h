@@ -11,7 +11,7 @@
 #define	_H_APPMODEL
 
 #define MAX_CAMERAS 5
-#define MAX_SERVERS 3
+#define MAX_SERVERS 4
 
 #include "ofxThreadedVideo.h"
 
@@ -110,30 +110,12 @@ public:
     vector<ofRectangle*>&                       getPattern(string patternName);
     int                                         getPatternIndex(string patternName);
 
-    // text/servers
-    int                             listTextFolder(string path);
-    ofDirectory&                    getTextDirectory() {return _textDirectory;};
+//    bool                            addServer(string portName, int port);
+//    bool                            delServer(string portName);
 
-    map< string, string >&          getTexts();
-    string                          getText(string fileName);
-
-    void					        addPreset(TextObject* preset);
-	void                            delPreset(TextObject* preset);
-	void                            delAllPresets();
-
-    bool                            loadPresets(string path);
-    bool                            savePresets(string path);
-
-    map< string, TextObject* >&     getPresets();
-    TextObject*                     getPreset(string presetName);
-    TextObject*                     getPreset(int presetIndex);
-
-    bool                            addServer(string portName, int port);
-    bool                            delServer(string portName);
-
-    map< string, TextServer* >&     getServers();
-    TextServer*                     getServer(string portName);
-    TextServer*                     getServer(int portIndex);
+//    map< string, TextServer* >&     getServers();
+//    TextServer*                     getServer(string portName);
+//    TextServer*                     getServer(int portIndex);
 
     map< string, ofxThreadedVideo* >&       getOffScreenVideos() {return _offScreenVideos;};
     map< string, ofxThreadedVideo* >&       getAllVideos() {return _allVideos;};
@@ -167,11 +149,7 @@ private:
     ofDirectory                         _videoDirectory;
     ofDirectory                         _textDirectory;
 
-    map< string, TextObject* >          _presets;
-
-    map< string, TextServer* >          _servers;
-
-    map< string, string >               _texts;
+//    map< string, TextServer* >          _servers;
 
     map< string, ofxThreadedVideo* >     _offScreenVideos;
     map< string, ofxThreadedVideo* >     _allVideos;

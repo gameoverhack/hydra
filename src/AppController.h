@@ -19,7 +19,7 @@
 #include "MouseController.h"
 #include "MidiController.h"
 #include "VideoController.h"
-#include "TextController.h"
+#include "IOSController.h"
 #include "OscController.h"
 
 #include "AppView.h"
@@ -56,7 +56,7 @@ private:
 	MidiController*			_midiController;
 	OscController*			_oscController;
 	VideoController*		_videoController;
-	TextController*         _textController;
+	IOSController*           _IOSController;
 
 	AppView*				_appView;
 	GuiView*				_guiView;

@@ -66,18 +66,6 @@ public:
     void updateSceneList();
     void updatePatternLayout();
 
-    void updateTextList();
-    void updatePresetList();
-    void updateTextSelection();
-
-    void addPreset(hEventArgs& args);
-    void selectPreset(hEventArgs& args);
-    void record(hEventArgs& args);
-    void play(hEventArgs& args);
-    void clear(hEventArgs& args);
-    void setTextVelocity(hEventArgs& args);
-    void flipScreen(hEventArgs& args);
-
     void autoMidiMap(int port, int byteTwo);
 
 private:

@@ -26,12 +26,9 @@ public:
 private:
 
     void drawCameraViews();
-    void drawPrompterViews();
     void drawOutputView();
 
     ofTrueTypeFont verdana;
-
-    vector<ofFbo*> _prompterScreens;
 
 };
 

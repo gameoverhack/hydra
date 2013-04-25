@@ -440,70 +440,6 @@ map<string, Scene*>& AppModel::getScenes() {
 	return _scenes;
 }
 
-//void AppModel::copyViewPort(ViewPort* toCopy) {
-//
-//    memcpy(_copyOfViewport, toCopy, sizeof(ViewPort));
-//
-//}
-//
-//void AppModel::pasteViewPort(ViewPort* toPaste) {
-//
-//    if (_copyOfViewport == NULL) return;
-//
-//    memcpy(toPaste, _copyOfViewport, sizeof(ViewPort));
-//
-//}
-
-int AppModel::listTextFolder(string path) {
-
-    // list folder
-    _textDirectory.reset();
-    _textDirectory.allowExt("txt");
-	int numberOfTexts = _textDirectory.listDir(ofToDataPath(path));
-
-    // check for error
-    if (numberOfTexts == 0) LOG_ERROR("No texts in folder!!!" + ofToDataPath(path));
-
-    _texts.clear();
-
-    for (int i = 0; i < numberOfTexts; i++) {
-        LOG_VERBOSE("Reading file...");
-        ofFile file = _textDirectory.getFile(i, ofFile::ReadWrite);
-        stringstream s; s << file.getFileBuffer();
-        string text = s.str();
-        string name = file.getFileName();
-        LOG_VERBOSE(name + "\n" + text);
-        _texts.insert(pair< string, string >(name, text));
-    }
-
-    return numberOfTexts;
-}
-
-map< string, string >& AppModel::getTexts() {
-    return _texts;
-}
-
-string AppModel::getText(string fileName) {
-    map< string, string >::iterator it;
-    it = _texts.find(fileName);
-    string text = "";
-    if (it != _texts.end()) text = it->second;
-    return text;
-}
-
-int AppModel::listVideoFolder(string path) {
-
-    // list folder
-    _videoDirectory.reset();
-    _videoDirectory.allowExt("mov");
-	int numberOfMovies = _videoDirectory.listDir(ofToDataPath(path));
-
-    // check for error
-    if (numberOfMovies == 0) LOG_ERROR("No movies in folder!!!" + ofToDataPath(path));
-
-    return numberOfMovies;
-}
-
 map< string, vector<ofRectangle*> >& AppModel::getPatterns() {
     return _patterns;
 }
@@ -540,139 +476,61 @@ ofVideoGrabber* AppModel::getCamera(string cameraName) {
 	return it->second;
 }
 
+int AppModel::listVideoFolder(string path) {
 
-//--------------------------------------------------------------
-bool AppModel::loadPresets(string path) {
-    LOG_VERBOSE("Attempt to text load preset files: " + ofToDataPath(path));
+    // list folder
+    _videoDirectory.reset();
+    _videoDirectory.allowExt("mov");
+	int numberOfMovies = _videoDirectory.listDir(ofToDataPath(path));
 
-    _presets.clear();
+    // check for error
+    if (numberOfMovies == 0) LOG_ERROR("No movies in folder!!!" + ofToDataPath(path));
 
-    vector<TextObject*> * presets = new vector<TextObject*>;
-
-    if (loadVector(path, presets)) {
-        LOG_VERBOSE("Load success");
-
-        for (int i = 0; i < presets->size(); i++) {
-            TextObject* preset = presets->at(i);
-            addPreset(preset);
-        }
-
-        char timestamp[255];
-        sprintf(timestamp, "%02i%02i%i%02i%02i%02i", ofGetDay(), ofGetMonth(), ofGetYear(), ofGetHours(), ofGetMinutes(), ofGetSeconds());
-
-        string backupPath = path + timestamp;
-        savePresets(backupPath);
-
-        return true;
-    } else {
-        LOG_VERBOSE("Load error");
-        return false;
-    }
+    return numberOfMovies;
 }
 
-//--------------------------------------------------------------
-bool AppModel::savePresets(string path) {
-    LOG_VERBOSE("Attempt to save text preset files: " + ofToDataPath(path));
-
-    vector<TextObject*> * presets = new vector<TextObject*>;
-    map< string, TextObject* >::iterator it = _presets.begin();
-
-//    if (it == _presets.end()) {
-//        LOG_WARNING("No presets to save!!!");
+//bool AppModel::addServer(string portName, int port) {
+//    ofxTCPServer* server = new ofxTCPServer();
+//    if (server->setup(port, false)) {
+//        LOG_VERBOSE("Server SUCCESS on port: " + portName);
+//        TextServer* textServer = new TextServer();
+//        textServer->setPort(port);
+//        textServer->setName(portName);
+//        textServer->setServer(server);
+//        _servers.insert(pair< string, TextServer* >(portName, textServer));
+//        return true;
+//    } else {
+//        LOG_VERBOSE("Server FAILED on port: " + portName);
 //        return false;
 //    }
-
-    for (it = _presets.begin(); it != _presets.end(); it++) presets->push_back(it->second);
-
-    if (saveVector(path, presets)) {
-        LOG_VERBOSE("Save success");
-        return true;
-    } else {
-        LOG_VERBOSE("Save error");
-        return false;
-    }
-}
-
-void AppModel::addPreset(TextObject* preset) {
-    _presets.insert(pair< string, TextObject* >(preset->getName(), preset));
-}
-
-void AppModel::delPreset(TextObject* preset) {
-    if (preset == NULL) return;
-    map< string, TextObject* >::iterator it = _presets.find(preset->getName());
-    if (it == _presets.end()) return;
-    _presets.erase(it);
-}
-
-void AppModel::delAllPresets() {
-    _presets.clear();
-}
-
-map< string, TextObject* >& AppModel::getPresets() {
-    return _presets;
-}
-
-TextObject* AppModel::getPreset(string presetName) {
-    map<string, TextObject *>::iterator iter;
-	iter = _presets.find(presetName);
-	if(iter == _presets.end()){
-		LOG_ERROR("Attempted to get invalid preset name " + presetName);
-		return NULL;
-	}
-	return iter->second;
-}
-
-TextObject* AppModel::getPreset(int presetIndex) {
-    //assert(presetIndex < _presets.size());
-	int index = 0;
-	map< string, TextObject* >::iterator iter = _presets.begin();
-	if (iter == _presets.end()) iter->second = NULL;
-	for (iter = _presets.begin(); iter != _presets.end(); iter++, index++) if (index == presetIndex) break;
-	return iter->second;
-}
-
-bool AppModel::addServer(string portName, int port) {
-    ofxTCPServer* server = new ofxTCPServer();
-    if (server->setup(port, false)) {
-        LOG_VERBOSE("Server SUCCESS on port: " + portName);
-        TextServer* textServer = new TextServer();
-        textServer->setPort(port);
-        textServer->setName(portName);
-        textServer->setServer(server);
-        _servers.insert(pair< string, TextServer* >(portName, textServer));
-        return true;
-    } else {
-        LOG_VERBOSE("Server FAILED on port: " + portName);
-        return false;
-    }
-}
-
-bool AppModel::delServer(string portName) {
-    map< string, TextServer* >::iterator it = _servers.find(portName);
-    if (it == _servers.end()) return false;
-    _servers.erase(it);
-    return true;
-}
-
-map< string, TextServer* >& AppModel::getServers() {
-    return _servers;
-}
-
-TextServer* AppModel::getServer(string portName) {
-    map< string, TextServer* >::iterator it;
-	it = _servers.find(portName);
-	assert(it != _servers.end());
-	return it->second;
-}
-
-TextServer* AppModel::getServer(int portIndex) {
-	assert(portIndex < _servers.size());
-	int index = 0;
-	map< string, TextServer* >::iterator iter;
-	iter->second = NULL;
-	for (iter = _servers.begin(); iter != _servers.end(); iter++, index++) if (index == portIndex) break;
-	return iter->second;
-}
+//}
+//
+//bool AppModel::delServer(string portName) {
+//    map< string, TextServer* >::iterator it = _servers.find(portName);
+//    if (it == _servers.end()) return false;
+//    _servers.erase(it);
+//    return true;
+//}
+//
+//map< string, TextServer* >& AppModel::getServers() {
+//    return _servers;
+//}
+//
+//TextServer* AppModel::getServer(string portName) {
+//    map< string, TextServer* >::iterator it;
+//	it = _servers.find(portName);
+//	assert(it != _servers.end());
+//	return it->second;
+//}
+//
+//TextServer* AppModel::getServer(int portIndex) {
+//	assert(portIndex < _servers.size());
+//	int index = 0;
+//	map< string, TextServer* >::iterator iter;
+//	iter->second = NULL;
+//	for (iter = _servers.begin(); iter != _servers.end(); iter++, index++) if (index == portIndex) break;
+//	return iter->second;
+//}
 
 void AppModel::registerStatefulClass(string className) {
 

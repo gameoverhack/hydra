@@ -37,12 +37,10 @@ AppController::AppController() {
 	_midiController = new MidiController();
 	_oscController = new OscController();
 	_videoController = new VideoController();
-	_textController = new TextController();
+	_IOSController = new IOSController();
 
     _appModel->loadScenes("scenes/scenes.bin");
-    _appModel->loadPresets("presets/presets.bin");
     _appModel->listVideoFolder(boost::any_cast<string>(_appModel->getProperty("videoPath")));
-    _appModel->listTextFolder(boost::any_cast<string>(_appModel->getProperty("textPath")));
 
     ofxDisplayList displays = ofxDisplayManager::get()->getDisplays();
     //(displays.size() > 0 ? displays[1]->x : 0)
@@ -190,14 +188,13 @@ void AppController::exit() {
 
 	_dataController->saveProperties("config.xml");
 	_appModel->saveScenes("scenes/scenes.bin");
-	_appModel->savePresets("presets/presets.bin");
-	//_dataController->saveScenes("scenes.xml");
 
 	delete _appView;
 	delete _dataController;
 	delete _keyboardController;
 	delete _midiController;
 	delete _videoController;
+	delete _IOSController;
 	delete _appModel;
 
 }
@@ -224,7 +221,7 @@ void AppController::update() {
     _midiController->update();
     _oscController->update();
     _videoController->update();
-    _textController->update();
+    _IOSController->update();
 }
 
 

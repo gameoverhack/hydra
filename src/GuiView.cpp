@@ -58,40 +58,40 @@ void GuiView::autoMidiMap(int port, int byteTwo) {
         case 1: // select preset
         {
             LOG_VERBOSE("Text MIDI TRIGGER PORT 1");
-            hEventArgs args;
-            args.eventName = "selectPreset_0";
-            TextObject* preset = _appModel->getPreset(byteTwo);
-            if (preset == NULL) return;
-            args.strings.push_back(preset->getName());
-            selectPreset(args);
-            preset->rewind();
-            preset->startPlaying();
+//            hEventArgs args;
+//            args.eventName = "selectPreset_0";
+//            TextObject* preset = _appModel->getPreset(byteTwo);
+//            if (preset == NULL) return;
+//            args.strings.push_back(preset->getName());
+//            selectPreset(args);
+//            preset->rewind();
+//            preset->startPlaying();
             break;
         }
         case 2: // select preset
         {
             LOG_VERBOSE("Text MIDI TRIGGER PORT 2");
-            hEventArgs args;
-            args.eventName = "selectPreset_1";
-            TextObject* preset = _appModel->getPreset(byteTwo);
-            if (preset == NULL) return;
-            args.strings.push_back(preset->getName());
-            selectPreset(args);
-            preset->rewind();
-            preset->startPlaying();
+//            hEventArgs args;
+//            args.eventName = "selectPreset_1";
+//            TextObject* preset = _appModel->getPreset(byteTwo);
+//            if (preset == NULL) return;
+//            args.strings.push_back(preset->getName());
+//            selectPreset(args);
+//            preset->rewind();
+//            preset->startPlaying();
             break;
         }
         case 3: // select preset
         {
             LOG_VERBOSE("Text MIDI TRIGGER PORT 3");
-            hEventArgs args;
-            args.eventName = "selectPreset_2";
-            TextObject* preset = _appModel->getPreset(byteTwo);
-            if (preset == NULL) return;
-            args.strings.push_back(preset->getName());
-            selectPreset(args);
-            preset->rewind();
-            preset->startPlaying();
+//            hEventArgs args;
+//            args.eventName = "selectPreset_2";
+//            TextObject* preset = _appModel->getPreset(byteTwo);
+//            if (preset == NULL) return;
+//            args.strings.push_back(preset->getName());
+//            selectPreset(args);
+//            preset->rewind();
+//            preset->startPlaying();
             break;
         }
         case 4: // select video
@@ -216,26 +216,8 @@ void GuiView::setup() {
 	hPanel * commPanel = gui->addPanel("communication", mainscenesPanel, HGUI_RIGHT, gui->margin2, 0, halfWidth, 250, true);
 	hLabel * commPanelLabel = gui->addLabel("", commPanel, HGUI_TOP_LEFT, 2, 0, "Communication");
 
-    hTextBox * textPath = gui->addTextBox("textPath", commPanel,  HGUI_NEXT_ROW, gui->margin2, gui->margin2, 300, boost::any_cast<string>(_appModel->getProperty("textPath")));
-    hLabel * textPathLabel = gui->addLabel("", commPanel, HGUI_RIGHT, 2, 0, "text path");
-
-    events->addListener("updateTextPath", this, &GuiView::updateTextPath);
-    textPath->setMessage("updateTextPath");
-
-    for (int i = 0; i < MAX_SERVERS; i++) {
-
-        string portID = ofToString(i+1);
-        hTextBox * portText = gui->addTextBox("port" + portID + "Text", commPanel,  HGUI_NEXT_ROW, gui->margin2, gui->margin2, 100, boost::any_cast<string>(_appModel->getProperty("port" + portID)));
-        hLabel * portTextLabel = gui->addLabel("port" + portID + "TextLabel", commPanel, HGUI_RIGHT, 2, 0, "port " + portID + ":0");
-        hCheckBox * portCB = gui->addCheckBox("port" + portID + "CB", commPanel, HGUI_RIGHT, gui->margin2, 0);
-        hCheckBox * flipCB = gui->addCheckBox("flip" + portID + "CB", commPanel, HGUI_RIGHT, gui->margin2, 0);
-        flipCB->setBoolVar(&bFlip[i]);
-        events->addListener("port" + portID, this, &GuiView::updatePorts);
-        events->addListener("flip_" + ofToString(i), this, &GuiView::flipScreen);
-        portText->setMessage("port" + portID);
-        flipCB->setMessage("flip_" + ofToString(i));
-
-    }
+//    hTextBox * textPath = gui->addTextBox("textPath", commPanel,  HGUI_NEXT_ROW, gui->margin2, gui->margin2, 300, boost::any_cast<string>(_appModel->getProperty("textPath")));
+//    hLabel * textPathLabel = gui->addLabel("", commPanel, HGUI_RIGHT, 2, 0, "text path");
 
     // Scene Layout Panel
 
@@ -332,70 +314,73 @@ void GuiView::setup() {
     patternLayout->setAllElementsDisabled(true);
     patternLayoutOFF->setAllElementsDisabled(true);
 
-    // Text Communication Panels
+    // IOS Communication Panels
 
     for (int i = 0; i < MAX_SERVERS; i++) {
 
-        string panelID = ofToString(i);
-
-        hPanel * textPanel = gui->addPanel("textPanel" + panelID, mainscenesPanel, HGUI_NEXT_ROW, gui->margin2, gui->margin2, mainscenesPanel->getWidth()-2*gui->margin2, 170, true);
-        hLabel * textPanelLabel = gui->addLabel("", textPanel, HGUI_TOP_LEFT, 2, 0, "Text (Port " + panelID + ")");
-
-        hTextBox * textPresetName = gui->addTextBox("textPresetName" + panelID, textPanel,  HGUI_NEXT_ROW, gui->margin2, gui->margin2, 246, "");
-        hLabel * textPresetNameLabel = gui->addLabel("", textPanel, HGUI_RIGHT, 2, 0, "new preset name");
-        textPresetName->clearAfterReturn(true);
-
-        events->addListener("addPreset_" + panelID, this, &GuiView::addPreset);
-        textPresetName->setMessage("addPreset_" + panelID);
-
-        hListBox * presetList = gui->addListBox("presetList" + panelID, textPanel, HGUI_NEXT_ROW, gui->margin2, gui->margin2, 120);
-        presetList->addItems(5, "");
-
-        events->addListener("selectPreset_" + panelID, this, &GuiView::selectPreset);
-
-        hListBox * textList = gui->addListBox("textList" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2-100, 47, 120);
-        textList->addItems(5, "");
-
-        events->addListener("selectText_" + panelID, this, &GuiView::selectText);
-
-        hButton * recordButton = gui->addButton("record" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2+140, 26, 80, "start record");
-        events->addListener("record_" + panelID, this, &GuiView::record);
-        recordButton->setMessage("record_" + panelID);
-
-        hButton * playButton = gui->addButton("play" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2, 26, 80, "start play");
-        events->addListener("play_" + panelID, this, &GuiView::play);
-        playButton->setMessage("play_" + panelID);
-
-        hButton * clearButton = gui->addButton("clear" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2, 26, 80, "clear");
-        events->addListener("clear_" + panelID, this, &GuiView::clear);
-        clearButton->setMessage("clear_" + panelID);
-
-        hSlider * textVelocity = gui->addSlider("textVelocity" + panelID, textPanel, HGUI_NEXT_ROW, 293, gui->margin2*3, 500);
-        hLabel * textVelocityLabel = gui->addLabel("", textPanel, HGUI_ABSOLUTE_POSITION, 0, 0, "");
-        textVelocity->setLinkedLabel(textVelocityLabel, true);
-        textVelocity->setRange(-250.0f, 250.0f);
-        textVelocity->setValue(0.0f);
-        textVelocity->setColor(0x333333);
-        //textVelocity->setFloatVar(&SOMETHING);
-        events->addListener("setTextVelocity_" + panelID, this, &GuiView::setTextVelocity);
-        textVelocity->setMessage("setTextVelocity_" + panelID);
-
-        hSlider * textPosition = gui->addSlider("textPosition" + panelID, textPanel, HGUI_NEXT_ROW, 293, gui->margin2, 500);
-        textPosition->setRange(0.0f, 1.0f);
-        textPosition->setColor(0x333333);
-        textPosition->setValue(0.0f);
-
-        textList->setAllElementsDisabled(true);
-        recordButton->setDisabled(true);
-        playButton->setDisabled(true);
-        clearButton->setDisabled(true);
-        textVelocity->setDisabled(true);
-        textPosition->setDisabled(true);
-        //textPosition->setFloatVar(&SOMETHING);
+//        hPanel * serverPanel = gui->addPanel("server" + ofToString(i), mainscenesPanel, HGUI_NEXT_ROW, gui->margin2, gui->margin1, (i%2 == 0 ? 0 : halfWidth), 250, true);
+//        hLabel * serverPanelLabel = gui->addLabel("", serverPanel, HGUI_TOP_LEFT, 2, 0, "Server_" + ofToString(i));
     }
 
-    updateTextList();
-    updatePresetList();
+    for (int i = 0; i < MAX_SERVERS; i++) {
+
+//        string panelID = ofToString(i);
+//
+//        hPanel * textPanel = gui->addPanel("textPanel" + panelID, mainscenesPanel, HGUI_NEXT_ROW, gui->margin2, gui->margin2, mainscenesPanel->getWidth()-2*gui->margin2, 170, true);
+//        hLabel * textPanelLabel = gui->addLabel("", textPanel, HGUI_TOP_LEFT, 2, 0, "Text (Port " + panelID + ")");
+//
+//        hTextBox * textPresetName = gui->addTextBox("textPresetName" + panelID, textPanel,  HGUI_NEXT_ROW, gui->margin2, gui->margin2, 246, "");
+//        hLabel * textPresetNameLabel = gui->addLabel("", textPanel, HGUI_RIGHT, 2, 0, "new preset name");
+//        textPresetName->clearAfterReturn(true);
+//
+//        events->addListener("addPreset_" + panelID, this, &GuiView::addPreset);
+//        textPresetName->setMessage("addPreset_" + panelID);
+//
+//        hListBox * presetList = gui->addListBox("presetList" + panelID, textPanel, HGUI_NEXT_ROW, gui->margin2, gui->margin2, 120);
+//        presetList->addItems(5, "");
+//
+//        events->addListener("selectPreset_" + panelID, this, &GuiView::selectPreset);
+//
+//        hListBox * textList = gui->addListBox("textList" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2-100, 47, 120);
+//        textList->addItems(5, "");
+//
+//        events->addListener("selectText_" + panelID, this, &GuiView::selectText);
+//
+//        hButton * recordButton = gui->addButton("record" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2+140, 26, 80, "start record");
+//        events->addListener("record_" + panelID, this, &GuiView::record);
+//        recordButton->setMessage("record_" + panelID);
+//
+//        hButton * playButton = gui->addButton("play" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2, 26, 80, "start play");
+//        events->addListener("play_" + panelID, this, &GuiView::play);
+//        playButton->setMessage("play_" + panelID);
+//
+//        hButton * clearButton = gui->addButton("clear" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2, 26, 80, "clear");
+//        events->addListener("clear_" + panelID, this, &GuiView::clear);
+//        clearButton->setMessage("clear_" + panelID);
+//
+//        hSlider * textVelocity = gui->addSlider("textVelocity" + panelID, textPanel, HGUI_NEXT_ROW, 293, gui->margin2*3, 500);
+//        hLabel * textVelocityLabel = gui->addLabel("", textPanel, HGUI_ABSOLUTE_POSITION, 0, 0, "");
+//        textVelocity->setLinkedLabel(textVelocityLabel, true);
+//        textVelocity->setRange(-250.0f, 250.0f);
+//        textVelocity->setValue(0.0f);
+//        textVelocity->setColor(0x333333);
+//        //textVelocity->setFloatVar(&SOMETHING);
+//        events->addListener("setTextVelocity_" + panelID, this, &GuiView::setTextVelocity);
+//        textVelocity->setMessage("setTextVelocity_" + panelID);
+//
+//        hSlider * textPosition = gui->addSlider("textPosition" + panelID, textPanel, HGUI_NEXT_ROW, 293, gui->margin2, 500);
+//        textPosition->setRange(0.0f, 1.0f);
+//        textPosition->setColor(0x333333);
+//        textPosition->setValue(0.0f);
+//
+//        textList->setAllElementsDisabled(true);
+//        recordButton->setDisabled(true);
+//        playButton->setDisabled(true);
+//        clearButton->setDisabled(true);
+//        textVelocity->setDisabled(true);
+//        textPosition->setDisabled(true);
+        //textPosition->setFloatVar(&SOMETHING);
+    }
 
     // Alert Dialog
 
@@ -451,10 +436,10 @@ void GuiView::update() {
     hGui * gui = hGui::getInstance();
     hEvents * events = hEvents::getInstance();
 
-    map< string, TextServer* >& servers = _appModel->getServers();
-    map< string, TextServer* >::iterator it;
-
-    int portIndex = 1;
+//    map< string, TextServer* >& servers = _appModel->getServers();
+//    map< string, TextServer* >::iterator it;
+//
+//    int portIndex = 1;
 //    for (it = servers.begin(); it != servers.end(); it++, portIndex++) {
 //
 //        TextServer* textServer = it->second;
@@ -488,75 +473,6 @@ void GuiView::update() {
          if(boost::any_cast<bool>(_appModel->getProperty("showGui"))) gui->draw();
     }
     end();
-}
-
-void GuiView::updatePresetList() {
-
-    LOG_VERBOSE("Update text preset list");
-
-    map< string, TextObject* >& presets = _appModel->getPresets();
-    int numPresets = presets.size();
-
-    if (numPresets == 0) {
-        LOG_WARNING("No presets");
-        return;
-    }
-
-    hGui * gui = hGui::getInstance();
-
-    for (int i = 0; i < MAX_SERVERS; i++) {
-        string panelID = ofToString(i);
-
-        hListBox * presetList = (hListBox*)gui->getWidget("presetList" + panelID);
-        presetList->clear();
-
-        presetList->addItems(5, "");
-
-        map< string, TextObject* >::iterator it;
-        int presetIndex = 0;
-        for (it = presets.begin(); it != presets.end(); it++, presetIndex++) {
-            if (presetIndex < 5) presetList->setElementLabel(presetIndex+1, it->first);
-            if (presetIndex > 4) presetList->addData(it->first);
-        }
-
-        presetList->setMessage("selectPreset_" + panelID);
-        presetList->displayAllIndexes(true);
-
-    }
-}
-
-void GuiView::updateTextList() {
-    LOG_VERBOSE("Update text list");
-
-    ofDirectory& textDirectory = _appModel->getTextDirectory();
-    int numTexts = textDirectory.numFiles();
-
-    if (numTexts == 0) _appModel->listTextFolder(boost::any_cast<string>(_appModel->getProperty("textPath")));
-    if (numTexts == 0) {
-
-        LOG_WARNING("No texts in that folder!!");
-        return;
-    }
-
-    hGui * gui = hGui::getInstance();
-
-    for (int i = 0; i < MAX_SERVERS; i++) {
-        string panelID = ofToString(i);
-
-        hListBox * textList = (hListBox*)gui->getWidget("textList" + panelID);
-        textList->clear();
-
-        textList->addItems(5, "");
-
-        for (int i = 0; i < numTexts; i++) {
-            if (i < 5) textList->setElementLabel(i+1, textDirectory.getName(i));
-            if (i > 4) textList->addData(textDirectory.getName(i));
-        }
-
-        textList->setAllElementsDisabled(true);
-        textList->setMessage("selectText_" + panelID);
-    }
-
 }
 
 void GuiView::updateVideoList() {
@@ -682,21 +598,6 @@ void GuiView::updatePatternLayout() {
 
     patternLayout->setMessage("selectPattern");
     patternLayoutOFF->setMessage("selectPatternOFF");
-
-}
-
-void GuiView::updateTextSelection() {
-
-    hGui * gui = hGui::getInstance();
-
-    for (int i = 0; i < MAX_SERVERS; i++) {
-        string panelID = ofToString(i);
-        hListBox * textList = (hListBox*)gui->getWidget("textList" + panelID);
-        textList->setAllElementsDisabled(false);
-    }
-
-    Scene* scene = _appModel->getCurrentScene();
-    if (scene == NULL) return;
 
 }
 
@@ -945,13 +846,6 @@ void GuiView::selectVideo(hEventArgs& args) {
 }
 
 //--------------------------------------------------------------
-void GuiView::updateTextPath(hEventArgs& args) {
-    LOG_VERBOSE("Update text path: " + args.strings[0]);
-    _appModel->setProperty("textPath", args.strings[0]);
-    updateTextList();
-}
-
-//--------------------------------------------------------------
 void GuiView::updateVideoPath(hEventArgs& args) {
     LOG_VERBOSE("Update video path: " + args.strings[0]);
     _appModel->setProperty("videoPath", args.strings[0]);
@@ -968,7 +862,6 @@ void GuiView::updatePorts(hEventArgs& args) {
 void GuiView::save(hEventArgs& args) {
     LOG_VERBOSE("Save button");
     _appModel->saveScenes("scenes/scenes.bin");
-    _appModel->savePresets("presets/presets.bin");
 }
 
 //--------------------------------------------------------------
@@ -1013,280 +906,6 @@ void GuiView::selectScene(hEventArgs& args) {
         fPan = 0.0f;
         updatePatternLayout();
     }
-}
-
-//--------------------------------------------------------------
-void GuiView::selectPreset(hEventArgs& args) {
-
-    string presetName = args.strings[0];
-    string panelID = ofSplitString(args.eventName, "_")[1];
-    string portName = "port" + panelID;
-
-    LOG_VERBOSE("Select text preset: " + presetName + " for " + portName);
-
-    hGui * gui = hGui::getInstance();
-    hEvents * events = hEvents::getInstance();
-
-    hListBox * textList = (hListBox*)gui->getWidget("textList" + panelID);
-    hButton * recordButton = (hButton*)gui->getWidget("record" + panelID);
-    hButton * playButton = (hButton*)gui->getWidget("play" + panelID);
-    hButton * clearButton = (hButton*)gui->getWidget("clear" + panelID);
-    hSlider * textVelocity = (hSlider*)gui->getWidget("textVelocity" + panelID);
-    hSlider * textPosition = (hSlider*)gui->getWidget("textPosition" + panelID);
-
-    TextObject* preset = _appModel->getPreset(presetName);
-
-    if (preset != NULL) {
-
-        TextServer* textServer = _appModel->getServer(portName);
-        string text = preset->getText();
-
-        if (textServer != NULL) textServer->setPreset(preset);
-
-        textList->setAllElementsDisabled(false);
-
-        if (text != "") {
-
-            string fileName = preset->getFileName();
-            textList->selectElement(fileName);
-            textList->scrollItems(textList->findElement(fileName)->index-1);
-            textList->setScrollBarPosition(textList->findElement(fileName)->index);
-
-            if (textServer->getServer() != NULL) {
-                textServer->getServer()->sendToAll("START^" + text);
-            }
-
-            recordButton->setDisabled(false);
-            playButton->setDisabled(false);
-            clearButton->setDisabled(false);
-            textVelocity->setDisabled(false);
-            textPosition->setDisabled(false);
-
-        } else {
-
-            textList->unselectLastRadioElement();
-            recordButton->setDisabled(true);
-            playButton->setDisabled(true);
-            clearButton->setDisabled(true);
-            textVelocity->setDisabled(true);
-            textPosition->setDisabled(true);
-
-        }
-
-    } else {
-
-        LOG_WARNING("Present does not exist?!!?");
-        textList->setAllElementsDisabled(true);
-        recordButton->setDisabled(true);
-        playButton->setDisabled(true);
-        clearButton->setDisabled(true);
-        textVelocity->setDisabled(true);
-        textPosition->setDisabled(true);
-
-    }
-
-}
-
-//--------------------------------------------------------------
-void GuiView::addPreset(hEventArgs& args) {
-
-    string presetName = args.strings[0];
-    string panelID = ofSplitString(args.eventName, "_")[1];
-    string portName = "port" + panelID;
-
-    LOG_VERBOSE("Add text preset: " + presetName + " for " + portName);
-
-    hGui * gui = hGui::getInstance();
-    hEvents * events = hEvents::getInstance();
-
-    if (presetName != "" && _appModel->getPreset(presetName) == NULL) {
-        LOG_VERBOSE("Begin editing: " + presetName);
-
-        TextObject* preset = new TextObject();
-        preset->setName(presetName);
-        _appModel->addPreset(preset);
-        _appModel->getServer(portName)->setPreset(preset);
-
-        hListBox * presetList = (hListBox*)gui->getWidget("presetList" + panelID);
-        hListBox * textList = (hListBox*)gui->getWidget("textList" + panelID);
-        hButton * recordButton = (hButton*)gui->getWidget("record" + panelID);
-        hButton * playButton = (hButton*)gui->getWidget("play" + panelID);
-        hButton * clearButton = (hButton*)gui->getWidget("clear" + panelID);
-        hSlider * textVelocity = (hSlider*)gui->getWidget("textVelocity" + panelID);
-        hSlider * textPosition = (hSlider*)gui->getWidget("textPosition" + panelID);
-
-        textList->unselectLastRadioElement();
-        textList->setAllElementsDisabled(false);
-        recordButton->setDisabled(true);
-        playButton->setDisabled(true);
-        clearButton->setDisabled(true);
-        textVelocity->setDisabled(true);
-        textPosition->setDisabled(true);
-
-        updatePresetList();
-
-        presetList->unselectLastRadioElement();
-        presetList->selectElement(presetName);
-        presetList->scrollItems(presetList->findElement(presetName)->index-1);
-        presetList->setScrollBarPosition(presetList->findElement(presetName)->index);
-
-    } else {
-
-        LOG_WARNING("Blank or non-unique preset name...");
-        events->sendEvent("alertDialog.clear");
-        events->sendEvent("alertDialog.display", "Enter a unique \nnew preset name!");
-    }
-
-}
-
-//--------------------------------------------------------------
-void GuiView::selectText(hEventArgs& args) {
-
-    string textName = args.strings[0];
-    string panelID = ofSplitString(args.eventName, "_")[1];
-    string portName = "port" + panelID;
-
-    LOG_VERBOSE("Select text: " + textName + " for " + portName);
-
-    TextServer* textServer = _appModel->getServer(portName);
-    if (textServer == NULL) {
-        LOG_ERROR("No server");
-        return;
-    }
-
-    TextObject* preset = textServer->getPreset();
-    if (preset == NULL) {
-        LOG_ERROR("No preset");
-        return;
-    }
-
-    preset->renderFBO = true;
-
-    hGui * gui = hGui::getInstance();
-    hEvents * events = hEvents::getInstance();
-
-    string text = _appModel->getText(textName);
-
-    if (text != "") {
-
-        preset->setText(text);
-        preset->setFileName(textName);
-
-        if (textServer->getServer() != NULL) {
-            textServer->getServer()->sendToAll("START^" + text);
-        }
-
-        hButton * recordButton = (hButton*)gui->getWidget("record" + panelID);
-        hButton * playButton = (hButton*)gui->getWidget("play" + panelID);
-        hButton * clearButton = (hButton*)gui->getWidget("clear" + panelID);
-        hSlider * textVelocity = (hSlider*)gui->getWidget("textVelocity" + panelID);
-        hSlider * textPosition = (hSlider*)gui->getWidget("textPosition" + panelID);
-
-        recordButton->setDisabled(false);
-        playButton->setDisabled(false);
-        clearButton->setDisabled(false);
-        textVelocity->setDisabled(false);
-        textPosition->setDisabled(false);
-
-    } else {
-        LOG_ERROR("Text does not exist or is blank!");
-    }
-
-}
-
-//--------------------------------------------------------------
-void GuiView::record(hEventArgs& args) {
-
-    string panelID = ofSplitString(args.eventName, "_")[1];
-    string portName = "port" + panelID;
-
-    LOG_VERBOSE("Record button: " + panelID);
-
-    TextServer* server = _appModel->getServer(portName);
-    if (server == NULL) return;
-
-    TextObject* preset = server->getPreset();
-    if (preset == NULL) return;
-
-    if (!preset->getIsRecording()) {
-        preset->startRecording();
-    } else {
-        preset->stopRecording();
-    }
-
-}
-
-//--------------------------------------------------------------
-void GuiView::play(hEventArgs& args) {
-
-    string panelID = ofSplitString(args.eventName, "_")[1];
-    string portName = "port" + panelID;
-
-    LOG_VERBOSE("Play button: " + panelID);
-
-    TextServer* server = _appModel->getServer(portName);
-    if (server == NULL) return;
-
-    TextObject* preset = server->getPreset();
-    if (preset == NULL) return;
-
-    if (!preset->getIsPlaying()) {
-        preset->startPlaying();
-    } else {
-        preset->stopPlaying();
-        server->getServer()->sendToAll("STOP^");
-    }
-
-}
-
-//--------------------------------------------------------------
-void GuiView::clear(hEventArgs& args) {
-
-    string panelID = ofSplitString(args.eventName, "_")[1];
-    string portName = "port" + panelID;
-
-    LOG_VERBOSE("Clear button: " + panelID);
-
-    TextServer* server = _appModel->getServer(portName);
-    if (server == NULL) return;
-
-    TextObject* preset = server->getPreset();
-    if (preset == NULL) return;
-
-    preset->clear();
-
-}
-
-//--------------------------------------------------------------
-void GuiView::setTextVelocity(hEventArgs& args) {
-
-    string panelID = ofSplitString(args.eventName, "_")[1];
-    string portName = "port" + panelID;
-    string velocity = ofToString(args.values[0]);
-
-    LOG_VERBOSE("Text Velocity slider: " + panelID + " = " + velocity);
-
-    TextServer* server = _appModel->getServer(portName);
-    if (server == NULL) return;
-
-    TextObject* preset = server->getPreset();
-    if (preset == NULL) return;
-
-    preset->addCue("SETRATE^" + velocity);
-
-}
-
-void GuiView::flipScreen(hEventArgs& args) {
-
-    string panelID = ofSplitString(args.eventName, "_")[1];
-    string portName = "port" + panelID;
-
-    LOG_VERBOSE("Flip screen on: " + portName + " :: " + ofToString(bFlip[ofToInt(panelID)]));
-
-    TextServer* server = _appModel->getServer(portName);
-    if (server == NULL) return;
-
-    server->getServer()->sendToAll("FLIPSCREEN^" + ofToString(bFlip[ofToInt(panelID)]));
 }
 
 //--------------------------------------------------------------

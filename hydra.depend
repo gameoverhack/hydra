@@ -12679,10 +12679,10 @@
 	<string>
 	<iostream>
 
-1366860979 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.cpp
+1366882519 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.cpp
 	"AppController.h"
 
-1322484784 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.h
+1366881752 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.h
 	"ofMain.h"
 	"AppModel.h"
 	"BaseState.h"
@@ -12691,13 +12691,13 @@
 	"MouseController.h"
 	"MidiController.h"
 	"VideoController.h"
-	"TextController.h"
+	"IOSController.h"
 	"OscController.h"
 	"AppView.h"
 	"GuiView.h"
 	"DebugView.h"
 
-1366685930 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.h
+1366882385 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.h
 	"ofxThreadedVideo.h"
 	"Singleton.h"
 	"FunctionModel.h"
@@ -12749,7 +12749,7 @@
 	"ofxOscSender.h"
 	"ofxOscReceiver.h"
 
-1366431728 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\scenedatatype.h
+1366882465 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\scenedatatype.h
 	"FunctionModel.h"
 	"SerializationUtils.h"
 	"ofxTCPServer.h"
@@ -15882,7 +15882,7 @@
 	"BaseState.h"
 	"ofxThreadedVideo.h"
 
-1322484418 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\textcontroller.h
+1366881403 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\textcontroller.h
 	"AppModel.h"
 	"BaseState.h"
 
@@ -15909,22 +15909,22 @@
 1315475423 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\viewport.h
 	"ofMain.h"
 
-1366361843 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.h
+1366882891 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.h
 	"BaseView.h"
 	"BaseState.h"
 	"MidiModel.h"
 	"hGui_all.h"
 	"hObject.h"
 
-1322738543 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.h
+1366882566 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.h
 	"BaseView.h"
 	"AppModel.h"
 	"KeyboardModel.h"
 
-1366860417 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.cpp
+1366882891 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.cpp
 	"AppModel.h"
 
-1366262515 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.cpp
+1366875464 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.cpp
 	"AppView.h"
 
 1314314228 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\basestate.cpp
@@ -15936,10 +15936,10 @@
 1322564917 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\datacontroller.cpp
 	"DataController.h"
 
-1366861306 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.cpp
+1366882580 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.cpp
 	"DebugView.h"
 
-1366862982 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.cpp
+1366882792 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.cpp
 	"GuiView.h"
 
 1366863058 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\keyboardcontroller.cpp
@@ -15979,7 +15979,7 @@
 1366862982 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\textcontroller.cpp
 	"TextController.h"
 
-1366860417 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\videocontroller.cpp
+1366879926 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\videocontroller.cpp
 	"VideoController.h"
 
 1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscoutboundpacketstream.cpp
@@ -16053,4 +16053,11 @@
 	"ofEvents.h"
 	"ofVideoPlayer.h"
 	"ofAppRunner.h"
+
+1366881403 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\ioscontroller.h
+	"AppModel.h"
+	"BaseState.h"
+
+1366882048 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\ioscontroller.cpp
+	"IOSController.h"
 

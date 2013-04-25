@@ -14,8 +14,6 @@ DebugView::DebugView(float x, float y, float width, float height, ofxFenster* wi
 
 	LOG_NOTICE("Constructing DebugView");
 
-    _prompterScreens.resize(MAX_SERVERS);
-
     int fontSize = 30;
     float lineHeight = (float)fontSize + 4.0f;
     float letterSpacing = 1.035f;
@@ -127,75 +125,5 @@ void DebugView::drawCameraViews() {
             ofSetColor(255, 0, 0);
         }
         ofRect(offsetX,offsetY,camWidth,camHeight);
-    }
-}
-
-void DebugView::drawPrompterViews() {
-    map< string, TextServer* >& servers = _appModel->getServers();
-    map< string, TextServer* >::iterator it;
-
-    int fboOffset = 0;
-    int promptIndex = 0;
-    for (it = servers.begin(); it != servers.end(); it++, promptIndex++) {
-        TextServer* server = it->second;
-        ofxTCPServer* tcpServer = server->getServer();
-        if (tcpServer->getNumClients() < 1) continue;
-        TextObject* preset = server->getPreset();
-        if (preset == NULL) continue;
-        ofFbo* fbo = preset->getFBO();
-        if (preset->renderFBO == true && preset->getText() != "") {
-            preset->renderFBO = false;
-            if (fbo != NULL) delete fbo;
-            if (_prompterScreens[promptIndex] == NULL) {
-                _prompterScreens[promptIndex] = new ofFbo();
-                _prompterScreens[promptIndex]->allocate(preset->getTargetScreenWidth(), preset->getTargetScreenHeight());
-            }
-            ofRectangle bounds = preset->getBounds();
-            fbo = new ofFbo();
-            fbo->allocate(bounds.width, bounds.height, GL_RGB);
-            int nFBO = ceil((float)bounds.height/preset->getTargetScreenHeight());
-            fbo->begin();
-            {
-                glPushMatrix();
-                glClearColor(1.0, 1.0, 1.0, 1.0);
-                glClear(GL_COLOR_BUFFER_BIT);
-                ofSetColor(0, 0, 0, 255);
-                verdana.drawString(preset->getText(), 0, 30); // 30 is font size
-                glPopMatrix();
-            }
-            fbo->end();
-            preset->setFBO(fbo);
-        }
-        if (fbo == NULL) continue;
-
-        string recString = "";
-        for (int i = 0; i < tcpServer->getNumClients(); i++) {
-            recString = tcpServer->receive(i);
-            if (recString != "") break;
-        }
-        vector<string> recVec = ofSplitString(recString, "^");
-
-        if (recVec.size() > 0) {
-            if (recVec[0] == "Y") preset->scrollY = ofToFloat(recVec[1]);
-        }
-
-        _prompterScreens[promptIndex]->begin();
-        {
-            glPushMatrix();
-            glClearColor(0.0, 0.0, 0.0, 0.0);
-            glClear(GL_COLOR_BUFFER_BIT);
-            ofSetColor(255,255,255,255);
-            glTranslatef(0.0f, -preset->scrollY, 0.0f);
-            fbo->draw(0,0);
-            glPopMatrix();
-        }
-        _prompterScreens[promptIndex]->end();
-
-        glPushMatrix();
-        glTranslatef(fboOffset,0,0);
-        _prompterScreens[promptIndex]->draw(0,0);
-        glPopMatrix();
-        fboOffset += preset->getTargetScreenWidth();
-
     }
 }

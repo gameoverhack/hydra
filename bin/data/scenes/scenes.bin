@@ -1,6 +1,6 @@
 22 serialization::archive 9 0 0 2 0 1 1 0
 0 5 test0 6 4_quad 0 -1 -1 0 0 10 0 3 1 0
-1 1 0 1 0 0 1 0 8 camera_1 8 camera_1 3
+1 1 0 0 0 0 1 0 8 camera_1 8 camera_1 3
 2 2 0 1 0 0 0.73469388 0.77551019 37 D:\HYDRA_VIDEO_FINALS\Movie 422_1.mov 15 Movie 422_1.mov 3
 3 2 0 1 0 0 0.67346936 -0.73469388 47 D:\HYDRA_VIDEO_FINALS\sete online improv2_1.mov 25 sete online improv2_1.mov 3
 4 2 0 1 0 0 0.95918369 0.79591835 40 D:\HYDRA_VIDEO_FINALS\Dickie_replace.mov 18 Dickie_replace.mov 3
@@ -10,13 +10,13 @@
 8 0 0 0 0 0 1 0 0  0  3
 9 0 0 0 0 0 1 0 0  0  3
 10 0 0 0 0 0 1 0 0  0  1
-11 5 test1 8 6_sextet 2 -1 -1 12 0 3
-12 2 0 1 0 0 0.82653064 -0.69387758 55 D:\HYDRA_VIDEO_FINALS\user0[Allison]_20111018172220.mov 33 user0[Allison]_20111018172220.mov 3
-13 2 0 1 0 0 0.72448981 0.83673471 54 D:\HYDRA_VIDEO_FINALS\user0[Allison]_2011112292728.mov 32 user0[Allison]_2011112292728.mov 3
-14 2 0 1 0 0 1 0 44 D:\HYDRA_VIDEO_FINALS\Marcela_HumanMic_0.mov 22 Marcela_HumanMic_0.mov 3
-15 1 0 1 0 0 1 0 8 camera_3 8 camera_3 3
-16 1 0 1 0 0 1 0 8 camera_1 8 camera_1 3
-17 1 0 1 0 0 1 0 8 camera_4 8 camera_4 3
+11 5 test1 8 6_sextet 1 -1 -1 12 0 3
+12 2 0 1 0 0 1 0 37 D:\HYDRA_VIDEO_FINALS\Movie 422_1.mov 15 Movie 422_1.mov 3
+13 2 0 1 0 0 1 0 47 D:\HYDRA_VIDEO_FINALS\sete online improv2_1.mov 25 sete online improv2_1.mov 3
+14 2 0 1 0 0 1 0 39 D:\HYDRA_VIDEO_FINALS\Movie 461_0_1.mov 17 Movie 461_0_1.mov 3
+15 1 0 0 0 0 1 0 8 camera_5 8 camera_5 3
+16 1 0 0 0 0 1 0 8 camera_3 8 camera_3 3
+17 1 0 0 0 0 1 0 8 camera_1 8 camera_1 3
 18 0 0 0 0 0 1 0 0  0  3
 19 0 0 0 0 0 1 0 0  0  3
 20 0 0 0 0 0 1 0 0  0  3

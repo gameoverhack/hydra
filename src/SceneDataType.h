@@ -585,7 +585,3 @@ private:
 };
 
 #endif;
-
-//    vector<TextObject*> _prompters;
-//    vector<TextObject*>& getPrompters() {return _prompters;};
-//    _prompters.clear();
