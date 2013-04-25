@@ -135,11 +135,13 @@ void VideoController::update() {
 
     map< string, ofVideoGrabber* >& cameras = _appModel->getCameras();
 
-    map< string, ofVideoGrabber* >::iterator it;
-    for (it = cameras.begin(); it != cameras.end(); it++) {
-        ofVideoGrabber* camera = it->second;
-        if (camera == NULL) continue;
-        camera->update();
+    if(boost::any_cast<bool>(_appModel->getProperty("showDebug"))){
+        map< string, ofVideoGrabber* >::iterator it;
+        for (it = cameras.begin(); it != cameras.end(); it++) {
+            ofVideoGrabber* camera = it->second;
+            if (camera == NULL) continue;
+            camera->update();
+        }
     }
 
     for (int i = 0; i < videoObjects.size(); i++) {
@@ -149,6 +151,11 @@ void VideoController::update() {
                     LOG_VERBOSE("Assign camera");
                     videoObjects[i]->_bAssigned = true;
                     videoObjects[i]->_camera = _appModel->getCamera(videoObjects[i]->_videoPath);
+                }
+                if(!boost::any_cast<bool>(_appModel->getProperty("showDebug")) &&
+                   !videoObjects[i]->_updated){
+                    videoObjects[i]->_camera->update();
+                    videoObjects[i]->_updated = true;
                 }
                 break;
             case GO_VIDEO_PLAYER:
@@ -169,9 +176,13 @@ void VideoController::update() {
                 }
                 if(videoObjects[i]->_player->getVolume() != videoObjects[i]->_fVolume) videoObjects[i]->_player->setVolume(videoObjects[i]->_fVolume);
                 if(videoObjects[i]->_player->getPan() != videoObjects[i]->_fPan) videoObjects[i]->_player->setPan(videoObjects[i]->_fPan);
-                videoObjects[i]->_player->update();
+                if(!videoObjects[i]->_updated && !videoObjects[i]->isFrameNew()){
+                    videoObjects[i]->_player->update();
+                    videoObjects[i]->_updated = true;
+                }
                 break;
         }
+        for (int i = 0; i < videoObjects.size(); i++) videoObjects[i]->_updated = false;
     }
 
 
