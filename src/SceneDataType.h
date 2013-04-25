@@ -57,6 +57,7 @@ public:
         _bAssigned = _bOffscreen = _bDegraded = false;
         _fVolume = 1.0f;
         _fPan = 0.0f;
+        _updated = false;
     };
 //    VideoObject(int inputType, int cropType, ofRectangle* position, goBaseVideo* video)
 //                :_inputType(inputType), _cropType(cropType), _position(position), _video(video){
@@ -116,6 +117,7 @@ public:
     float _fVolume;
     float _fPan;
 
+    bool _updated;
     bool _bAssigned;
 
     string _videoPath;
