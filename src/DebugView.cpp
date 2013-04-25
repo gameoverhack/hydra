@@ -36,6 +36,16 @@ void DebugView::update() {
 		msg += _appModel->getAllStatesAsList() + "\n";
 	}
 
+    Scene* scene = _appModel->getCurrentScene();
+    if (scene != NULL){
+        vector<VideoObject*> videoObjects = scene->getVideos();
+        for (int i = 0; i < videoObjects.size(); i++) {
+            msg += videoObjects[i]->getInfo() + "\n";
+        }
+    }
+
+
+
 	begin();
 
     glPushMatrix();
@@ -57,7 +67,7 @@ void DebugView::update() {
 
     glPushMatrix();
 	ofSetColor(255, 255, 255);
-	ofDrawBitmapString(msg, 20, 20);
+	ofDrawBitmapString(msg, 20, 700);
 	ofSetColor(255, 255, 255);
     glPopMatrix();
 

@@ -29,28 +29,18 @@ VideoController::VideoController() {
 		ofVideoGrabber* camera = new ofVideoGrabber();
 		camera->setVerbose(true);
 
-		if(i < 2) camera->setDeviceID(4 + i);
-        if(i >= 2) camera->setDeviceID(4 + i + 1);
+		if(i < 3) camera->setDeviceID(5 + i);
+        if(i >= 3) camera->setDeviceID(5 + i + 1);
 
         camera->setRequestedMediaSubType(VI_MEDIASUBTYPE_UYVY);
 
         if(i == 0){
             camera->initGrabber(1920, 1080);
+        }else if(i == 2){
+            camera->initGrabber(1280, 720);
         }else{
             camera->initGrabber(720, 576);
         }
-//        camera->setDeviceID(i);
-//        camera->setRequestedMediaSubType(VI_MEDIASUBTYPE_YUY2);
-//        if (i == 2) { // TP3 loungeroom cam 1
-//            camera->setDesiredFrameRate(10);
-//            camera->initGrabber(160, 120);
-//        } else if (i == 3) { // TP3 loungeroom Cam 2
-//            camera->setDesiredFrameRate(13);
-//            camera->initGrabber(320, 240);
-//        } else {
-//            camera->setDesiredFrameRate(25);
-//            camera->initGrabber(camWidth, camHeight);
-//        }
 
         cameras.insert(pair< string, ofVideoGrabber* >("camera_"+ofToString(i+1), camera));
 	}
@@ -178,6 +168,8 @@ void VideoController::update() {
                     }
                 }
                 videoObjects[i]->_player->update();
+                if(videoObjects[i]->_player->getVolume() != videoObjects[i]->_fVolume) videoObjects[i]->_player->setVolume(videoObjects[i]->_fVolume);
+                if(videoObjects[i]->_player->getPan() != videoObjects[i]->_fPan) videoObjects[i]->_player->setPan(videoObjects[i]->_fPan);
                 break;
         }
     }

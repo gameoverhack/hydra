@@ -31,6 +31,17 @@ enum {
     GO_SCALE_CROP
 };
 
+//string videoType[] = {
+//    "GO_VIDEO_NONE",
+//    "GO_VIDEO_CAMERA",
+//    "GO_VIDEO_PLAYER"
+//};
+//
+//string cropType[] = {
+//    "GO_SCALE_INTO",
+//    "GO_SCALE_CROP",
+//};
+
 class VideoObject {
 
 public:
@@ -43,7 +54,9 @@ public:
         _videoPath = "";
         _inputType = GO_VIDEO_NONE;
         _cropType = GO_SCALE_INTO;
-        _bAssigned = _bOffscreen = false;
+        _bAssigned = _bOffscreen = _bDegraded = false;
+        _fVolume = 1.0f;
+        _fPan = 0.0f;
     };
 //    VideoObject(int inputType, int cropType, ofRectangle* position, goBaseVideo* video)
 //                :_inputType(inputType), _cropType(cropType), _position(position), _video(video){
@@ -79,10 +92,30 @@ public:
         return false;
     };
 
+    string getInfo(){
+
+        ostringstream os;
+        os << "Name: " << _videoName;// << endl;
+        //os << "Type: " << videoType[_inputType] << endl;
+        //os << "Crop: " << cropType[_cropType] << endl;
+        os << " Assigned: " << string(_bAssigned ? "TRUE" : "FALSE");// << endl;
+        os << " Offscreen: " << string(_bOffscreen ? "TRUE" : "FALSE");// << endl;
+        os << " Degraded: " << string(_bDegraded ? "TRUE" : "FALSE");// << endl;
+        os << " Volume: " << _fVolume;// << endl;
+        os << " Pan: " << _fPan;// << endl;
+
+        return os.str();
+
+    };
+
     int _inputType;
     int _cropType;
 
     bool _bOffscreen;
+    bool _bDegraded;
+    float _fVolume;
+    float _fPan;
+
     bool _bAssigned;
 
     string _videoPath;
@@ -101,6 +134,9 @@ private:
 		ar & _cropType;
         ar & _bAssigned;
         ar & _bOffscreen;
+        ar & _bDegraded;
+        ar & _fVolume;
+        ar & _fPan;
         ar & _videoPath;
         ar & _videoName;
 	};

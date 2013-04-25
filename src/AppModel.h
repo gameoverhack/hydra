@@ -10,7 +10,7 @@
 #ifndef _H_APPMODEL
 #define	_H_APPMODEL
 
-#define MAX_CAMERAS 4
+#define MAX_CAMERAS 5
 #define MAX_SERVERS 3
 
 #include "ofxThreadedVideo.h"

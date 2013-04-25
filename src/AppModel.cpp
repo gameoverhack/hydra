@@ -343,7 +343,8 @@ bool AppModel::setupScene(Scene* scene) {
             case GO_VIDEO_PLAYER:
                 //videoObjects[i]->_player->setFrame(0);
                 if (videoObjects[i]->_player != NULL) {
-                    videoObjects[i]->_player->setVolume(255);
+                    videoObjects[i]->_player->setVolume(videoObjects[i]->_fVolume);
+                    videoObjects[i]->_player->setPan(videoObjects[i]->_fPan);
                     if (videoObjects[i]->_player->getIsMovieDone()) videoObjects[i]->_player->setFrame(0);
                 }
                 break;

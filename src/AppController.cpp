@@ -45,9 +45,9 @@ AppController::AppController() {
     _appModel->listTextFolder(boost::any_cast<string>(_appModel->getProperty("textPath")));
 
     ofxDisplayList displays = ofxDisplayManager::get()->getDisplays();
-
+    //(displays.size() > 0 ? displays[1]->x : 0)
     _guiView = new GuiView(0, 0, 900, 1024, ofxFensterManager::get()->getPrimaryWindow(), "hydra");
-	_appView = new AppView((displays.size() > 0 ? displays[1]->x : 0), 0, 1920.0f, 1080.0f, NULL, "output");
+	_appView = new AppView(0, 0, 1920.0f, 1080.0f, NULL, "output");
     _debugView = new DebugView(1024, 0, 900, 1024, NULL, "debug");
 
     _guiView->setup();

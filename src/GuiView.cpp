@@ -278,8 +278,37 @@ void GuiView::setup() {
     hLabel * offscreenCBLabel = gui->addLabel("offscreenCBLabel", layoutPanel, HGUI_RIGHT, 2, 0, "offscreen");
     offscreenCB->setBoolVar(&bOffScreen);
 
+    hCheckBox * degradeCB = gui->addCheckBox("degrade", layoutPanel, HGUI_NEXT_COL, -offscreenCB->getWidth() - 38, 17 + offscreenCB->getHeight() * 2);
+    hLabel * degradeCBLabel = gui->addLabel("degradeCBLabel", layoutPanel, HGUI_RIGHT, 2, 0, "degrade");
+    degradeCB->setBoolVar(&bDegraded);
+
+    hSlider * volumeSlider = gui->addSlider("volumeSlider", layoutPanel, HGUI_NEXT_COL, -degradeCB->getWidth() - 34, 17 + degradeCB->getHeight() * 4, 100);
+    hLabel * volumeSliderLabel = gui->addLabel("volumeSliderLabel", layoutPanel, HGUI_RIGHT, 2, 0, "volume");
+    hLabel * volumeSliderValLabel = gui->addLabel("volumeSliderValLabel", layoutPanel, HGUI_RIGHT, 0, 0, "");
+    volumeSlider->setLinkedLabel(volumeSliderValLabel, true);
+    volumeSlider->setFloatVar(&fVolume);
+    volumeSlider->setRange(0.0, 1.0, 2);
+    volumeSlider->setValue(1.0);
+
+    hSlider * panSlider = gui->addSlider("panSlider", layoutPanel, HGUI_NEXT_COL, -degradeCB->getWidth() - volumeSlider->getWidth() - 16, 17 + volumeSlider->getHeight() * 6, 100);
+    hLabel * panSliderLabel = gui->addLabel("panSliderLabel", layoutPanel, HGUI_RIGHT, 2, 0, "pan");
+    hLabel * panSliderValLabel = gui->addLabel("panSliderValLabel", layoutPanel, HGUI_RIGHT, 0, 0, "");
+    panSlider->setLinkedLabel(panSliderValLabel, true);
+    panSlider->setFloatVar(&fPan);
+    panSlider->setRange(-1.0, 1.0, 2);
+    panSlider->setValue(0.0);
+
+    events->addListener("setVolume", this, &GuiView::setVolume);
+    volumeSlider->setMessage("setVolume");
+
+    events->addListener("setPan", this, &GuiView::setPan);
+    panSlider->setMessage("setPan");
+
     events->addListener("setOffScreen", this, &GuiView::setOffScreen);
     offscreenCB->setMessage("setOffScreen");
+
+    events->addListener("setDegraded", this, &GuiView::setDegraded);
+    degradeCB->setMessage("setDegraded");
 
     events->addListener("changePattern", this, &GuiView::changePattern);
     patternList->setMessage("changePattern");
@@ -751,7 +780,9 @@ void GuiView::changePattern(hEventArgs& args) {
     videoList->unselectLastRadioElement();
     cameraList->unselectLastRadioElement();
     bOffScreen = false;
-
+    bDegraded = false;
+    fVolume = 1.0f;
+    fPan = 0.0f;
     updatePatternLayout();
 
 }
@@ -770,6 +801,11 @@ void GuiView::selectPattern(hEventArgs& args) {
 
     hListBox * videoList = (hListBox*)gui->getWidget("videoList");
     hListBox * cameraList = (hListBox*)gui->getWidget("cameraList");
+//    hCheckBox * offscreenCB = (hCheckBox*)gui->getWidget("offscreenCB");
+//    hCheckBox * degradedCB = (hCheckBox*)gui->getWidget("degradedCB");
+//    hSlider * volumeSlider = (hSlider*)gui->getWidget("volumeSlider");
+//    hSlider * panSlider = (hSlider*)gui->getWidget("panSlider");
+
     videoList->setAllElementsDisabled(false);
     cameraList->setAllElementsDisabled(false);
 
@@ -788,10 +824,16 @@ void GuiView::selectPattern(hEventArgs& args) {
             videoList->unselectLastRadioElement();
             cameraList->unselectLastRadioElement();
             bOffScreen = false;
+            bDegraded = false;
+            fVolume = 1.0f;
+            fPan = 0.0f;
             return;
         }
 
         bOffScreen = scene->getVideos()[position]->_bOffscreen;
+        bDegraded = scene->getVideos()[position]->_bDegraded;
+        fVolume = scene->getVideos()[position]->_fVolume;
+        fPan = scene->getVideos()[position]->_fPan;
 
         if (scene->getVideos()[position]->_inputType == GO_VIDEO_CAMERA) {
             videoList->unselectLastRadioElement();
@@ -807,6 +849,9 @@ void GuiView::selectPattern(hEventArgs& args) {
         videoList->unselectLastRadioElement();
         cameraList->unselectLastRadioElement();
         bOffScreen = false;
+        bDegraded = false;
+        fVolume = 1.0f;
+        fPan = 0.0f;
     }
 
 }
@@ -830,6 +875,9 @@ void GuiView::selectCamera(hEventArgs& args) {
     scene->getVideos()[scene->getLayoutPosition()]->_videoName = args.strings[0];
     scene->getVideos()[scene->getLayoutPosition()]->_inputType = GO_VIDEO_CAMERA;
     scene->getVideos()[scene->getLayoutPosition()]->_bOffscreen = bOffScreen = false;
+    scene->getVideos()[scene->getLayoutPosition()]->_bDegraded = bDegraded = false;
+    scene->getVideos()[scene->getLayoutPosition()]->_fVolume = fVolume = 1.0f;
+    scene->getVideos()[scene->getLayoutPosition()]->_fPan = fPan = 0.0f;
     scene->getVideos()[scene->getLayoutPosition()]->_bAssigned = false;
 
 }
@@ -842,6 +890,29 @@ void GuiView::setOffScreen(hEventArgs& args) {
     scene->getVideos()[scene->getLayoutPosition()]->_bOffscreen = bOffScreen;
 }
 
+//--------------------------------------------------------------
+void GuiView::setDegraded(hEventArgs& args) {
+    LOG_VERBOSE("Set degraded video: " + ofToString(bDegraded));
+    Scene* scene = _appModel->getCurrentScene();
+    if (scene == NULL) return;
+    scene->getVideos()[scene->getLayoutPosition()]->_bDegraded = bDegraded;
+}
+
+//--------------------------------------------------------------
+void GuiView::setVolume(hEventArgs& args) {
+    LOG_VERBOSE("Set volume of video: " + ofToString(fVolume));
+    Scene* scene = _appModel->getCurrentScene();
+    if (scene == NULL) return;
+    scene->getVideos()[scene->getLayoutPosition()]->_fVolume = fVolume;
+}
+
+//--------------------------------------------------------------
+void GuiView::setPan(hEventArgs& args) {
+    LOG_VERBOSE("Set pan of video: " + ofToString(fPan));
+    Scene* scene = _appModel->getCurrentScene();
+    if (scene == NULL) return;
+    scene->getVideos()[scene->getLayoutPosition()]->_fPan = fPan;
+}
 
 //--------------------------------------------------------------
 void GuiView::selectVideo(hEventArgs& args) {
@@ -858,11 +929,18 @@ void GuiView::selectVideo(hEventArgs& args) {
     hListBox * cameraList = (hListBox*)gui->getWidget("cameraList");
     cameraList->unselectLastRadioElement();
 
+    cout << scene->getVideos()[scene->getLayoutPosition()]->_fVolume << " " << scene->getVideos()[scene->getLayoutPosition()]->_fPan << " " << scene->getVideos()[scene->getLayoutPosition()]->_bDegraded << " " << scene->getVideos()[scene->getLayoutPosition()]->_bOffscreen << endl;
+
     scene->getVideos()[scene->getLayoutPosition()]->_videoPath = _appModel->getVideoDirectory().getPath(args.values[0]-1);
     scene->getVideos()[scene->getLayoutPosition()]->_videoName = args.strings[0];
     scene->getVideos()[scene->getLayoutPosition()]->_inputType = GO_VIDEO_PLAYER;
     scene->getVideos()[scene->getLayoutPosition()]->_bOffscreen = bOffScreen = false;
+    scene->getVideos()[scene->getLayoutPosition()]->_bDegraded = bDegraded = false;
+    scene->getVideos()[scene->getLayoutPosition()]->_fVolume = fVolume = 1.0f;
+    scene->getVideos()[scene->getLayoutPosition()]->_fPan = fPan = 0.0f;
     scene->getVideos()[scene->getLayoutPosition()]->_bAssigned = false;
+
+    cout << fVolume << " " << fPan << " " << bDegraded << " " << bOffScreen << endl;
 
 }
 
@@ -930,6 +1008,9 @@ void GuiView::selectScene(hEventArgs& args) {
         videoList->unselectLastRadioElement();
         cameraList->unselectLastRadioElement();
         bOffScreen = false;
+        bDegraded = false;
+        fVolume = 1.0f;
+        fPan = 0.0f;
         updatePatternLayout();
     }
 }

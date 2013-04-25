@@ -58,6 +58,9 @@ public:
     void selectScene(hEventArgs& args);
     void selectText(hEventArgs& args);
     void setOffScreen(hEventArgs& args);
+    void setDegraded(hEventArgs& args);
+    void setVolume(hEventArgs& args);
+    void setPan(hEventArgs& args);
 
     void updateVideoList();
     void updateSceneList();
@@ -81,6 +84,9 @@ private:
 
     bool bFlip[3];
     bool bOffScreen;
+    bool bDegraded;
+    float fVolume;
+    float fPan;
 
     void loadStringFonts();
     void parseText(string & text, int targetScreenWidth);
