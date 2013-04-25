@@ -434,6 +434,12 @@
 		<Unit filename="src/GuiView.h">
 			<Option virtualFolder="src/" />
 		</Unit>
+		<Unit filename="src/IOSController.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/IOSController.h">
+			<Option virtualFolder="src/" />
+		</Unit>
 		<Unit filename="src/IXMLBuilder.h">
 			<Option virtualFolder="src/" />
 		</Unit>
@@ -498,12 +504,6 @@
 			<Option virtualFolder="src/" />
 		</Unit>
 		<Unit filename="src/Singleton.h">
-			<Option virtualFolder="src/" />
-		</Unit>
-		<Unit filename="src/TextController.cpp">
-			<Option virtualFolder="src/" />
-		</Unit>
-		<Unit filename="src/TextController.h">
 			<Option virtualFolder="src/" />
 		</Unit>
 		<Unit filename="src/VideoController.cpp">
