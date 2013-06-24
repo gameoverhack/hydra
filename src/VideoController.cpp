@@ -29,10 +29,10 @@ VideoController::VideoController() {
 		ofVideoGrabber* camera = new ofVideoGrabber();
 		camera->setVerbose(true);
 
+        camera->setRequestedMediaSubType(VI_MEDIASUBTYPE_UYVY);
+
 		if(i < 3) camera->setDeviceID(5 + i);
         if(i >= 3) camera->setDeviceID(5 + i + 1);
-
-        camera->setRequestedMediaSubType(VI_MEDIASUBTYPE_UYVY);
 
         if(i == 0){
             camera->initGrabber(1920, 1080);
@@ -41,10 +41,10 @@ VideoController::VideoController() {
         }else{
             camera->initGrabber(720, 576);
         }
-
+        camera->listDevices();
         cameras.insert(pair< string, ofVideoGrabber* >("camera_"+ofToString(i+1), camera));
 	}
-
+//assert(false);
 }
 
 //--------------------------------------------------------------
