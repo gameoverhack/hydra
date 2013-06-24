@@ -12679,7 +12679,7 @@
 	<string>
 	<iostream>
 
-1366882519 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.cpp
+1372053318 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.cpp
 	"AppController.h"
 
 1366881752 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.h
@@ -12697,8 +12697,9 @@
 	"GuiView.h"
 	"DebugView.h"
 
-1366882385 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.h
+1372053087 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.h
 	"ofxThreadedVideo.h"
+	"Config.h"
 	"Singleton.h"
 	"FunctionModel.h"
 	"SceneDataType.h"
@@ -15895,12 +15896,12 @@
 1315497511 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\oscmodel.h
 	"AppModel.h"
 
-1323011987 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.h
+1372052006 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.h
 	"BaseView.h"
 	"BaseState.h"
 	"SceneDataType.h"
 
-1322147289 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\baseview.h
+1372050140 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\baseview.h
 	"ViewPort.h"
 	"Logger.h"
 	"ofxFensterManager.h"
@@ -15909,14 +15910,14 @@
 1315475423 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\viewport.h
 	"ofMain.h"
 
-1366882891 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.h
+1372050696 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.h
 	"BaseView.h"
 	"BaseState.h"
 	"MidiModel.h"
 	"hGui_all.h"
 	"hObject.h"
 
-1366882566 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.h
+1372049527 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.h
 	"BaseView.h"
 	"AppModel.h"
 	"KeyboardModel.h"
@@ -15924,22 +15925,22 @@
 1366882891 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.cpp
 	"AppModel.h"
 
-1366875464 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.cpp
+1372053331 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.cpp
 	"AppView.h"
 
 1314314228 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\basestate.cpp
 	"BaseState.h"
 
-1366863651 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\baseview.cpp
+1372050197 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\baseview.cpp
 	"BaseView.h"
 
 1322564917 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\datacontroller.cpp
 	"DataController.h"
 
-1366882580 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.cpp
+1372049502 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.cpp
 	"DebugView.h"
 
-1366883555 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.cpp
+1372050643 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.cpp
 	"GuiView.h"
 
 1366863058 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\keyboardcontroller.cpp
@@ -15948,12 +15949,14 @@
 1317313386 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\logger.cpp
 	"Logger.h"
 
-1322217240 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\main.cpp
+1372050961 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\main.cpp
+	"Config.h"
 	"ofMain.h"
 	"AppController.h"
-	"ofxFensterManager.h"
 	"Logger.h"
 	"ofAppGlutWindow.h"
+	"ofAppGlutWindow.h"
+	"ofxFensterManager.h"
 
 1366104333 c:\users\gameover\code\of007pc\libs\openframeworks\app\ofappglutwindow.h
 	"ofConstants.h"
@@ -16060,4 +16063,6 @@
 
 1366882048 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\ioscontroller.cpp
 	"IOSController.h"
+
+1372053047 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\config.h
 

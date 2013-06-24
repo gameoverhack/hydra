@@ -20,7 +20,11 @@ class BaseView : public ofxFensterListener {
 
 public:
 
+#ifdef FENSTER
 	BaseView(float x, float y, float width, float height, ofxFenster* window = NULL, string windowTitle = "Untitled");	//ctor
+#else
+    BaseView(float x, float y, float width, float height);
+#endif
 	virtual ~BaseView();						//dtor
 
 	virtual void	update() = 0; // update view fbo to draw image
@@ -49,7 +53,7 @@ protected:
 
 	ViewPort*		_viewPort;
 
-	float			_viewWidth, _viewHeight;
+	float			_viewX, _viewY, _viewWidth, _viewHeight;
 
 	ofFbo			_viewFBO[2]; // final output FBO
 

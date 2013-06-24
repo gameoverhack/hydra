@@ -25,8 +25,12 @@ class AppView : public BaseView, public BaseState {
 
 public:
 
-	AppView(float x, float y, float width, float height, ofxFenster* window = NULL, string windowTitle = "Untitled");		//ctor
-	~AppView();								//dtor
+#ifdef FENSTER
+	AppView(float x, float y, float width, float height, ofxFenster* window = NULL, string windowTitle = "Untitled");	//ctor
+#else
+    AppView(float x, float y, float width, float height);
+#endif
+    ~AppView();								//dtor
 
 	void registerStates();
 
@@ -39,6 +43,10 @@ private:
     void changePattern();
 
     ofShader _shader;
+
+    bool bCustomFullscreen;
+    ofRectangle originalRect;
+    long originalStyle;
 
 //    vector<VideoPattern*> _patterns;
 //

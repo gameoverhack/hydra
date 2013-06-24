@@ -14,7 +14,7 @@
 #define MAX_SERVERS 4
 
 #include "ofxThreadedVideo.h"
-
+#include "Config.h"
 #include "Singleton.h"
 #include "FunctionModel.h"
 #include "SceneDataType.h"

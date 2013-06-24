@@ -9,9 +9,15 @@
 
 #include "AppView.h"
 
+#ifdef FENSTER
 AppView::AppView(float x, float y, float width, float height, ofxFenster* window, string windowTitle) : BaseView(x, y, width, height, window, windowTitle) {
+#else
+AppView::AppView(float x, float y, float width, float height) : BaseView(x, y, width, height) {
+#endif
 
 	LOG_NOTICE("Constructing AppView");
+
+    bCustomFullscreen = false;
 
     _functionModel->registerFunction("AppView::toggleFullscreen", MakeDelegate(this, &AppView::toggleFullscreen));
     _functionModel->registerFunction("AppView::changePattern", MakeDelegate(this, &AppView::changePattern));
@@ -86,8 +92,60 @@ void AppView::update() {
 }
 
 void AppView::toggleFullscreen() {
+#ifdef FENSTER
     ofxFensterManager::get()->setActiveWindow(_window);
     ofToggleFullscreen();
+#else
+    LOG_VERBOSE("Trying to force fullscreen on Windows XP");
+
+	int x = 0;
+	int y = 0;
+	int width = 1920 * 2;
+	int height = 1080;
+    long windowStyle;
+
+	HWND vWnd  = FindWindow(NULL,  (LPCSTR)"hydra");
+
+	if(!bCustomFullscreen){
+
+		RECT r;
+
+		if(GetWindowRect(vWnd, &r)){
+			//more accurate as it takes windows elements into account
+			originalRect.x = r.left;
+			originalRect.y = r.top;
+			originalRect.width = r.right - r.left;
+			originalRect.height = r.bottom - r.top;
+		}else{
+			//fallback
+			originalRect.x = 0;
+			originalRect.y = 0;
+			originalRect.width = ofGetWidth();
+			originalRect.height = ofGetHeight();
+		}
+
+        originalStyle = GetWindowLong(vWnd, GWL_STYLE);
+        windowStyle = originalStyle;
+
+        windowStyle &= ~WS_OVERLAPPEDWINDOW;
+        windowStyle |= WS_POPUP;
+
+
+        bCustomFullscreen = true;
+	}else{
+
+        x = originalRect.x;
+        y = originalRect.y;
+        width = originalRect.width;
+        height = originalRect.height;
+        windowStyle = originalStyle;
+        bCustomFullscreen = false;
+	}
+
+    SetWindowLong(vWnd, GWL_STYLE, windowStyle);
+    SetWindowPos(vWnd, HWND_TOP, x, y, width, height, SWP_FRAMECHANGED);
+
+#endif
 }
 
 void AppView::changePattern() {

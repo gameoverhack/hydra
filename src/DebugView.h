@@ -19,8 +19,11 @@ class DebugView : public BaseView {
 
 public:
 
-	DebugView(float x, float y, float width, float height, ofxFenster* window = NULL, string windowTitle = "Untitled");
-
+#ifdef FENSTER
+	DebugView(float x, float y, float width, float height, ofxFenster* window = NULL, string windowTitle = "Untitled");	//ctor
+#else
+    DebugView(float x, float y, float width, float height);
+#endif
 	void update();
 
 private:

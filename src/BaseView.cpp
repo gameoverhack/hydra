@@ -8,10 +8,12 @@
  */
 
 #include "BaseView.h"
-
+#ifdef FENSTER
 BaseView::BaseView(float x, float y, float width, float height, ofxFenster* window, string windowTitle) {
+    LOG_NOTICE("Constructing BaseView");
 
-	LOG_NOTICE("Constructing BaseView");
+    _viewX = 0;
+	_viewY = 0;
 
     if (window != NULL) {
         LOG_NOTICE("Assigning already created window to this view");
@@ -27,6 +29,13 @@ BaseView::BaseView(float x, float y, float width, float height, ofxFenster* wind
     _window->setWindowTitle(windowTitle);
     _window->setBorder(false);
     _window->setActive();
+#else
+BaseView::BaseView(float x, float y, float width, float height){
+    LOG_NOTICE("Constructing BaseView");
+    _viewX = x;
+	_viewY = y;
+
+#endif
 
 	// save parameters
 	_viewWidth = width;
@@ -126,7 +135,9 @@ void BaseView::warp(int width, int height, ofPoint * corners) {
 }
 
 void BaseView::begin() {
+#ifdef FENSTER
     _window->setActive();
+#endif
 	_viewFBO[0].begin();
 	//glPushMatrix();
 
@@ -150,7 +161,7 @@ void BaseView::end() {
 
 void BaseView::draw() {
 	glPushMatrix();
-    _viewFBO[0].draw(0,0);
+    _viewFBO[0].draw(_viewX, _viewY);
 	glPopMatrix();
 }
 

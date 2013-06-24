@@ -27,19 +27,31 @@ class GuiView : public BaseView, public BaseState, public hObject {
 
 public:
 
-	GuiView(float x, float y, float width, float height, ofxFenster* window = NULL, string windowTitle = "Untitled");		//ctor
-	~GuiView();								//dtor
+#ifdef FENSTER
+	GuiView(float x, float y, float width, float height, ofxFenster* window = NULL, string windowTitle = "Untitled");	//ctor
+#else
+    GuiView(float x, float y, float width, float height);
+#endif
+    ~GuiView();								//dtor
 
 	void registerStates();
 
     void setup();
 	void update();
 
+#ifdef FENSTER
     void keyPressed(int key);
-
     void mouseDragged(int x, int y, int button);
     void mousePressed(int x, int y, int button);
     void mouseReleased(int x, int y, int button);
+#else
+    void keyPressed(ofKeyEventArgs & k);
+    void keyReleased(ofKeyEventArgs & k){};
+    void mouseMoved(ofMouseEventArgs & m){};
+    void mouseDragged(ofMouseEventArgs & m);
+    void mousePressed(ofMouseEventArgs & m);
+    void mouseReleased(ofMouseEventArgs & m);
+#endif
 
     void save(hEventArgs& args);
     void addScene(hEventArgs& args);

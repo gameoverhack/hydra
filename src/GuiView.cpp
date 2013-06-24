@@ -10,8 +10,13 @@
 #include "GuiView.h"
 
 //--------------------------------------------------------------
+#ifdef FENSTER
 GuiView::GuiView(float x, float y, float width, float height, ofxFenster* window, string windowTitle) : BaseView(x, y, width, height, window, windowTitle) {
-
+#else
+GuiView::GuiView(float x, float y, float width, float height) : BaseView(x, y, width, height) {
+    ofRegisterKeyEvents(this);
+    ofRegisterMouseEvents(this);
+#endif
 	LOG_NOTICE("Constructing GuiView");
 
     _functionModel->registerFunction("GuiView::autoMidiMap", MakeDelegate(this, &GuiView::autoMidiMap));
@@ -907,7 +912,7 @@ void GuiView::selectScene(hEventArgs& args) {
         updatePatternLayout();
     }
 }
-
+#ifdef FENSTER
 //--------------------------------------------------------------
 void GuiView::keyPressed(int key) {
     hGui * gui = hGui::getInstance();
@@ -934,3 +939,31 @@ void GuiView::mouseReleased(int x, int y, int button) {
     hGui * gui = hGui::getInstance();
     gui->mouseReleased(x, y, button);
 }
+#else
+//--------------------------------------------------------------
+void GuiView::keyPressed(ofKeyEventArgs & k) {
+    hGui * gui = hGui::getInstance();
+    gui->keyPressed(k.key);
+}
+
+//--------------------------------------------------------------
+void GuiView::mouseDragged(ofMouseEventArgs & m) {
+    //LOG_VERBOSE("mouseDragged");
+    hGui * gui = hGui::getInstance();
+    gui->mouseDragged(m.x, m.y, m.button);
+}
+
+//--------------------------------------------------------------
+void GuiView::mousePressed(ofMouseEventArgs & m) {
+    //LOG_VERBOSE("mousePressed");
+    hGui * gui = hGui::getInstance();
+    gui->mousePressed(m.x, m.y, m.button);
+}
+
+//--------------------------------------------------------------
+void GuiView::mouseReleased(ofMouseEventArgs & m) {
+    //LOG_VERBOSE("mouseReleased");
+    hGui * gui = hGui::getInstance();
+    gui->mouseReleased(m.x, m.y, m.button);
+}
+#endif

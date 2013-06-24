@@ -10,7 +10,11 @@
 #include "DebugView.h"
 
 //--------------------------------------------------------------
+#ifdef FENSTER
 DebugView::DebugView(float x, float y, float width, float height, ofxFenster* window, string windowTitle) : BaseView(x, y, width, height, window, windowTitle) {
+#else
+DebugView::DebugView(float x, float y, float width, float height) : BaseView(x, y, width, height) {
+#endif
 
 	LOG_NOTICE("Constructing DebugView");
 
