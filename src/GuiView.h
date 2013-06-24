@@ -46,12 +46,15 @@ public:
     void mouseReleased(int x, int y, int button);
 #else
     void keyPressed(ofKeyEventArgs & k);
-    void keyReleased(ofKeyEventArgs & k){};
-    void mouseMoved(ofMouseEventArgs & m){};
+    void keyReleased(ofKeyEventArgs & k);
+    void mouseMoved(ofMouseEventArgs & m);
     void mouseDragged(ofMouseEventArgs & m);
     void mousePressed(ofMouseEventArgs & m);
     void mouseReleased(ofMouseEventArgs & m);
 #endif
+
+    void syncIOSDevice(hEventArgs& args);
+    void updateIOSVideoList(int iosID);
 
     void save(hEventArgs& args);
     void addScene(hEventArgs& args);
@@ -67,6 +70,7 @@ public:
     void selectPattern(hEventArgs& args);
     void selectCamera(hEventArgs& args);
     void selectVideo(hEventArgs& args);
+    void selectIOSVideo(hEventArgs& args);
     void selectScene(hEventArgs& args);
     void selectText(hEventArgs& args);
     void setOffScreen(hEventArgs& args);
@@ -90,6 +94,7 @@ private:
 
     void loadStringFonts();
     void parseText(string & text, int targetScreenWidth);
+    float controlWidth;
 
 protected:
 

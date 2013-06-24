@@ -52,14 +52,14 @@ void DebugView::update() {
 
         glPushMatrix();
         ofSetColor(255,255,255,255);
-        glTranslatef(40, 40, 0);
+        glTranslatef(20, 20, 0);
         glScalef(0.3f, 0.3f, 1.0f);
         drawCameraViews();
         glPopMatrix();
 
         glPushMatrix();
         ofSetColor(255,255,255,255);
-        glTranslatef(40, (2*480.0f+3.0f)*0.3f + 60, 0);
+        glTranslatef(20, (2*480.0f+3.0f)*0.3f + 60, 0);
         glScalef(0.3f, 0.3f, 1.0f);
         drawOutputView();
         ofRect(0,0,1920,1080);
@@ -67,7 +67,7 @@ void DebugView::update() {
 
         glPushMatrix();
         ofSetColor(255, 255, 255);
-        ofDrawBitmapString(msg, 40, 700);
+        ofDrawBitmapString(msg, 20, 700);
         ofSetColor(255, 255, 255);
         glPopMatrix();
 	}

@@ -410,7 +410,9 @@
 		<Unit filename="src/BaseView.h">
 			<Option virtualFolder="src/" />
 		</Unit>
-		<Unit filename="src/Config.h" />
+		<Unit filename="src/Config.h">
+			<Option virtualFolder="src/" />
+		</Unit>
 		<Unit filename="src/DataController.cpp">
 			<Option virtualFolder="src/" />
 		</Unit>

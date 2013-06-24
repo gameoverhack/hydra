@@ -62,6 +62,11 @@ private:
 	GuiView*				_guiView;
 	DebugView*              _debugView;
 
+    float controlWidth;
+    float controlHeight;
+    float outputWidth;
+    float outputHeight;
+
 };
 
 #endif

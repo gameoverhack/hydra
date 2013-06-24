@@ -20,7 +20,6 @@ AppView::AppView(float x, float y, float width, float height) : BaseView(x, y, w
     bCustomFullscreen = false;
 
     _functionModel->registerFunction("AppView::toggleFullscreen", MakeDelegate(this, &AppView::toggleFullscreen));
-    _functionModel->registerFunction("AppView::changePattern", MakeDelegate(this, &AppView::changePattern));
 
     _shader.load(ofToDataPath("shaders/deinterlace.vert"), ofToDataPath("shaders/deinterlace.frag"));
 
@@ -98,10 +97,15 @@ void AppView::toggleFullscreen() {
 #else
     LOG_VERBOSE("Trying to force fullscreen on Windows XP");
 
+    float controlWidth = boost::any_cast<float>(_appModel->getProperty("controlWidth"));
+    float controlHeight = boost::any_cast<float>(_appModel->getProperty("controlHeight"));
+    float outputWidth = boost::any_cast<float>(_appModel->getProperty("outputWidth"));
+    float outputHeight = boost::any_cast<float>(_appModel->getProperty("outputHeight"));
+
 	int x = 0;
 	int y = 0;
-	int width = 1920 * 2;
-	int height = 1080;
+	int width = controlWidth + outputWidth;
+	int height = MAX(controlHeight, outputHeight);
     long windowStyle;
 
 	HWND vWnd  = FindWindow(NULL,  (LPCSTR)"hydra");
@@ -130,7 +134,6 @@ void AppView::toggleFullscreen() {
         windowStyle &= ~WS_OVERLAPPEDWINDOW;
         windowStyle |= WS_POPUP;
 
-
         bCustomFullscreen = true;
 	}else{
 
@@ -146,35 +149,4 @@ void AppView::toggleFullscreen() {
     SetWindowPos(vWnd, HWND_TOP, x, y, width, height, SWP_FRAMECHANGED);
 
 #endif
-}
-
-void AppView::changePattern() {
-
-    LOG_NOTICE("Changing pattern");
-//
-//    vector<goThreadedVideo*>& videos = _appModel->getVideos();
-//    vector<goVideoGrabber*>& cameras = _appModel->getCameras();
-//
-//    if (videos.size() == 0 || cameras.size() == 0) return;
-//
-//    currentPatternIndex = (int)ofRandom(_patterns.size());
-//
-//    LOG_NOTICE("Selecting pattern " + ofToString(currentPatternIndex));
-//
-//    nextPattern = _patterns[currentPatternIndex];
-//
-//    for (int i = 0; i < nextPattern->layout.size(); i++) {
-//        float flip = ofRandom(1);
-//        if (flip <= 0.5) {
-//            LOG_VERBOSE("Assign player");
-//            nextPattern->layout[i].player = videos[(int)ofRandom(videos.size())];
-//            nextPattern->layout[i].player->setPaused(false);
-//            nextPattern->layout[i].inputType = GO_VIDEO_PLAYER;
-//        } else {
-//            LOG_VERBOSE("Assign camera");
-//            nextPattern->layout[i].camera = cameras[(int)ofRandom(cameras.size())];
-//            nextPattern->layout[i].inputType = GO_VIDEO_CAMERA;
-//        }
-//    }
-
 }

@@ -35,25 +35,16 @@ public:
 	void registerStates();
 
 	void update();
-	//void draw();
 
 private:
 
     void toggleFullscreen();
-    void changePattern();
 
     ofShader _shader;
 
     bool bCustomFullscreen;
     ofRectangle originalRect;
     long originalStyle;
-
-//    vector<VideoPattern*> _patterns;
-//
-//    int currentPatternIndex;
-//
-//    VideoPattern * currentPattern;
-//    VideoPattern * nextPattern;
 
 protected:
 

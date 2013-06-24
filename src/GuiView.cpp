@@ -16,6 +16,7 @@ GuiView::GuiView(float x, float y, float width, float height, ofxFenster* window
 GuiView::GuiView(float x, float y, float width, float height) : BaseView(x, y, width, height) {
     ofRegisterKeyEvents(this);
     ofRegisterMouseEvents(this);
+    controlWidth = boost::any_cast<float>(_appModel->getProperty("controlWidth"));
 #endif
 	LOG_NOTICE("Constructing GuiView");
 
@@ -143,12 +144,6 @@ void GuiView::setup() {
     hPanel * mainscenesPanel = gui->addPanel("Application", NULL, HGUI_ABSOLUTE_POSITION, gui->margin1, gui->margin1+gui->margin3+5, 883, 990, true);
     mainscenesPanel->setVisibleBackground(true);
 
-//    hPanel * maincommPanel = gui->addPanel("Video", NULL, HGUI_ABSOLUTE_POSITION, gui->margin1, gui->margin1+gui->margin3+5, 883, 990, true);
-//	maincommPanel->setVisibleBackground(true);
-//
-//	hPanel * mainlayoutPanel = gui->addPanel("Text", NULL, HGUI_ABSOLUTE_POSITION, gui->margin1, gui->margin1+gui->margin3+5, 883, 990, true);
-//	mainlayoutPanel->setVisibleBackground(true);
-
     // create tabs for panels
     int mainTabBoxWidth = mainscenesPanel->getWidth();
 
@@ -157,10 +152,6 @@ void GuiView::setup() {
 
 	mainTabBox->setItemLabel(1, "Hydra");
 	mainTabBox->setItemPanel(1, mainscenesPanel);
-//	mainTabBox->setItemLabel(2, "Video");
-//	mainTabBox->setItemPanel(2, maincommPanel);
-//	mainTabBox->setItemLabel(3, "Text");
-//	mainTabBox->setItemPanel(3, mainlayoutPanel);
 
 	mainTabBox->setItemPanel(1, mainscenesPanel);
 	mainTabBox->selectItem(1);
@@ -216,13 +207,10 @@ void GuiView::setup() {
     events->addListener("rewind", this, &GuiView::rewind);
     rewindButton->setMessage("rewind");
 
-    // Communication Control Panel
+    // Kinect Control Panel
 
-	hPanel * commPanel = gui->addPanel("communication", mainscenesPanel, HGUI_RIGHT, gui->margin2, 0, halfWidth, 250, true);
-	hLabel * commPanelLabel = gui->addLabel("", commPanel, HGUI_TOP_LEFT, 2, 0, "Communication");
-
-//    hTextBox * textPath = gui->addTextBox("textPath", commPanel,  HGUI_NEXT_ROW, gui->margin2, gui->margin2, 300, boost::any_cast<string>(_appModel->getProperty("textPath")));
-//    hLabel * textPathLabel = gui->addLabel("", commPanel, HGUI_RIGHT, 2, 0, "text path");
+	hPanel * kinectPanel = gui->addPanel("kinect", mainscenesPanel, HGUI_RIGHT, gui->margin2, 0, halfWidth, 250, true);
+	hLabel * kinectPanelLabel = gui->addLabel("", kinectPanel, HGUI_TOP_LEFT, 2, 0, "Kinect");
 
     // Scene Layout Panel
 
@@ -323,68 +311,34 @@ void GuiView::setup() {
 
     for (int i = 0; i < MAX_SERVERS; i++) {
 
-//        hPanel * serverPanel = gui->addPanel("server" + ofToString(i), mainscenesPanel, HGUI_NEXT_ROW, gui->margin2, gui->margin1, (i%2 == 0 ? 0 : halfWidth), 250, true);
-//        hLabel * serverPanelLabel = gui->addLabel("", serverPanel, HGUI_TOP_LEFT, 2, 0, "Server_" + ofToString(i));
-    }
+        string panelID = ofToString(i);
 
-    for (int i = 0; i < MAX_SERVERS; i++) {
+        int xx, yy;
+        int currentHeight = 468;
 
-//        string panelID = ofToString(i);
-//
-//        hPanel * textPanel = gui->addPanel("textPanel" + panelID, mainscenesPanel, HGUI_NEXT_ROW, gui->margin2, gui->margin2, mainscenesPanel->getWidth()-2*gui->margin2, 170, true);
-//        hLabel * textPanelLabel = gui->addLabel("", textPanel, HGUI_TOP_LEFT, 2, 0, "Text (Port " + panelID + ")");
-//
-//        hTextBox * textPresetName = gui->addTextBox("textPresetName" + panelID, textPanel,  HGUI_NEXT_ROW, gui->margin2, gui->margin2, 246, "");
-//        hLabel * textPresetNameLabel = gui->addLabel("", textPanel, HGUI_RIGHT, 2, 0, "new preset name");
-//        textPresetName->clearAfterReturn(true);
-//
-//        events->addListener("addPreset_" + panelID, this, &GuiView::addPreset);
-//        textPresetName->setMessage("addPreset_" + panelID);
-//
-//        hListBox * presetList = gui->addListBox("presetList" + panelID, textPanel, HGUI_NEXT_ROW, gui->margin2, gui->margin2, 120);
-//        presetList->addItems(5, "");
-//
-//        events->addListener("selectPreset_" + panelID, this, &GuiView::selectPreset);
-//
-//        hListBox * textList = gui->addListBox("textList" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2-100, 47, 120);
-//        textList->addItems(5, "");
-//
-//        events->addListener("selectText_" + panelID, this, &GuiView::selectText);
-//
-//        hButton * recordButton = gui->addButton("record" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2+140, 26, 80, "start record");
-//        events->addListener("record_" + panelID, this, &GuiView::record);
-//        recordButton->setMessage("record_" + panelID);
-//
-//        hButton * playButton = gui->addButton("play" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2, 26, 80, "start play");
-//        events->addListener("play_" + panelID, this, &GuiView::play);
-//        playButton->setMessage("play_" + panelID);
-//
-//        hButton * clearButton = gui->addButton("clear" + panelID, textPanel, HGUI_NEXT_COL, gui->margin2, 26, 80, "clear");
-//        events->addListener("clear_" + panelID, this, &GuiView::clear);
-//        clearButton->setMessage("clear_" + panelID);
-//
-//        hSlider * textVelocity = gui->addSlider("textVelocity" + panelID, textPanel, HGUI_NEXT_ROW, 293, gui->margin2*3, 500);
-//        hLabel * textVelocityLabel = gui->addLabel("", textPanel, HGUI_ABSOLUTE_POSITION, 0, 0, "");
-//        textVelocity->setLinkedLabel(textVelocityLabel, true);
-//        textVelocity->setRange(-250.0f, 250.0f);
-//        textVelocity->setValue(0.0f);
-//        textVelocity->setColor(0x333333);
-//        //textVelocity->setFloatVar(&SOMETHING);
-//        events->addListener("setTextVelocity_" + panelID, this, &GuiView::setTextVelocity);
-//        textVelocity->setMessage("setTextVelocity_" + panelID);
-//
-//        hSlider * textPosition = gui->addSlider("textPosition" + panelID, textPanel, HGUI_NEXT_ROW, 293, gui->margin2, 500);
-//        textPosition->setRange(0.0f, 1.0f);
-//        textPosition->setColor(0x333333);
-//        textPosition->setValue(0.0f);
-//
-//        textList->setAllElementsDisabled(true);
-//        recordButton->setDisabled(true);
-//        playButton->setDisabled(true);
-//        clearButton->setDisabled(true);
-//        textVelocity->setDisabled(true);
-//        textPosition->setDisabled(true);
-        //textPosition->setFloatVar(&SOMETHING);
+        if(i == 0 || i == 1){
+            xx = 3 + 2 * gui->margin2 + i * (gui->margin2 + halfWidth);
+            yy = gui->margin2 + currentHeight;
+        }else{
+            xx = 3 + 2 * gui->margin2 + (i-2) * (gui->margin2 + halfWidth);
+            yy = 2 * gui->margin2 + currentHeight + 250;
+        }
+
+        hPanel * serverPanel = gui->addPanel("server" + panelID, mainscenesPanel, HGUI_ABSOLUTE_POSITION, xx, yy, halfWidth, 250, true);
+        hLabel * serverPanelLabel = gui->addLabel("", serverPanel, HGUI_TOP_LEFT, 2, 0, "Server_" + panelID);
+
+        hListBox * iosVideoList = gui->addListBox("iosVideoList" + panelID, serverPanel, HGUI_NEXT_ROW, gui->margin2+2, gui->margin2, 200);
+
+        iosVideoList->addItems(7,"");
+        events->addListener("selectIOSVideo_" + panelID, this, &GuiView::selectIOSVideo);
+        iosVideoList->setMessage("selectIOSVideo_" + panelID);
+
+        hButton * syncButton = gui->addButton("syncIOSDevice" + panelID, serverPanel, HGUI_NEXT_ROW, gui->margin2+2, gui->margin2 - 90, 80, "syncIOSDevice");
+        events->addListener("syncIOSDevice_" + panelID, this, &GuiView::syncIOSDevice);
+        syncButton->setMessage("syncIOSDevice_" + panelID);
+
+        hLabel * labelInfo = gui->addLabel("iosDeviceInfo" + panelID, serverPanel, HGUI_NEXT_ROW, gui->margin2+2, gui->margin2 - 70, "");
+
     }
 
     // Alert Dialog
@@ -441,37 +395,9 @@ void GuiView::update() {
     hGui * gui = hGui::getInstance();
     hEvents * events = hEvents::getInstance();
 
-//    map< string, TextServer* >& servers = _appModel->getServers();
-//    map< string, TextServer* >::iterator it;
-//
-//    int portIndex = 1;
-//    for (it = servers.begin(); it != servers.end(); it++, portIndex++) {
-//
-//        TextServer* textServer = it->second;
-//        string portNumber = ofToString(portIndex);
-//        string panelID = ofToString(portIndex-1);
-//        events->sendEvent("port" + portNumber + "CB.setSelected", textServer->getServer()->isConnected());
-//        events->sendEvent("port" + portNumber + "TextLabel.setLabel", "port " + portNumber + ":" + ofToString(textServer->getServer()->getNumClients()));
-//        hSlider * textPosition = (hSlider*)gui->getWidget("textPosition" + panelID);
-//
-//        hButton * recordButton = (hButton*)gui->getWidget("record" + panelID);
-//        hButton * playButton = (hButton*)gui->getWidget("play" + panelID);
-//        TextObject* preset = textServer->getPreset();
-//        if (preset == NULL) continue;
-//
-//        if (preset->getIsPlaying()) {
-//            textPosition->setValue(preset->getPosition());
-//            playButton->setLabel("stop play");
-//        } else {
-//            playButton->setLabel("start play");
-//        }
-//
-//        if (preset->getIsRecording()) {
-//            recordButton->setLabel("stop record");
-//        } else {
-//            recordButton->setLabel("start record");
-//        }
-//    }
+    for(int i = 0; i < MAX_SERVERS; i++){
+        updateIOSVideoList(i);
+    }
 
     begin();
     {
@@ -480,6 +406,89 @@ void GuiView::update() {
     end();
 }
 
+//--------------------------------------------------------------
+void GuiView::syncIOSDevice(hEventArgs& args){
+
+    LOG_VERBOSE("Sync iosVideo device " + args.eventName);
+
+    vector<string> iosParts = ofSplitString(args.eventName, "_");
+    int iosID = ofToInt(iosParts[1]);
+
+    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOVideoPlayers();
+    map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iosID);
+
+    if(it != iosVideoPlayers.end()){
+        IOSVideoPlayer* iosVideoPlayer = it->second;
+        _appModel->sendIPADosc("/app/sync", 100 + iosID);
+        hGui * gui = hGui::getInstance();
+        hListBox * iosVideoList = (hListBox*)gui->getWidget("iosVideoList" + ofToString(iosID));
+        iosVideoList->clear();
+        //updateIOSVideoList(iosID);
+    }
+
+}
+
+//--------------------------------------------------------------
+void GuiView::updateIOSVideoList(int iosID){
+
+    //LOG_VERBOSE("Update iosVideo list " + ofToString(iosID));
+
+    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOVideoPlayers();
+    map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iosID);
+
+    if(it != iosVideoPlayers.end()){
+
+        hGui * gui = hGui::getInstance();
+        hListBox * iosVideoList = (hListBox*)gui->getWidget("iosVideoList" + ofToString(iosID));
+
+        IOSVideoPlayer* iosVideoPlayer = it->second;
+
+        if(iosVideoPlayer->bNeedsDisplayUpdate){
+            LOG_VERBOSE("Updating iosVideo list " + ofToString(iosID));
+            iosVideoList->clear();
+            iosVideoList->addItems(7, "");
+            for (int i = 0; i < iosVideoPlayer->files.size(); i++) {
+                if (i < 7) iosVideoList->setElementLabel(i+1, iosVideoPlayer->files[i]);
+                if (i > 6) iosVideoList->addData(iosVideoPlayer->files[i]);
+            }
+
+            iosVideoList->setMessage("selectIOSVideo_" + ofToString(iosID));
+            iosVideoList->displayAllIndexes(true);
+            iosVideoPlayer->bNeedsDisplayUpdate = false;
+        }
+
+        hLabel * labelInfo = (hLabel*)gui->getWidget("iosDeviceInfo" + ofToString(iosID));
+
+        if(iosVideoPlayer->currentFile != ""){
+            labelInfo->setLabel(iosVideoPlayer->currentFile + " " + ofToString(iosVideoPlayer->currentFrame) + " / " + ofToString(iosVideoPlayer->totalFrames));
+        }else{
+            labelInfo->setLabel("");
+        }
+
+    }
+}
+
+//--------------------------------------------------------------
+void GuiView::selectIOSVideo(hEventArgs& args){
+    LOG_VERBOSE("Select iosVideo " + args.eventName);
+
+    vector<string> iosParts = ofSplitString(args.eventName, "_");
+    int iosID = ofToInt(iosParts[1]);
+
+    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOVideoPlayers();
+    map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iosID);
+
+    if(it != iosVideoPlayers.end() && args.strings[0] != ""){
+        _appModel->sendIPADosc("/app/play", 100 + iosID, args.strings[0]);
+    }
+
+//    hGui * gui = hGui::getInstance();
+//    hListBox * iosVideoList = (hListBox*)gui->getWidget("iosVideoList" + ofToString(iosID));
+//    iosVideoList->unselectLastRadioElement();
+
+}
+
+//--------------------------------------------------------------
 void GuiView::updateVideoList() {
     LOG_VERBOSE("Update video list");
 
@@ -498,8 +507,6 @@ void GuiView::updateVideoList() {
     hListBox * videoList = (hListBox*)gui->getWidget("videoList");
     videoList->clear();
 
-
-
     videoList->addItems(7, "");
 
     for (int i = 0; i < numVideos; i++) {
@@ -512,6 +519,7 @@ void GuiView::updateVideoList() {
 }
 
 void GuiView::updateSceneList() {
+
     LOG_VERBOSE("Update scene list");
 
     hGui * gui = hGui::getInstance();
@@ -942,8 +950,25 @@ void GuiView::mouseReleased(int x, int y, int button) {
 #else
 //--------------------------------------------------------------
 void GuiView::keyPressed(ofKeyEventArgs & k) {
+    //LOG_VERBOSE("keyPressed");
     hGui * gui = hGui::getInstance();
     gui->keyPressed(k.key);
+}
+
+//--------------------------------------------------------------
+void GuiView::keyReleased(ofKeyEventArgs & k) {
+    //LOG_VERBOSE("keyReleased");
+}
+
+//--------------------------------------------------------------
+void GuiView::mouseMoved(ofMouseEventArgs & m) {
+    //LOG_VERBOSE("mouseMoved");
+    if(m.x > controlWidth){
+        ofHideCursor();
+    }else{
+        ofShowCursor();
+    }
+
 }
 
 //--------------------------------------------------------------

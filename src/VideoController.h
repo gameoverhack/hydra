@@ -34,7 +34,6 @@ public:
     void loadFolder(string path);
 
 	void threadedVideoEvent(ofxThreadedVideoEvent & e);
-//	void error(const void * sender, int & errCode);
 
 private:
 

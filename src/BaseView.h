@@ -40,6 +40,8 @@ public:
 	ofFbo*			getViewFBO();
     ofTexture*      getViewFBOTexture();
 
+    float			getX();
+    float			getY();
     float			getWidth();
     float			getHeight();
 

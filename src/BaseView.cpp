@@ -69,6 +69,14 @@ ofTexture* BaseView::getViewFBOTexture() {
 	return &_viewFBO[_activeTextureIndex].getTextureReference();
 }
 
+float BaseView::getX(){
+    return _viewX;
+}
+
+float BaseView::getY(){
+    return _viewY;
+}
+
 float BaseView::getWidth() {
     return _viewWidth;
 }
@@ -161,7 +169,7 @@ void BaseView::end() {
 
 void BaseView::draw() {
 	glPushMatrix();
-    _viewFBO[0].draw(_viewX, _viewY);
+    _viewFBO[0].draw(0, 0);
 	glPopMatrix();
 }
 

@@ -21,6 +21,8 @@ public:
 
 protected:
 
+    ofxOscReceiver oscReceiver;
+
 private:
 
 

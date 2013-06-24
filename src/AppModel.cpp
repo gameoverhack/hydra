@@ -489,6 +489,54 @@ int AppModel::listVideoFolder(string path) {
     return numberOfMovies;
 }
 
+map<int, IOSVideoPlayer*>& AppModel::getIOVideoPlayers(){
+    return iosVideoPlayers;
+}
+
+//--------------------------------------------------------------
+void AppModel::sendAllIPADosc(string address, string arg){
+    ofxOscMessage m;
+    m.setAddress(address);
+    m.addStringArg(arg);
+    cout << "SendAll: " << address << " : " << arg << endl;
+    for(map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.begin(); it != iosVideoPlayers.end(); it++){
+        it->second->oscSender->sendMessage(m);
+    }
+}
+
+//--------------------------------------------------------------
+void AppModel::sendIPADosc(string address, int iosIPID, string arg){
+    if(iosVideoPlayers.find(iosIPID) == iosVideoPlayers.end()){
+        ofLogError() << "Ipad not connected on: " << iosIPID;
+        return;
+    }
+    ofxOscMessage m;
+    m.setAddress(address);
+    m.addStringArg(arg);
+    cout << "SendOne: " << iosIPID << " : " << address << " : " << arg << endl;
+    iosVideoPlayers[iosIPID]->oscSender->sendMessage(m);
+}
+
+//--------------------------------------------------------------
+string AppModel::getIOSAppStateAsString(IOSAppState appState){
+    switch (appState) {
+        case APP_INIT:
+            return "APP_INIT";
+            break;
+        case APP_SYNC:
+            return "APP_SYNC";
+            break;
+        case APP_PLAY:
+            return "APP_PLAY";
+            break;
+        case APP_LIST:
+            return "APP_LIST";
+            break;
+        case APP_WAIT:
+            return "APP_WAIT";
+            break;
+    }
+}
 //bool AppModel::addServer(string portName, int port) {
 //    ofxTCPServer* server = new ofxTCPServer();
 //    if (server->setup(port, false)) {
@@ -645,7 +693,7 @@ void AppModel::getProperty(string propName, string & propVal) {
 // get any ANY property in a map (cast necessary -> use boost::any_cast<TYPE>(property))
 //--------------------------------------------------------------
 boost::any AppModel::getProperty(string propName) {
-
+    //cout << propName << endl;
 	assert(_anyProps.count(propName) != 0); // if it ain't there abort
 	return _anyProps[propName];
 

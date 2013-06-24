@@ -15,7 +15,7 @@ AppController::AppController() {
 	LOG_NOTICE("Constructing AppController");
 
     ofSetLogLevel(OF_LOG_VERBOSE);
-    //ofSetVerticalSync(true);
+    ofSetVerticalSync(true);
 
 	registerStates();
 
@@ -23,14 +23,15 @@ AppController::AppController() {
 	_dataController->loadProperties("config.xml");
 
 	_appModel->setProperty("showGui", true);
-
-//	_appModel->setProperty("showProps", true);
-	_appModel->setProperty("showDebug", true);
-//	_appModel->setProperty("showFullscreen", false);
-//	_appModel->setProperty("grabberWidth", 720);
-//	_appModel->setProperty("grabberHeight", 480);
-    _appModel->setProperty("videoPath", (string)"D:/HYDRA_VIDEO_FINALS");
-    _appModel->setProperty("textPath", (string)"/texts");
+    _appModel->setProperty("showDebug", true);
+//    _appModel->setProperty("controlWidth", 1680.0f);
+//    _appModel->setProperty("controlHeight", 1050.0f);
+//    _appModel->setProperty("outputWidth", 1920.0f);
+//    _appModel->setProperty("outputHeight", 1080.0f);
+//	  _appModel->setProperty("showProps", true);
+//	  _appModel->setProperty("showFullscreen", false);
+//    _appModel->setProperty("videoPath", (string)"D:/HYDRA_VIDEO_FINALS");
+//    _appModel->setProperty("textPath", (string)"/texts");
 
 	_mouseController = new MouseController();
 	_keyboardController = new KeyboardController();
@@ -49,11 +50,18 @@ AppController::AppController() {
     _guiView = new GuiView(0, 0, 900, 1024, ofxFensterManager::get()->getPrimaryWindow(), "hydra");
 	_appView = new AppView(0, 0, 1920.0f, 1080.0f, NULL, "output");
     _debugView = new DebugView(1024, 0, 900, 1024, NULL, "debug");
+
 #else
     ofSetWindowTitle("hydra");
-    _guiView = new GuiView(0, 0, 900, 1024);//, ofxFensterManager::get()->getPrimaryWindow(), "hydra");
-	_appView = new AppView(1920, 0, 1920.0f, 1080.0f);//, NULL, "output");
-    _debugView = new DebugView(920, 0, 900, 1024);//, NULL, "debug");
+
+    controlWidth = boost::any_cast<float>(_appModel->getProperty("controlWidth"));
+    controlHeight = boost::any_cast<float>(_appModel->getProperty("controlHeight"));
+    outputWidth = boost::any_cast<float>(_appModel->getProperty("outputWidth"));
+    outputHeight = boost::any_cast<float>(_appModel->getProperty("outputHeight"));
+
+    _guiView = new GuiView(0, 0, 900, controlHeight);//, ofxFensterManager::get()->getPrimaryWindow(), "hydra");
+	_debugView = new DebugView(900, 0, controlWidth - 900, controlHeight);//, NULL, "debug");
+	_appView = new AppView(controlWidth, 0, 1920.0f, 1080.0f); // always render to 1920 x 1080 but draw (below) at output width/height
 
 #endif
     _guiView->setup();
@@ -140,7 +148,6 @@ AppController::AppController() {
 //
 	_keyModel->registerEvent('f', kKEY_DOWN, "toggle fullscreen/window", "AppView::toggleFullscreen");
 	_keyModel->registerEvent('g', kKEY_DOWN, "toggle show/hide gui", "AppModel::toggleBooleanProperty", (string)"showGui");
-	_keyModel->registerEvent('c', kKEY_DOWN, "change to random pattern", "AppView::changePattern");
 	_keyModel->registerEvent('p', kKEY_DOWN, "show all properties in debug view", "AppModel::toggleBooleanProperty", (string)"showProps");
 	_keyModel->registerEvent('d', kKEY_DOWN, "show/hide debug view", "AppModel::toggleBooleanProperty", (string)"showDebug");
 	//_keyModel->registerEvent('s', kKEY_DOWN, "toggle dual screen draw", "AppModel::toggleBooleanProperty", (string)"showDualScreen");
@@ -240,8 +247,8 @@ void AppController::update() {
 
 void AppController::draw() {
 #ifndef FENSTER
-    _appView->draw();
-    _guiView->draw();
-    _debugView->draw();
+    _appView->draw(_appView->getX(), _appView->getY(), outputWidth, outputHeight);
+    _guiView->draw(_guiView->getX(), _guiView->getY());
+    _debugView->draw(_debugView->getX(), _debugView->getY());
 #endif // FENSTER
 }

@@ -110,6 +110,12 @@ public:
     vector<ofRectangle*>&                       getPattern(string patternName);
     int                                         getPatternIndex(string patternName);
 
+    map<int, IOSVideoPlayer*>& getIOVideoPlayers();
+    string getIOSAppStateAsString(IOSAppState appState);
+
+    void sendAllIPADosc(string address, string arg = "");
+    void sendIPADosc(string address, int iosIPID, string arg = "");
+
 //    bool                            addServer(string portName, int port);
 //    bool                            delServer(string portName);
 
@@ -150,6 +156,7 @@ private:
     ofDirectory                         _textDirectory;
 
 //    map< string, TextServer* >          _servers;
+    map<int, IOSVideoPlayer*> iosVideoPlayers;
 
     map< string, ofxThreadedVideo* >     _offScreenVideos;
     map< string, ofxThreadedVideo* >     _allVideos;
