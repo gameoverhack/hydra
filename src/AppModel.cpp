@@ -303,6 +303,23 @@ bool AppModel::setCurrentScene(string sceneName) {
 
     Scene * lastScene = _currentScene;
 
+    if(lastScene != NULL){
+        vector<VideoObject*>& videoObjects = lastScene->getVideos();
+        for (int i =0; i < videoObjects.size(); i++) {
+        switch (videoObjects[i]->_inputType) {
+            case GO_VIDEO_CAMERA:
+                // nothing
+                break;
+            case GO_VIDEO_PLAYER:
+                //videoObjects[i]->_player->setFrame(0);
+                if (videoObjects[i]->_player != NULL) {
+                    if(!videoObjects[i]->_bOffscreen) videoObjects[i]->_player->setVolume(0.0f);
+                }
+                break;
+        }
+    }
+    }
+
 
 	map<string, Scene *>::iterator sceneIter;
 	sceneIter = _scenes.find(sceneName);

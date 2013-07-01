@@ -458,6 +458,12 @@
 		<Unit filename="src/KeyboardModel.h">
 			<Option virtualFolder="src/" />
 		</Unit>
+		<Unit filename="src/KinectController.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/KinectController.h">
+			<Option virtualFolder="src/" />
+		</Unit>
 		<Unit filename="src/Logger.cpp">
 			<Option virtualFolder="src/" />
 		</Unit>
