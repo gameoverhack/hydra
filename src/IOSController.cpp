@@ -32,7 +32,7 @@ void IOSController::registerStates() {
 //--------------------------------------------------------------
 void IOSController::update() {
 
-    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOVideoPlayers();
+    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOSVideoPlayers();
 
 //    if(ofGetFrameNum() % 120 == 0 && bStressTest){
 //        vector<string> & files = (iosVideoPlayers.begin())->second->files;
@@ -60,7 +60,7 @@ void IOSController::update() {
                 IOSVideoPlayer * iosVideoPlayer = new IOSVideoPlayer;
                 iosVideoPlayer->oscSender->setup("192.168.1." + ofToString(iosIPID), 6666);
                 iosVideoPlayers[iosIPID] = iosVideoPlayer;
-                _appModel->sendIPADosc("/app/list", iosIPID);
+                _appModel->sendIOSOsc("/app/list", iosIPID);
             }else{
                 IOSVideoPlayer * iosVideoPlayer = it->second;
                 iosVideoPlayer->currentFile = currentFile;

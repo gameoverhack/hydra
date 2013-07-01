@@ -221,6 +221,7 @@ void AppModel::delAllScenes() {
     _scenes.clear();
 }
 
+//--------------------------------------------------------------
 Scene *AppModel::getScene(int sceneIndex) {
 	//assert(sceneIndex < _scenes.size());
 	int index = 0;
@@ -231,6 +232,7 @@ Scene *AppModel::getScene(int sceneIndex) {
 
 }
 
+//--------------------------------------------------------------
 Scene *AppModel::getScene(string sceneName) {
 
 	map<string, Scene *>::iterator iter;
@@ -243,66 +245,7 @@ Scene *AppModel::getScene(string sceneName) {
 
 }
 
-//void AppModel::setCurrentSceneToNone() {
-//	_currentScene = NULL;
-//}
-
-//bool AppModel::deleteScene() {
-//
-//	if (_currentScene != NULL) {
-//
-//		LOG_NOTICE("Deleting current scene");
-//
-//		map<string, Scene *>::iterator iter;
-//		map<string, Scene *>::iterator del;
-//
-//		bool renumber = false;
-//		int	sceneIndex = 0;
-//
-//		for(iter = _scenes.begin(); iter != _scenes.end(); iter++) {
-//			if (renumber) {
-//				string name = "scene" + ofToString(sceneIndex);
-//				LOG_VERBOSE("Renaming: " + iter->second->getName() + " to " + name);
-//				const_cast<string &>(iter->first) = name;
-//				iter->second->setName(name);
-//			}
-//			if (iter->second == _currentScene) {
-//				LOG_VERBOSE("Flag for delete: " + iter->second->getName());
-//				del = iter;
-//				renumber = true;
-//			} else {
-//				LOG_VERBOSE("Not renaiming.: " + iter->second->getName());
-//				sceneIndex++;
-//			}
-//		}
-//
-////		_currentScene->unregisterFunctions();
-//		_currentScene = NULL;
-//
-//		delete del->second;
-//		_scenes.erase(del);
-//
-//		return true;
-//
-//	} else {
-//
-//		LOG_NOTICE("No current scene to delete!");
-//		return false;
-//
-//	}
-//
-//}
-
-//bool AppModel::addScene(string name, Scene* scene) {
-//
-//	LOG_NOTICE("Adding new scene");
-//	//string name = "scene" + ofToString((int)_scenes.size());
-//	//Scene * scene = new Scene(name, 0, 0, 1024.0f, 768.0f);
-//	setScene(scene);
-//	return setCurrentScene(name);
-//
-//}
-
+//--------------------------------------------------------------
 bool AppModel::rewindScene(Scene* scene) {
     if (scene == NULL) return false;
     vector<VideoObject*>& videoObjects = scene->getVideos();
@@ -322,6 +265,7 @@ bool AppModel::rewindScene(Scene* scene) {
     return true;
 }
 
+//--------------------------------------------------------------
 bool AppModel::rewindAll() {
     map<string, Scene *>::iterator iter;
 	for(iter = _scenes.begin(); iter != _scenes.end(); iter++) {
@@ -332,6 +276,7 @@ bool AppModel::rewindAll() {
     return true;
 }
 
+//--------------------------------------------------------------
 bool AppModel::setupScene(Scene* scene) {
     if (scene == NULL) return false;
     vector<VideoObject*>& videoObjects = scene->getVideos();
@@ -353,6 +298,7 @@ bool AppModel::setupScene(Scene* scene) {
     return true;
 }
 
+//--------------------------------------------------------------
 bool AppModel::setCurrentScene(string sceneName) {
 
     Scene * lastScene = _currentScene;
@@ -377,6 +323,7 @@ bool AppModel::setCurrentScene(string sceneName) {
 	return false;
 }
 
+//--------------------------------------------------------------
 bool AppModel::nextScene() {
 
 	if (_currentScene == NULL) {
@@ -404,6 +351,7 @@ bool AppModel::nextScene() {
 	return false; // should never get here, can probably just be void return
 }
 
+//--------------------------------------------------------------
 bool AppModel::previousScene() {
 
 	if (_currentScene == NULL) {
@@ -431,19 +379,23 @@ bool AppModel::previousScene() {
 	return false; // should never get here, can probably just be void return
 }
 
+//--------------------------------------------------------------
 Scene * AppModel::getCurrentScene(){
 	//assert(_currentScene != NULL);
 	return _currentScene;
 }
 
+//--------------------------------------------------------------
 map<string, Scene*>& AppModel::getScenes() {
 	return _scenes;
 }
 
+//--------------------------------------------------------------
 map< string, vector<ofRectangle*> >& AppModel::getPatterns() {
     return _patterns;
 }
 
+//--------------------------------------------------------------
 vector<ofRectangle*>& AppModel::getPattern(string patternName) {
     map< string, vector<ofRectangle*> >::iterator it;
 	it = _patterns.find(patternName);
@@ -451,6 +403,7 @@ vector<ofRectangle*>& AppModel::getPattern(string patternName) {
 	return it->second;
 }
 
+//--------------------------------------------------------------
 int AppModel::getPatternIndex(string patternName) {
     map< string, vector<ofRectangle*> >::iterator it;
     int index = 0;
@@ -465,10 +418,12 @@ int AppModel::getPatternIndex(string patternName) {
     return patternIndex;
 }
 
+//--------------------------------------------------------------
 map< string, ofVideoGrabber* >& AppModel::getCameras() {
     return _cameras;
 }
 
+//--------------------------------------------------------------
 ofVideoGrabber* AppModel::getCamera(string cameraName) {
     map< string, ofVideoGrabber* >::iterator it;
 	it = _cameras.find(cameraName);
@@ -476,6 +431,7 @@ ofVideoGrabber* AppModel::getCamera(string cameraName) {
 	return it->second;
 }
 
+//--------------------------------------------------------------
 int AppModel::listVideoFolder(string path) {
 
     // list folder
@@ -489,23 +445,24 @@ int AppModel::listVideoFolder(string path) {
     return numberOfMovies;
 }
 
-map<int, IOSVideoPlayer*>& AppModel::getIOVideoPlayers(){
+//--------------------------------------------------------------
+map<int, IOSVideoPlayer*>& AppModel::getIOSVideoPlayers(){
     return iosVideoPlayers;
 }
 
 //--------------------------------------------------------------
-void AppModel::sendAllIPADosc(string address, string arg){
+void AppModel::sendAllIOSOsc(string address, string arg){
     ofxOscMessage m;
     m.setAddress(address);
     m.addStringArg(arg);
-    cout << "SendAll: " << address << " : " << arg << endl;
+    cout << "SendAll IOS OSC: " << address << " : " << arg << endl;
     for(map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.begin(); it != iosVideoPlayers.end(); it++){
         it->second->oscSender->sendMessage(m);
     }
 }
 
 //--------------------------------------------------------------
-void AppModel::sendIPADosc(string address, int iosIPID, string arg){
+void AppModel::sendIOSOsc(string address, int iosIPID, string arg){
     if(iosVideoPlayers.find(iosIPID) == iosVideoPlayers.end()){
         ofLogError() << "Ipad not connected on: " << iosIPID;
         return;
@@ -513,7 +470,7 @@ void AppModel::sendIPADosc(string address, int iosIPID, string arg){
     ofxOscMessage m;
     m.setAddress(address);
     m.addStringArg(arg);
-    cout << "SendOne: " << iosIPID << " : " << address << " : " << arg << endl;
+    cout << "SendOne IOS OSC: " << iosIPID << " : " << address << " : " << arg << endl;
     iosVideoPlayers[iosIPID]->oscSender->sendMessage(m);
 }
 
@@ -537,49 +494,48 @@ string AppModel::getIOSAppStateAsString(IOSAppState appState){
             break;
     }
 }
-//bool AppModel::addServer(string portName, int port) {
-//    ofxTCPServer* server = new ofxTCPServer();
-//    if (server->setup(port, false)) {
-//        LOG_VERBOSE("Server SUCCESS on port: " + portName);
-//        TextServer* textServer = new TextServer();
-//        textServer->setPort(port);
-//        textServer->setName(portName);
-//        textServer->setServer(server);
-//        _servers.insert(pair< string, TextServer* >(portName, textServer));
-//        return true;
-//    } else {
-//        LOG_VERBOSE("Server FAILED on port: " + portName);
-//        return false;
-//    }
-//}
-//
-//bool AppModel::delServer(string portName) {
-//    map< string, TextServer* >::iterator it = _servers.find(portName);
-//    if (it == _servers.end()) return false;
-//    _servers.erase(it);
-//    return true;
-//}
-//
-//map< string, TextServer* >& AppModel::getServers() {
-//    return _servers;
-//}
-//
-//TextServer* AppModel::getServer(string portName) {
-//    map< string, TextServer* >::iterator it;
-//	it = _servers.find(portName);
-//	assert(it != _servers.end());
-//	return it->second;
-//}
-//
-//TextServer* AppModel::getServer(int portIndex) {
-//	assert(portIndex < _servers.size());
-//	int index = 0;
-//	map< string, TextServer* >::iterator iter;
-//	iter->second = NULL;
-//	for (iter = _servers.begin(); iter != _servers.end(); iter++, index++) if (index == portIndex) break;
-//	return iter->second;
-//}
 
+//--------------------------------------------------------------
+KinectVideoPlayer& AppModel::getKinectVideoPlayer(){
+    return kinectVideoPlayer;
+}
+
+//--------------------------------------------------------------
+void AppModel::sendAllKinectOsc(string address, string arg){
+    if(kinectVideoPlayer.isSetup){
+        ofxOscMessage m;
+        m.setAddress(address);
+        m.addStringArg(arg);
+        cout << "SendAll Kinect OSC: " << address << " : " << arg << endl;
+        kinectVideoPlayer.oscSender->sendMessage(m);
+    }else{
+        cout << "SendAll Kinect OSC: Failed -> not setup" << endl;
+    }
+
+}
+
+//--------------------------------------------------------------
+string AppModel::getKinectAppStateAsString(KinectAppState appState){
+    switch (appState) {
+        case KINECT_APP_READY:
+            return "KINECT_APP_READY";
+            break;
+        case KINECT_APP_WHITE:
+            return "KINECT_APP_WHITE";
+            break;
+        case KINECT_APP_IMAGE:
+            return "KINECT_APP_IMAGE";
+            break;
+        case KINECT_APP_PLAY:
+            return "KINECT_APP_PLAY";
+            break;
+        case KINECT_APP_LIST:
+            return "KINECT_APP_LIST";
+            break;
+    }
+}
+
+//--------------------------------------------------------------
 void AppModel::registerStatefulClass(string className) {
 
 	LOG_NOTICE("Registering Stateful Class: " + className);
@@ -592,6 +548,7 @@ void AppModel::registerStatefulClass(string className) {
 
 }
 
+//--------------------------------------------------------------
 void AppModel::setRemoteState(string className, string state) {
 
 	if (className.find("BaseState") != string::npos) return;
@@ -604,6 +561,7 @@ void AppModel::setRemoteState(string className, string state) {
 
 }
 
+//--------------------------------------------------------------
 string AppModel::getRemoteState(string className) {
 
 	map<string, string>::iterator it;
@@ -614,6 +572,7 @@ string AppModel::getRemoteState(string className) {
 
 }
 
+//--------------------------------------------------------------
 string AppModel::getAllStatesAsList() {
 
 	ostringstream out;

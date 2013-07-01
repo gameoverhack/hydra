@@ -34,6 +34,18 @@ GuiView::GuiView(float x, float y, float width, float height) : BaseView(x, y, w
     for (int i = 0; i < 20; i++) {
         _midiModel->registerEvent(5, 144, i+100, 0, kMIDI_ANY, "special trigger" + ofToString(i), "GuiView::autoMidiMap", 5, i);
 	}
+
+    _functionModel->registerFunction("GuiView::oscPlayScene", MakeDelegate(this, &GuiView::oscPlayScene));
+    _functionModel->registerFunction("GuiView::oscIpadControl", MakeDelegate(this, &GuiView::oscIpadControl));
+    _functionModel->registerFunction("GuiView::oscShowControl", MakeDelegate(this, &GuiView::oscShowControl));
+    _functionModel->registerFunction("GuiView::oscKinectControl", MakeDelegate(this, &GuiView::oscKinectControl));
+
+    _oscModel->registerEvent("/play", (string)"/play", kOSC_PASS_PARAM_ONE, "osc play scene", "GuiView::oscPlayScene");
+    _oscModel->registerEvent("/ipad", (string)"/ipad", (string)"/ipad", kOSC_PASS_PARAM_BOTH, "osc ipad select", "GuiView::oscIpadControl");
+    _oscModel->registerEvent("/control", (string)"/control", (string)"/control", kOSC_PASS_PARAM_BOTH, "osc show control", "GuiView::oscShowControl");
+    _oscModel->registerEvent("/kinect", (string)"/kinect", (string)"/kinect", kOSC_PASS_PARAM_BOTH, "osc kinect control", "GuiView::oscKinectControl");
+
+    //assert(false);
 }
 
 //--------------------------------------------------------------
@@ -57,6 +69,92 @@ void GuiView::registerStates() {
 
 }
 
+//--------------------------------------------------------------
+void GuiView::oscKinectControl(string command, string args){
+    LOG_VERBOSE("Kinect Control OSC TRIGGER: " + command + " " + args);
+
+    int value = ofToInt(args);
+    if(command == "minDepth" && args != ""){
+
+    }
+    if(command == "maxDepth" && args != ""){
+
+    }
+    if(command == "blur" && args != ""){
+
+    }
+    if(command == "threshold" && args != ""){
+
+    }
+    if(command == "contour" && args != ""){
+
+    }
+    if(command == "fadeUp" && args != ""){
+
+    }
+    if(command == "fadeDown" && args != ""){
+
+    }
+    if(command == "showWhite" && args != ""){
+
+    }
+    if(command == "showSnapshot" && args != ""){
+
+    }
+    if(command == "takeSnapshot" && args != ""){
+
+    }
+    if(command == "play" && args != ""){
+        cout << "Kinect OSC Play: " << args << endl;
+        _appModel->sendAllKinectOsc("/app/play", args);
+    }
+    if(command == "stop"){
+
+    }
+}
+
+//--------------------------------------------------------------
+void GuiView::oscShowControl(string command, string args){
+    LOG_VERBOSE("Show Control OSC TRIGGER: " + command + " " + args);
+
+    // rewind scene commands
+    if(command == "rewind" && args == ""){
+        Scene* scene = _appModel->getCurrentScene();
+        if (scene == NULL) return;
+        _appModel->rewindScene(scene);
+    }
+    if(command == "rewind" && args != "all" && args != ""){
+        Scene* scene = _appModel->getScene(args);
+        if (scene == NULL) return;
+        _appModel->rewindScene(scene);
+    }
+    if(command == "rewind" && args == "all"){
+        _appModel->rewindAll();
+    }
+
+}
+
+//--------------------------------------------------------------
+void GuiView::oscIpadControl(string ipadID, string movieName){
+    LOG_VERBOSE("Ipad OSC TRIGGER: " + ipadID + " " + movieName);
+    hEventArgs args;
+    args.eventName = "selectIOSVideo_" + ipadID;
+    args.strings.push_back(movieName);
+    selectIOSVideo(args);
+}
+
+//--------------------------------------------------------------
+void GuiView::oscPlayScene(string sceneName){
+    LOG_VERBOSE("Scene OSC TRIGGER: " + sceneName);
+    hEventArgs args;
+    args.eventName = "selectScene";
+    Scene* scene = _appModel->getScene(sceneName);
+    if (scene == NULL) return;
+    args.strings.push_back(scene->getName());
+    selectScene(args);
+}
+
+//--------------------------------------------------------------
 void GuiView::autoMidiMap(int port, int byteTwo) {
     LOG_VERBOSE("Auto Midi Map: " + ofToString (port) + " :: " + ofToString(byteTwo));
     hEvents * events = hEvents::getInstance();
@@ -414,12 +512,12 @@ void GuiView::syncIOSDevice(hEventArgs& args){
     vector<string> iosParts = ofSplitString(args.eventName, "_");
     int iosID = ofToInt(iosParts[1]);
 
-    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOVideoPlayers();
+    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOSVideoPlayers();
     map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iosID);
 
     if(it != iosVideoPlayers.end()){
         IOSVideoPlayer* iosVideoPlayer = it->second;
-        _appModel->sendIPADosc("/app/sync", 100 + iosID);
+        _appModel->sendIOSOsc("/app/sync", 100 + iosID);
         hGui * gui = hGui::getInstance();
         hListBox * iosVideoList = (hListBox*)gui->getWidget("iosVideoList" + ofToString(iosID));
         iosVideoList->clear();
@@ -433,7 +531,7 @@ void GuiView::updateIOSVideoList(int iosID){
 
     //LOG_VERBOSE("Update iosVideo list " + ofToString(iosID));
 
-    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOVideoPlayers();
+    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOSVideoPlayers();
     map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iosID);
 
     if(it != iosVideoPlayers.end()){
@@ -475,11 +573,11 @@ void GuiView::selectIOSVideo(hEventArgs& args){
     vector<string> iosParts = ofSplitString(args.eventName, "_");
     int iosID = ofToInt(iosParts[1]);
 
-    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOVideoPlayers();
+    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOSVideoPlayers();
     map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iosID);
 
     if(it != iosVideoPlayers.end() && args.strings[0] != ""){
-        _appModel->sendIPADosc("/app/play", 100 + iosID, args.strings[0]);
+        _appModel->sendIOSOsc("/app/play", 100 + iosID, args.strings[0]);
     }
 
 //    hGui * gui = hGui::getInstance();

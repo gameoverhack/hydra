@@ -176,6 +176,44 @@ public:
     IOSAppState iosAppState;
 };
 
+enum KinectAppState{
+    KINECT_APP_READY = 0,
+    KINECT_APP_WHITE,
+    KINECT_APP_IMAGE,
+    KINECT_APP_PLAY,
+    KINECT_APP_LIST
+};
+
+class KinectVideoPlayer{
+
+public:
+
+    KinectVideoPlayer(){
+        oscSender = new ofxOscSender;
+        isSetup = false;
+    };
+    ~KinectVideoPlayer(){
+        if(oscSender != NULL){
+            delete oscSender;
+            oscSender = NULL;
+            files.clear();
+            isSetup = false;
+        }
+    }
+
+    ofxOscSender* oscSender;
+    vector<string> files;
+    bool bNeedsDisplayUpdate;
+    bool isSetup;
+    string currentFile;
+    int currentFrame;
+    int totalFrames;
+    int minDepth, maxDepth;
+    float blurScale, threshold;
+    bool bUseContour;
+    KinectAppState kinectAppState;
+};
+
 class Scene {
 
 public:

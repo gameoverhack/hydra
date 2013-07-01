@@ -13,21 +13,21 @@
 #include "AppModel.h"
 
 class OscModel {
-	
+
 public:
-	
+
 	OscModel() {
 		LOG_NOTICE("Constructing OscModel");
 	};
-	
+
 	~OscModel() {
 		LOG_NOTICE("Destructing OscModel");
-	};	
-	
+	};
+
 	// INT
-	
+
 	void registerEvent(string address, int arg1, osc_ct comparisonType, string helpMessage, string functionToCall) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, -1);
 			return;
@@ -38,15 +38,15 @@ public:
 			registerEvent(address, arg1, kOSC_PASS_PARAM_BOTH_INTERNAL_USE, helpMessage, functionToCall, -1, -1);
 			return;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams0<OscMessage> inputParams(oscMessage);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, int arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, param1, -1);
 			return;
@@ -61,15 +61,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, int arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, bool variableIsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, &param1, -1);
 			return;
@@ -84,15 +84,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, &param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, int arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1, Param2 param2) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -103,15 +103,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, int arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 param2, bool parameter1IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -122,15 +122,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, int arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 &param2, bool parameter1IsPointer, bool parameter2IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -141,16 +141,16 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, &param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	// FLOAT
-	
+
 	void registerEvent(string address, float arg1, osc_ct comparisonType, string helpMessage, string functionToCall) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, -1.0f);
 			return;
@@ -161,15 +161,15 @@ public:
 			registerEvent(address, arg1, kOSC_PASS_PARAM_BOTH_INTERNAL_USE, helpMessage, functionToCall, -1.0f, -1.0f);
 			return;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams0<OscMessage> inputParams(oscMessage);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, float arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, param1, -1.0f);
 			return;
@@ -184,15 +184,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, float arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, bool variableIsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, &param1, -1.0f);
 			return;
@@ -207,15 +207,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, &param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, float arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1, Param2 param2) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -226,15 +226,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, float arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 param2, bool parameter1IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -245,15 +245,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, float arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 &param2, bool parameter1IsPointer, bool parameter2IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -264,16 +264,16 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, &param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	// STRING
-	
+
 	void registerEvent(string address, string arg1, osc_ct comparisonType, string helpMessage, string functionToCall) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, (string)"");
 			return;
@@ -284,15 +284,15 @@ public:
 			registerEvent(address, arg1, kOSC_PASS_PARAM_BOTH_INTERNAL_USE, helpMessage, functionToCall, (string)"", (string)"");
 			return;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams0<OscMessage> inputParams(oscMessage);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, string arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, param1, (string)"");
 			return;
@@ -307,15 +307,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, string arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, bool variableIsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, &param1, (string)"");
 			return;
@@ -330,15 +330,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, &param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, string arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1, Param2 param2) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -349,15 +349,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, string arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 param2, bool parameter1IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -368,15 +368,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, string arg1, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 &param2, bool parameter1IsPointer, bool parameter2IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -387,16 +387,16 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, &param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	// INTS
-	
+
 	void registerEvent(string address, int arg1, int arg2, osc_ct comparisonType, string helpMessage, string functionToCall) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, -1);
 			return;
@@ -407,15 +407,15 @@ public:
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_BOTH_INTERNAL_USE, helpMessage, functionToCall, -1, -1);
 			return;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams0<OscMessage> inputParams(oscMessage);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, int arg1, int arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, param1, -1);
 			return;
@@ -430,15 +430,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, int arg1, int arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, bool variableIsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, &param1, -1);
 			return;
@@ -453,15 +453,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, &param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, int arg1, int arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1, Param2 param2) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -472,15 +472,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, int arg1, int arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 param2, bool parameter1IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -491,15 +491,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, int arg1, int arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 &param2, bool parameter1IsPointer, bool parameter2IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -510,16 +510,16 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, &param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	// FLOATS
-	
+
 	void registerEvent(string address, float arg1, float arg2, osc_ct comparisonType, string helpMessage, string functionToCall) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, -1.0f);
 			return;
@@ -530,15 +530,15 @@ public:
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_BOTH_INTERNAL_USE, helpMessage, functionToCall, -1.0f, -1.0f);
 			return;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams0<OscMessage> inputParams(oscMessage);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, float arg1, float arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, param1, -1.0f);
 			return;
@@ -553,15 +553,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, float arg1, float arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, bool variableIsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, &param1, -1.0f);
 			return;
@@ -576,15 +576,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, &param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, float arg1, float arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1, Param2 param2) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -595,15 +595,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, float arg1, float arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 param2, bool parameter1IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -614,15 +614,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, float arg1, float arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 &param2, bool parameter1IsPointer, bool parameter2IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -633,16 +633,16 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, &param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	// STRINGS
-	
+
 	void registerEvent(string address, string arg1, string arg2, osc_ct comparisonType, string helpMessage, string functionToCall) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, (string)"");
 			return;
@@ -653,15 +653,15 @@ public:
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_BOTH_INTERNAL_USE, helpMessage, functionToCall, (string)"", (string)"");
 			return;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams0<OscMessage> inputParams(oscMessage);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, string arg1, string arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, param1, (string)"");
 			return;
@@ -676,15 +676,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1>
 	void registerEvent(string address, string arg1, string arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, bool variableIsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE) {
 			registerEvent(address, arg1, arg2, kOSC_PASS_PARAM_ONE_INTERNAL_USE, helpMessage, functionToCall, &param1, (string)"");
 			return;
@@ -699,15 +699,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_TWO_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_TWO;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams1<OscMessage, Param1> inputParams(oscMessage, &param1);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, string arg1, string arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 param1, Param2 param2) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -718,15 +718,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, string arg1, string arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 param2, bool parameter1IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -737,15 +737,15 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 	template<class Param1, class Param2>
 	void registerEvent(string address, string arg1, string arg2, osc_ct comparisonType, string helpMessage, string functionToCall, Param1 &param1, Param2 &param2, bool parameter1IsPointer, bool parameter2IsPointer) {
-		
+
 		if (comparisonType == kOSC_PASS_PARAM_ONE || comparisonType == kOSC_PASS_PARAM_TWO || comparisonType == kOSC_PASS_PARAM_BOTH) {
 			LOG_ERROR("Maximum of two parameters, so can't pass the midi values as well as two params!!");
 			abort();
@@ -756,43 +756,43 @@ public:
 		} else if (comparisonType == kOSC_PASS_PARAM_BOTH_INTERNAL_USE) {
 			comparisonType = kOSC_PASS_PARAM_BOTH;
 		}
-		
-		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType); 
+
+		OscMessage oscMessage(address, arg1, arg2, (double)0, comparisonType);
 		InputParams2<OscMessage, Param1, Param2> inputParams(oscMessage, &param1, &param2);
 		registerInputToFunction(functionToCall, inputParams, helpMessage);
 	}
-	
+
 //	void unregisterEvent(string uniqueFunctionID) {
 //		map<string, DelegateMemento>::iterator it = _functionModel->_registeredFunctions.find(uniqueFunctionID);
-//		
+//
 //		if (it != _functionModel->_registeredFunctions.end()) {
-//			
+//
 //			LOG_VERBOSE("Deleting function map for: " + uniqueFunctionID);
-//			
-//			
-//			
+//
+//
+//
 //			//TODO: delete usage!!
 //			//storeUsage(inputParameters.getMessageMap(), usage);
-//			
+//
 //		} else {
-//			
+//
 //			LOG_VERBOSE("No function registered for: " + uniqueFunctionID);
 //			abort();
-//			
+//
 //		}
 //	}
-	
+
 	template <class InputParams>
 	void registerInputToFunction(string uniqueFunctionID, InputParams inputParameters, string usage = "") {
-		
+
 		map<string, DelegateMemento>::iterator it = _functionModel->_registeredFunctions.find(uniqueFunctionID);
-		
+
 		if (it != _functionModel->_registeredFunctions.end()) {
-			
+
 			LOG_VERBOSE("Adding function map for: " + uniqueFunctionID);
 			MappedDelegate<InputParams> md(uniqueFunctionID, it->second, inputParameters);
 			setMappedDelegate(inputParameters.getMessageMap(), md);
-			
+
 			if (usage == "") {
 				int nParams = inputParameters.getNumParams();
 				ostringstream params;
@@ -807,48 +807,49 @@ public:
 						params << "(" << inputParameters.getParam1() << ", " << inputParameters.getParam1() << ")";
 						break;
 				}
-				
+
 				usage = uniqueFunctionID + params.str();
 			}
-			
+
 			storeUsage(inputParameters.getMessageMap(), usage);
-			
+
 		} else {
-			
+
 			LOG_VERBOSE("No function registered for: " + uniqueFunctionID);
 			abort();
-			
+
 		}
-		
+
 	}
-	
+
 	string getAllOscUsageAsList(bool log = false) {
-		
+
 		ostringstream out;
 		for (int i = 0; i < _oscUsage.size(); i++) {
 			out << _oscUsage[i] << endl;
 		}
-		
+
 		if (log) {
 			LOG_NOTICE(out.str());
 		}
-		
+
 		return out.str();
-		
+
 	};
-	
+
 	void executeFunction(OscMessage oscMessage) {
-		
+
 		//oscMessage.print(true);
-		
+
 		map<OscMessage, DelegateType>::iterator it_type;
-		
+
 		it_type = _mappedOscType.find(oscMessage);
-		
+
 		bool comparisonMatched = false;
 		OscMessage originalOscMessage = it_type->first;
+		//originalOscMessage.print(true);
 		osc_ct comparisonType = originalOscMessage.getComparisonType();
-		
+
 		if (it_type != _mappedOscType.end()) {
 			switch (comparisonType) {
 				case kOSC_ANY:
@@ -875,13 +876,13 @@ public:
 					if (originalOscMessage <= oscMessage) comparisonMatched = true;
 					break;
 					// TODO: Ranges!!
-			}			
+			}
 		}
-		
+
 		if (comparisonMatched) {
-			
+
 			DelegateType dt = it_type->second;
-			
+
 			switch (dt) {
 				case GO_DELEGATE_NONE:
 				{
@@ -1162,182 +1163,183 @@ public:
 				}
 			}
 		}
-		
+
 	}
-	
+
 private:
-	
+
 	void storeUsage(OscMessage oscMessage, string usage) {
-		
+
 		string c = oscMessage.getAddress();
 		ostringstream usestream;
-		
+
 		usestream << "'" << c << "'" << " - " << usage;
-		
+
 		usage = usestream.str();
-		
+
 		LOG_VERBOSE("Created osc usage: " + usage);
-		
+
 		_oscUsage.push_back(usage);
 	}
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams0<OscMessage> > md) {
 		LOG_VERBOSE("Store p0");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_NONE));
 		_mappedOscParams0.insert(pair<OscMessage, MappedDelegate< InputParams0<OscMessage> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams1<OscMessage, string> > md) {
 		LOG_VERBOSE("Store p1 string");
+		//oscMessage.print(true);
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_STRING));
 		_mappedOscParamsString1.insert(pair< OscMessage, MappedDelegate< InputParams1< OscMessage, string> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams1<OscMessage, float> > md) {
 		LOG_VERBOSE("Store p1 float");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_FLOAT));
 		_mappedOscParamsFloat1.insert(pair< OscMessage, MappedDelegate<InputParams1<OscMessage, float> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams1<OscMessage, int> > md) {
 		LOG_VERBOSE("Store p1 int");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_INT));
 		_mappedOscParamsInt1.insert(pair< OscMessage, MappedDelegate< InputParams1<OscMessage, int> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams1<OscMessage, bool> > md) {
 		LOG_VERBOSE("Store p1 bool");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_BOOL));
 		_mappedOscParamsBool1.insert(pair< OscMessage, MappedDelegate<InputParams1<OscMessage, bool> >	> (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, string, string> > md) {
 		LOG_VERBOSE("Store p2 string string");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_STRING_STRING));
 		_mappedOscParamsStringString2.insert(pair< OscMessage, MappedDelegate< InputParams2< OscMessage, string, string> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, string, float> > md) {
 		LOG_VERBOSE("Store p2 string float");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_STRING_FLOAT));
 		_mappedOscParamsStringFloat2.insert(pair< OscMessage, MappedDelegate<InputParams2<OscMessage, string, float> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, string, int> > md) {
 		LOG_VERBOSE("Store p2 string int");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_STRING_INT));
 		_mappedOscParamsStringInt2.insert(pair< OscMessage, MappedDelegate< InputParams2<OscMessage, string, int> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, string, bool> > md) {
 		LOG_VERBOSE("Store p2 string bool");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_STRING_BOOL));
 		_mappedOscParamsStringBool2.insert(pair< OscMessage, MappedDelegate<InputParams2<OscMessage, string, bool> >	> (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, float, float> > md) {
 		LOG_VERBOSE("Store p2 float float");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_FLOAT_FLOAT));
 		_mappedOscParamsFloatFloat2.insert(pair< OscMessage, MappedDelegate< InputParams2< OscMessage, float, float> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, float, string> > md) {
 		LOG_VERBOSE("Store p2 float string");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_FLOAT_STRING));
 		_mappedOscParamsFloatString2.insert(pair< OscMessage, MappedDelegate<InputParams2<OscMessage, float, string> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, float, int> > md) {
 		LOG_VERBOSE("Store p2 float int");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_FLOAT_INT));
 		_mappedOscParamsFloatInt2.insert(pair< OscMessage, MappedDelegate< InputParams2<OscMessage, float, int> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, float, bool> > md) {
 		LOG_VERBOSE("Store p2 float bool");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_FLOAT_BOOL));
 		_mappedOscParamsFloatBool2.insert(pair< OscMessage, MappedDelegate<InputParams2<OscMessage, float, bool> >	> (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, int, int> > md) {
 		LOG_VERBOSE("Store p2 int int");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_INT_INT));
 		_mappedOscParamsIntInt2.insert(pair< OscMessage, MappedDelegate< InputParams2< OscMessage, int, int> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, int, string> > md) {
 		LOG_VERBOSE("Store p2 int string");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_INT_STRING));
 		_mappedOscParamsIntString2.insert(pair< OscMessage, MappedDelegate<InputParams2<OscMessage, int, string> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, int, float> > md) {
 		LOG_VERBOSE("Store p2 int float");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_INT_FLOAT));
 		_mappedOscParamsIntFloat2.insert(pair< OscMessage, MappedDelegate< InputParams2<OscMessage, int, float> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, int, bool> > md) {
 		LOG_VERBOSE("Store p2 int bool");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_INT_BOOL));
 		_mappedOscParamsIntBool2.insert(pair< OscMessage, MappedDelegate<InputParams2<OscMessage, int, bool> >	> (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, bool, bool> > md) {
 		LOG_VERBOSE("Store p2 bool bool");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_BOOL_BOOL));
 		_mappedOscParamsBoolBool2.insert(pair< OscMessage, MappedDelegate< InputParams2< OscMessage, bool, bool> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, bool, string> > md) {
 		LOG_VERBOSE("Store p2 bool string");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_BOOL_STRING));
 		_mappedOscParamsBoolString2.insert(pair< OscMessage, MappedDelegate<InputParams2<OscMessage, bool, string> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, bool, float> > md) {
 		LOG_VERBOSE("Store p2 bool float");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_BOOL_FLOAT));
 		_mappedOscParamsBoolFloat2.insert(pair< OscMessage, MappedDelegate< InputParams2<OscMessage, bool, float> > > (oscMessage, md));
 	};
-	
+
 	void setMappedDelegate(OscMessage oscMessage, MappedDelegate<InputParams2<OscMessage, bool, int> > md) {
 		LOG_VERBOSE("Store p2 bool int");
 		_mappedOscType.insert(pair<OscMessage, DelegateType> (oscMessage, GO_DELEGATE_BOOL_INT));
 		_mappedOscParamsBoolInt2.insert(pair< OscMessage, MappedDelegate<InputParams2<OscMessage, bool, int> >	> (oscMessage, md));
 	};
-	
+
 	// making these public for now until i work out a nicer way to return
 	map< OscMessage, DelegateType >													_mappedOscType;
 	vector<string>																	_oscUsage;
-	
+
 	map< OscMessage, MappedDelegate<InputParams0<OscMessage> > >					_mappedOscParams0;
-	
+
 	map< OscMessage, MappedDelegate<InputParams1<OscMessage, string> > >			_mappedOscParamsString1;
 	map< OscMessage, MappedDelegate<InputParams1<OscMessage, float> > >				_mappedOscParamsFloat1;
 	map< OscMessage, MappedDelegate<InputParams1<OscMessage, int> > >				_mappedOscParamsInt1;
 	map< OscMessage, MappedDelegate<InputParams1<OscMessage, bool> > >				_mappedOscParamsBool1;
-	
+
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, string, string> > >	_mappedOscParamsStringString2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, string, float> > >		_mappedOscParamsStringFloat2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, string, int> > >		_mappedOscParamsStringInt2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, string, bool> > >		_mappedOscParamsStringBool2;
-	
+
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, float, float> > >		_mappedOscParamsFloatFloat2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, float, string> > >		_mappedOscParamsFloatString2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, float, int> > >		_mappedOscParamsFloatInt2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, float, bool> > >		_mappedOscParamsFloatBool2;
-	
+
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, int, int> > >			_mappedOscParamsIntInt2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, int, string> > >		_mappedOscParamsIntString2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, int, float> > >		_mappedOscParamsIntFloat2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, int, bool> > >			_mappedOscParamsIntBool2;
-	
+
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, bool, bool> > >		_mappedOscParamsBoolBool2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, bool, string> > >		_mappedOscParamsBoolString2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, bool, float> > >		_mappedOscParamsBoolFloat2;
 	map< OscMessage, MappedDelegate<InputParams2<OscMessage, bool, int> > >			_mappedOscParamsBoolInt2;
-	
+
 };
 
 typedef Singleton<OscModel> OscModelSingleton;					// Global declaration

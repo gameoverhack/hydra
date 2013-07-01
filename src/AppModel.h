@@ -110,11 +110,17 @@ public:
     vector<ofRectangle*>&                       getPattern(string patternName);
     int                                         getPatternIndex(string patternName);
 
-    map<int, IOSVideoPlayer*>& getIOVideoPlayers();
+    map<int, IOSVideoPlayer*>& getIOSVideoPlayers();
     string getIOSAppStateAsString(IOSAppState appState);
 
-    void sendAllIPADosc(string address, string arg = "");
-    void sendIPADosc(string address, int iosIPID, string arg = "");
+    void sendAllIOSOsc(string address, string arg = "");
+    void sendIOSOsc(string address, int iosIPID, string arg = "");
+
+    KinectVideoPlayer& getKinectVideoPlayer();
+    string getKinectAppStateAsString(KinectAppState appState);
+
+    void sendAllKinectOsc(string address, string arg = "");
+//    void sendKinectOsc(string address, int iosIPID, string arg = "");
 
 //    bool                            addServer(string portName, int port);
 //    bool                            delServer(string portName);
@@ -157,6 +163,8 @@ private:
 
 //    map< string, TextServer* >          _servers;
     map<int, IOSVideoPlayer*> iosVideoPlayers;
+
+    KinectVideoPlayer kinectVideoPlayer;
 
     map< string, ofxThreadedVideo* >     _offScreenVideos;
     map< string, ofxThreadedVideo* >     _allVideos;

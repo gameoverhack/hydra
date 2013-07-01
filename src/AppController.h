@@ -21,6 +21,7 @@
 #include "VideoController.h"
 #include "IOSController.h"
 #include "OscController.h"
+#include "KinectController.h"
 
 #include "AppView.h"
 #include "GuiView.h"
@@ -56,7 +57,8 @@ private:
 	MidiController*			_midiController;
 	OscController*			_oscController;
 	VideoController*		_videoController;
-	IOSController*           _IOSController;
+	IOSController*          _IOSController;
+    KinectController*       _kinectController;
 
 	AppView*				_appView;
 	GuiView*				_guiView;

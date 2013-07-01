@@ -15,7 +15,7 @@ OscController::OscController() {
 
 	_oscIn.setup( 60000 );
 
-	_oscOut.setup( "10.1.1.10", 60001);
+	_oscOut.setup( "192.168.1.200", 60001);
 
 }
 
@@ -61,6 +61,7 @@ void OscController::update() {
 					case OFXOSC_TYPE_STRING:
 					{
 						OscMessage oscMessage(m.getAddress(), m.getArgAsString(0), (double)0);
+						//cout << m.getAddress() << " " << m.getArgAsString(0) << endl;
 						_oscModel->executeFunction(oscMessage);
 						break;
 					}

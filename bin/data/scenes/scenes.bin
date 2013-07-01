@@ -1,48 +1,47 @@
-22 serialization::archive 9 0 0 4 0 1 1 0
-0 9 000 black 8 6_sextet 5 -1 -1 0 0 12 0 3 1 0
-1 2 0 1 0 0 1 0 31 D:\HYDRA_VIDEO_FINALS\black.mov 9 black.mov 3
-2 2 0 1 0 0 1 0 31 D:\HYDRA_VIDEO_FINALS\black.mov 9 black.mov 3
-3 2 0 1 0 0 1 0 31 D:\HYDRA_VIDEO_FINALS\black.mov 9 black.mov 3
-4 2 0 1 0 0 1 0 31 D:\HYDRA_VIDEO_FINALS\black.mov 9 black.mov 3
-5 2 0 1 0 0 1 0 31 D:\HYDRA_VIDEO_FINALS\black.mov 9 black.mov 3
-6 2 0 1 0 0 1 0 31 D:\HYDRA_VIDEO_FINALS\black.mov 9 black.mov 3
+22 serialization::archive 9 0 0 5 0 1 1 0
+0 8 005 test 8 2_double 1 -1 -1 0 0 8 0 3 1 0
+1 2 0 1 0 0 1 0 49 D:\HYDRA_VIDEO_FINALS\Dickie_voice_w_anthro_1.mov 27 Dickie_voice_w_anthro_1.mov 3
+2 1 0 1 0 0 1 0 8 camera_1 8 camera_1 3
+3 0 0 0 0 0 1 0 0  0  3
+4 0 0 0 0 0 1 0 0  0  3
+5 0 0 0 0 0 1 0 0  0  3
+6 0 0 0 0 0 1 0 0  0  3
 7 0 0 0 0 0 1 0 0  0  3
-8 0 0 0 0 0 1 0 0  0  3
-9 0 0 0 0 0 1 0 0  0  3
-10 0 0 0 0 0 1 0 0  0  3
+8 0 0 0 0 0 1 0 0  0  1
+9 7 00Black 8 1_single 0 -1 -1 7 0 3
+10 2 0 1 0 0 1 0 31 D:\HYDRA_VIDEO_FINALS\black.mov 9 black.mov 3
 11 0 0 0 0 0 1 0 0  0  3
-12 0 0 0 0 0 1 0 0  0  1
-13 7 01 test 8 6_sextet 2 -1 -1 12 0 3
-14 1 0 0 0 0 1 0 8 camera_1 8 camera_1 3
-15 1 0 0 0 0 1 0 8 camera_4 8 camera_4 3
-16 2 0 1 0 0 1 0 44 D:\HYDRA_VIDEO_FINALS\iphonebodyscape1_0.mov 22 iphonebodyscape1_0.mov 3
-17 2 0 1 0 0 1 0 43 D:\HYDRA_VIDEO_FINALS\Allison_poem_chop.mov 21 Allison_poem_chop.mov 3
-18 2 0 1 0 0 1 0 43 D:\HYDRA_VIDEO_FINALS\suffering_hands_1.mov 21 suffering_hands_1.mov 3
-19 2 0 1 0 0 1 0 55 D:\HYDRA_VIDEO_FINALS\user0[Allison]_20111018172220.mov 33 user0[Allison]_20111018172220.mov 3
-20 0 0 0 0 0 1 0 0  0  3
-21 0 0 0 0 0 1 0 0  0  3
-22 0 0 0 0 0 1 0 0  0  3
-23 0 0 0 0 0 1 0 0  0  3
+12 0 0 0 0 0 1 0 0  0  3
+13 0 0 0 0 0 1 0 0  0  3
+14 0 0 0 0 0 1 0 0  0  3
+15 0 0 0 0 0 1 0 0  0  3
+16 0 0 0 0 0 1 0 0  0  1
+17 7 01 test 8 6_sextet 0 -1 -1 12 0 3
+18 1 0 1 0 0 1 0 8 camera_1 8 camera_1 3
+19 1 0 1 0 0 1 0 8 camera_4 8 camera_4 3
+20 2 0 1 0 0 0.69387758 0.5714286 36 D:\HYDRA_VIDEO_FINALS\IMG_1497_1.mov 14 IMG_1497_1.mov 3
+21 2 0 1 0 0 0.89795917 -0.51020408 52 D:\HYDRA_VIDEO_FINALS\user0[Allison]_20119715841.mov 30 user0[Allison]_20119715841.mov 3
+22 2 0 1 0 0 0.78571427 0.14285715 44 D:\HYDRA_VIDEO_FINALS\Marcela_stinking_1.mov 22 Marcela_stinking_1.mov 3
+23 2 0 1 0 0 1 0.59183675 37 D:\HYDRA_VIDEO_FINALS\Marcela_6_1.mov 15 Marcela_6_1.mov 3
 24 0 0 0 0 0 1 0 0  0  3
-25 0 0 0 0 0 1 0 0  0  1
-26 7 02 test 8 6_sextet 5 -1 -1 12 0 3
-27 2 0 1 0 0 1 0 44 D:\HYDRA_VIDEO_FINALS\Aliison_intro_chop.mov 22 Aliison_intro_chop.mov 3
-28 2 0 1 0 0 1 0 43 D:\HYDRA_VIDEO_FINALS\suffering_hands_1.mov 21 suffering_hands_1.mov 3
-29 2 0 1 0 0 1 0 35 D:\HYDRA_VIDEO_FINALS\Marcela_1.mov 13 Marcela_1.mov 3
-30 2 0 1 0 0 1 0 44 D:\HYDRA_VIDEO_FINALS\Marcela_HumanMic_0.mov 22 Marcela_HumanMic_0.mov 3
-31 2 0 1 0 0 1 0 52 D:\HYDRA_VIDEO_FINALS\user0[Allison]_20119715841.mov 30 user0[Allison]_20119715841.mov 3
-32 2 0 1 0 0 1 0 52 D:\HYDRA_VIDEO_FINALS\user0[dickie]_201111150856.mov 30 user0[dickie]_201111150856.mov 3
+25 0 0 0 0 0 1 0 0  0  3
+26 0 0 0 0 0 1 0 0  0  3
+27 0 0 0 0 0 1 0 0  0  3
+28 0 0 0 0 0 1 0 0  0  3
+29 0 0 0 0 0 1 0 0  0  1
+30 10 01Camera01 8 1_single 0 -1 -1 7 0 3
+31 1 0 1 0 0 1 0 8 camera_1 8 camera_1 3
+32 0 0 0 0 0 1 0 0  0  3
 33 0 0 0 0 0 1 0 0  0  3
 34 0 0 0 0 0 1 0 0  0  3
 35 0 0 0 0 0 1 0 0  0  3
 36 0 0 0 0 0 1 0 0  0  3
-37 0 0 0 0 0 1 0 0  0  3
-38 0 0 0 0 0 1 0 0  0  1
-39 7 03 test 8 1_single 0 -1 -1 7 0 3
-40 2 0 1 0 0 1 0 44 D:\HYDRA_VIDEO_FINALS\iphonebodyscape7_1.mov 22 iphonebodyscape7_1.mov 3
+37 0 0 0 0 0 1 0 0  0  1
+38 10 02Camera02 8 1_single 0 -1 -1 7 0 3
+39 1 0 1 0 0 1 0 8 camera_2 8 camera_2 3
+40 0 0 0 0 0 1 0 0  0  3
 41 0 0 0 0 0 1 0 0  0  3
 42 0 0 0 0 0 1 0 0  0  3
 43 0 0 0 0 0 1 0 0  0  3
 44 0 0 0 0 0 1 0 0  0  3
-45 0 0 0 0 0 1 0 0  0  3
-46 0 0 0 0 0 1 0 0  0 
+45 0 0 0 0 0 1 0 0  0 

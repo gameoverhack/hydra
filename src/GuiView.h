@@ -13,6 +13,7 @@
 #include "BaseView.h"
 #include "BaseState.h"
 #include "MidiModel.h"
+#include "OscModel.h"
 #include "hGui_all.h"
 #include "hObject.h"
 
@@ -83,6 +84,10 @@ public:
     void updatePatternLayout();
 
     void autoMidiMap(int port, int byteTwo);
+    void oscPlayScene(string sceneName);
+    void oscIpadControl(string ipadID, string movieName);
+    void oscShowControl(string command, string args);
+    void oscKinectControl(string command, string args);
 
 private:
 

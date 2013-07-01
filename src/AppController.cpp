@@ -39,6 +39,7 @@ AppController::AppController() {
 	_oscController = new OscController();
 	_videoController = new VideoController();
 	_IOSController = new IOSController();
+    _kinectController = new KinectController();
 
     _appModel->loadScenes("scenes/scenes.bin");
     _appModel->listVideoFolder(boost::any_cast<string>(_appModel->getProperty("videoPath")));
@@ -210,6 +211,7 @@ void AppController::exit() {
 	delete _midiController;
 	delete _videoController;
 	delete _IOSController;
+	delete _kinectController;
 	delete _appModel;
 
 }
@@ -237,6 +239,7 @@ void AppController::update() {
     _oscController->update();
     _videoController->update();
     _IOSController->update();
+    _kinectController->update();
 #ifndef FENSTER
     _appView->update();
     _guiView->update();
