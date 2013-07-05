@@ -1,0 +1,12 @@
+ofxBlur
+ofxCv
+ofxhGui
+ofxhUtils
+ofxLogger
+ofxMVC
+ofxNetwork
+ofxOpenCv
+ofxOpenNI
+ofxOsc
+ofxThreadedVideo
+ofxXmlSettings

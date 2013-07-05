@@ -1,0 +1,4 @@
+ofxIOSimpleFTP
+ofxLogger
+ofxNetwork
+ofxOsc
