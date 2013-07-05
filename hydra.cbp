@@ -6,7 +6,7 @@
 		<Option makefile="makefile" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="src\;" />
+		<Option virtualFolders="src\;shaders\;" />
 		<Build>
 			<Target title="release">
 				<Option output="bin/$(PROJECT_NAME)" prefix_auto="1" extension_auto="1" />
@@ -377,6 +377,18 @@
 		<Unit filename="../../../addons/ofxhUtils/src/hStringUtils/hStringUtils.h" />
 		<Unit filename="../../../addons/ofxhUtils/src/hTable/hTable.cpp" />
 		<Unit filename="../../../addons/ofxhUtils/src/hTable/hTable.h" />
+		<Unit filename="bin/data/shaders/degrade.frag">
+			<Option virtualFolder="shaders/" />
+		</Unit>
+		<Unit filename="bin/data/shaders/degrade.vert">
+			<Option virtualFolder="shaders/" />
+		</Unit>
+		<Unit filename="bin/data/shaders/deinterlace.frag">
+			<Option virtualFolder="shaders/" />
+		</Unit>
+		<Unit filename="bin/data/shaders/deinterlace.vert">
+			<Option virtualFolder="shaders/" />
+		</Unit>
 		<Unit filename="src/AppController.cpp">
 			<Option virtualFolder="src/" />
 		</Unit>

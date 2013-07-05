@@ -11,8 +11,13 @@
 
 //--------------------------------------------------------------
 VideoController::VideoController() {
+
 	LOG_NOTICE("Constructing VideoController");
+
     registerStates();
+
+    _functionModel->registerFunction("VideoController::showVideoSettings", MakeDelegate(this, &VideoController::showVideoSettings));
+
     numberOfMovies = numberOfMoviesLoaded = 0;
 	currentlyLoadingVideo = -1;
 
@@ -26,17 +31,25 @@ VideoController::VideoController() {
 
         camera->setRequestedMediaSubType(VI_MEDIASUBTYPE_UYVY);
 
-		if(i < 3) camera->setDeviceID(5 + i);
-        if(i >= 3) camera->setDeviceID(5 + i + 1);
+        string deviceName = "Decklink Video Capture";
+        if(i > 0) deviceName += " (" + ofToString(i+1) + ")";
+        cout << "SETTING UP: " << deviceName << endl;
+
+        camera->setDeviceID(deviceName);
+
+//		if(i < 3) camera->setDeviceID(5 + i);
+//        if(i >= 3) camera->setDeviceID(5 + i + 1);
 
         if(i == 0){
             camera->initGrabber(1920, 1080);
-        }else if(i == 2){
+        }else if(i == 4){
             camera->initGrabber(1280, 720);
+            //camera->videoSettings();
         }else{
             camera->initGrabber(720, 576);
         }
-        camera->listDevices();
+        camera->getDevices();
+        //camera->listDevices();
         cameras.insert(pair< string, ofVideoGrabber* >("camera_"+ofToString(i+1), camera));
 	}
 //assert(false);
@@ -60,6 +73,18 @@ void VideoController::registerStates() {
 
 	setState(kVIDEOCONTROLLER_READY);
 
+}
+
+//--------------------------------------------------------------
+void VideoController::showVideoSettings(int cameraIndex){
+    string cameraName = "camera_"+ofToString(cameraIndex);
+    LOG_NOTICE("Showing Video Settings for " + cameraName);
+    ofVideoGrabber* camera = _appModel->getCamera(cameraName);
+    if(camera != NULL){
+        camera->videoSettings();
+    }else{
+        LOG_ERROR(cameraName + " does not exist!");
+    }
 }
 
 //--------------------------------------------------------------

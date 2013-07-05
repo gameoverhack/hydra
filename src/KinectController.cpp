@@ -34,6 +34,17 @@ void KinectController::registerStates() {
 void KinectController::update() {
 
     KinectVideoPlayer& kinectVideoPlayer = _appModel->getKinectVideoPlayer();
+    if(kinectVideoPlayer.isSetup){
+        if(kinectVideoPlayer.kinectAppState != KINECT_APP_OFF && ofGetElapsedTimeMillis() - kinectVideoPlayer.lastHeartBeat > 3000){
+            LOG_WARNING("Kinect OSC Device gone offline");
+            //kinectVideoPlayer.isSetup = false;
+            kinectVideoPlayer.kinectAppState = KINECT_APP_OFF;
+            kinectVideoPlayer.files.clear();
+            kinectVideoPlayer.currentFile = "";
+            kinectVideoPlayer.currentFrame = kinectVideoPlayer.totalFrames = 0;
+            kinectVideoPlayer.bNeedsDisplayUpdate = true;
+        }
+    }
     while(oscReceiver.hasWaitingMessages()){
 		// get the next message
 		ofxOscMessage m;
@@ -41,26 +52,40 @@ void KinectController::update() {
 
         int kinectIPID = m.getArgAsInt32(0);
 
-        cout << "Received: " << m.getAddress() << " from kinectIPID: " << kinectIPID << " ";
+        //cout << "Received: " << m.getAddress() << " from kinectIPID: " << kinectIPID << " ";
 
         if(m.getAddress() == "/app/heartbeat"){
-
-            string kinectAppState = _appModel->getKinectAppStateAsString((KinectAppState)m.getArgAsInt32(1));
+            KinectAppState kinectAppState = (KinectAppState)m.getArgAsInt32(1);
             string currentFile = m.getArgAsString(2);
             int currentFrame = m.getArgAsInt32(3);
             int totalFrames = m.getArgAsInt32(4);
-
-            cout << kinectAppState << " " << currentFile << " " << currentFrame << " / " << totalFrames << endl;
-
+            //cout << kinectAppState << " " << currentFile << " " << currentFrame << " / " << totalFrames << endl;
             if(!kinectVideoPlayer.isSetup){
+                kinectVideoPlayer.lastHeartBeat = ofGetElapsedTimeMillis();
                 kinectVideoPlayer.oscSender->setup("192.168.1." + ofToString(kinectIPID), 6668);
+                kinectVideoPlayer.kinectAppState = kinectAppState;
                 kinectVideoPlayer.isSetup = true;
                 _appModel->sendAllKinectOsc("/app/list", "");
             }else{
+                if(kinectVideoPlayer.kinectAppState == KINECT_APP_OFF){
+                    _appModel->sendAllKinectOsc("/app/list", "");
+                }
+                kinectVideoPlayer.lastHeartBeat = ofGetElapsedTimeMillis();
+                kinectVideoPlayer.kinectAppState = kinectAppState;
                 kinectVideoPlayer.currentFile = currentFile;
                 kinectVideoPlayer.currentFrame = currentFrame;
                 kinectVideoPlayer.totalFrames = totalFrames;
             }
+        }
+
+        if(m.getAddress() == "/app/list"){
+            cout << "List directory received files: " << endl;
+            kinectVideoPlayer.files.clear();
+            for(int i = 1; i < m.getNumArgs(); i++){
+                cout << m.getArgAsString(i) << endl;
+                kinectVideoPlayer.files.push_back(m.getArgAsString(i));
+            }
+            kinectVideoPlayer.bNeedsDisplayUpdate = true;
         }
     }
 

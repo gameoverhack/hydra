@@ -54,14 +54,27 @@ public:
     void mouseReleased(ofMouseEventArgs & m);
 #endif
 
-    void syncIOSDevice(hEventArgs& args);
+    void autoMidiMap(int port, int byteTwo);
+
+    void oscIpadControl(string ipadID, string value);
+    void oscPrompterControl(string command, string value);
+    void oscKinectControl(string command, string value);
+
     void updateIOSVideoList(int iosID);
+    void stopIOSVideo(hEventArgs& args);
+    void syncIOSDevice(hEventArgs& args);
+    void delIOSDevice(hEventArgs& args);
+
+    void updateKinectVideoList();
+    void stopKinectVideo(hEventArgs& args);
+    void fadeKinectVideo(hEventArgs& args);
 
     void save(hEventArgs& args);
     void addScene(hEventArgs& args);
     void del(hEventArgs& args);
     void delAll(hEventArgs& args);
     void rewind(hEventArgs& args);
+    void rewindAll(hEventArgs& args);
 
     void updateVideoPath(hEventArgs& args);
     void updateTextPath(hEventArgs& args);
@@ -72,6 +85,7 @@ public:
     void selectCamera(hEventArgs& args);
     void selectVideo(hEventArgs& args);
     void selectIOSVideo(hEventArgs& args);
+    void selectKinectVideo(hEventArgs& args);
     void selectScene(hEventArgs& args);
     void selectText(hEventArgs& args);
     void setOffScreen(hEventArgs& args);
@@ -82,12 +96,6 @@ public:
     void updateVideoList();
     void updateSceneList();
     void updatePatternLayout();
-
-    void autoMidiMap(int port, int byteTwo);
-    void oscPlayScene(string sceneName);
-    void oscIpadControl(string ipadID, string movieName);
-    void oscShowControl(string command, string args);
-    void oscKinectControl(string command, string args);
 
 private:
 

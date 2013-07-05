@@ -34,11 +34,18 @@ void IOSController::update() {
 
     map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOSVideoPlayers();
 
-//    if(ofGetFrameNum() % 120 == 0 && bStressTest){
-//        vector<string> & files = (iosVideoPlayers.begin())->second->files;
-//        string file = files[ofRandom(files.size() - 1)];
-//        _appModel->sendAllIPADosc("/app/play", file);
-//    }
+    for(map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.begin(); it != iosVideoPlayers.end(); ++it){
+        IOSVideoPlayer * iosVideoPlayer = it->second;
+        if(iosVideoPlayer->iosAppState != IOS_APP_OFF && ofGetElapsedTimeMillis() - iosVideoPlayer->lastHeartBeat > 3000){
+            LOG_WARNING("IOS OSC Device gone offline: " + ofToString(it->first));
+//            iosVideoPlayers.erase(it);
+            iosVideoPlayer->iosAppState = IOS_APP_OFF;
+            iosVideoPlayer->files.clear();
+            iosVideoPlayer->currentFile = "";
+            iosVideoPlayer->currentFrame = iosVideoPlayer->totalFrames = 0;
+            iosVideoPlayer->bNeedsDisplayUpdate = true;
+        }
+    }
 
     while(oscReceiver.hasWaitingMessages()){
 		// get the next message
@@ -50,19 +57,28 @@ void IOSController::update() {
         //cout << "Received: " << m.getAddress() << " from iosIPID: " << iosIPID << " ";
 
         if(m.getAddress() == "/app/heartbeat"){
-            string ipadAppState = _appModel->getIOSAppStateAsString((IOSAppState)m.getArgAsInt32(1));
+            IOSAppState iosAppState = (IOSAppState)m.getArgAsInt32(1);
             string currentFile = m.getArgAsString(2);
             int currentFrame = m.getArgAsInt32(3);
             int totalFrames = m.getArgAsInt32(4);
             map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(iosIPID);
-            //cout << ipadAppState << " " << currentFile << " " << currentFrame << " / " << totalFrames << endl;
+            //cout << iosAppState << " " << currentFile << " " << currentFrame << " / " << totalFrames << endl;
             if(it == iosVideoPlayers.end()){
+                LOG_VERBOSE("Creating IOS Device");
                 IOSVideoPlayer * iosVideoPlayer = new IOSVideoPlayer;
+                iosVideoPlayer->lastHeartBeat = ofGetElapsedTimeMillis();
+                iosVideoPlayer->iosAppState = iosAppState;
                 iosVideoPlayer->oscSender->setup("192.168.1." + ofToString(iosIPID), 6666);
                 iosVideoPlayers[iosIPID] = iosVideoPlayer;
                 _appModel->sendIOSOsc("/app/list", iosIPID);
             }else{
                 IOSVideoPlayer * iosVideoPlayer = it->second;
+                if(iosVideoPlayer->iosAppState == IOS_APP_OFF){
+                    LOG_VERBOSE("Re-list IOS Device");
+                    _appModel->sendIOSOsc("/app/list", iosIPID);
+                }
+                iosVideoPlayer->lastHeartBeat = ofGetElapsedTimeMillis();
+                iosVideoPlayer->iosAppState = iosAppState;
                 iosVideoPlayer->currentFile = currentFile;
                 iosVideoPlayer->currentFrame = currentFrame;
                 iosVideoPlayer->totalFrames = totalFrames;

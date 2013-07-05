@@ -8,6 +8,7 @@
  */
 
 #include "GuiView.h"
+#include "glut.h"
 
 //--------------------------------------------------------------
 #ifdef FENSTER
@@ -35,14 +36,14 @@ GuiView::GuiView(float x, float y, float width, float height) : BaseView(x, y, w
         _midiModel->registerEvent(5, 144, i+100, 0, kMIDI_ANY, "special trigger" + ofToString(i), "GuiView::autoMidiMap", 5, i);
 	}
 
-    _functionModel->registerFunction("GuiView::oscPlayScene", MakeDelegate(this, &GuiView::oscPlayScene));
+    //_functionModel->registerFunction("GuiView::oscPlayScene", MakeDelegate(this, &GuiView::oscPlayScene));
     _functionModel->registerFunction("GuiView::oscIpadControl", MakeDelegate(this, &GuiView::oscIpadControl));
-    _functionModel->registerFunction("GuiView::oscShowControl", MakeDelegate(this, &GuiView::oscShowControl));
+    _functionModel->registerFunction("GuiView::oscPrompterControl", MakeDelegate(this, &GuiView::oscPrompterControl));
     _functionModel->registerFunction("GuiView::oscKinectControl", MakeDelegate(this, &GuiView::oscKinectControl));
-
-    _oscModel->registerEvent("/play", (string)"/play", kOSC_PASS_PARAM_ONE, "osc play scene", "GuiView::oscPlayScene");
+// change to all prompter addresses
+    //_oscModel->registerEvent("/play", (string)"/play", kOSC_PASS_PARAM_ONE, "osc play scene", "GuiView::oscPlayScene");
     _oscModel->registerEvent("/ipad", (string)"/ipad", (string)"/ipad", kOSC_PASS_PARAM_BOTH, "osc ipad select", "GuiView::oscIpadControl");
-    _oscModel->registerEvent("/control", (string)"/control", (string)"/control", kOSC_PASS_PARAM_BOTH, "osc show control", "GuiView::oscShowControl");
+    _oscModel->registerEvent("/prompter", (string)"/prompter", (string)"/prompter", kOSC_PASS_PARAM_BOTH, "osc show control", "GuiView::oscPrompterControl");
     _oscModel->registerEvent("/kinect", (string)"/kinect", (string)"/kinect", kOSC_PASS_PARAM_BOTH, "osc kinect control", "GuiView::oscKinectControl");
 
     //assert(false);
@@ -70,88 +71,150 @@ void GuiView::registerStates() {
 }
 
 //--------------------------------------------------------------
-void GuiView::oscKinectControl(string command, string args){
-    LOG_VERBOSE("Kinect Control OSC TRIGGER: " + command + " " + args);
+void GuiView::oscKinectControl(string command, string value){
+    LOG_VERBOSE("Kinect Control OSC TRIGGER: " + command + " " + value);
 
-    int value = ofToInt(args);
-    if(command == "minDepth" && args != ""){
-
+    if(command == "minDepth" && value != ""){
+        cout << "Kinect OSC minDepth: " << value << endl;
+        _appModel->sendAllKinectOsc("/app/minDepth", value);
     }
-    if(command == "maxDepth" && args != ""){
-
+    if(command == "maxDepth" && value != ""){
+        cout << "Kinect OSC maxDepth: " << value << endl;
+        _appModel->sendAllKinectOsc("/app/maxDepth", value);
     }
-    if(command == "blur" && args != ""){
-
+    if(command == "blur" && value != ""){
+        cout << "Kinect OSC blur: " << value << endl;
+        _appModel->sendAllKinectOsc("/app/blur", value);
     }
-    if(command == "threshold" && args != ""){
-
+    if(command == "smoothing" && value != ""){
+        cout << "Kinect OSC smoothing: " << value << endl;
+        _appModel->sendAllKinectOsc("/app/smoothing", value);
     }
-    if(command == "contour" && args != ""){
-
+    if(command == "threshold" && value != ""){
+        cout << "Kinect OSC threshold: " << value << endl;
+        _appModel->sendAllKinectOsc("/app/threshold", value);
     }
-    if(command == "fadeUp" && args != ""){
-
+    if(command == "contour" && value != ""){
+        cout << "Kinect OSC contour: " << value << endl;
+        _appModel->sendAllKinectOsc("/app/contour", value);
     }
-    if(command == "fadeDown" && args != ""){
-
+    if(command == "fade" && value != ""){
+        cout << "Kinect OSC fade: " << value << endl;
+        _appModel->sendAllKinectOsc("/app/fade", value);
     }
-    if(command == "showWhite" && args != ""){
-
+    if(command == "white"){
+        cout << "Kinect OSC white: " << value << endl;
+        _appModel->sendAllKinectOsc("/app/white", value);
     }
-    if(command == "showSnapshot" && args != ""){
-
+    if(command == "image"){
+        cout << "Kinect OSC image: " << value << endl;
+        _appModel->sendAllKinectOsc("/app/image", value);
     }
-    if(command == "takeSnapshot" && args != ""){
-
+    if(command == "snapshot"){
+        cout << "Kinect OSC snapshot: " << value << endl;
+        _appModel->sendAllKinectOsc("/app/snapshot", value);
     }
-    if(command == "play" && args != ""){
-        cout << "Kinect OSC Play: " << args << endl;
-        _appModel->sendAllKinectOsc("/app/play", args);
+    if(command == "play" && value != ""){
+        cout << "Kinect OSC Play: " << value << endl;
+        hEventArgs args;
+        args.eventName = "selectKinectVideo";
+        args.strings.push_back(value);
+        selectKinectVideo(args);
     }
     if(command == "stop"){
-
+        cout << "Kinect OSC Stop: " << value << endl;
+        _appModel->sendAllKinectOsc("/app/stop", value);
     }
 }
 
 //--------------------------------------------------------------
-void GuiView::oscShowControl(string command, string args){
-    LOG_VERBOSE("Show Control OSC TRIGGER: " + command + " " + args);
+void GuiView::oscPrompterControl(string command, string value){
+    LOG_VERBOSE("Show Prompter OSC TRIGGER: " + command + " " + value);
 
     // rewind scene commands
-    if(command == "rewind" && args == ""){
+    if(command == "rewind" && value == ""){
+        cout << "Prompter OSC Rewind: " << value << endl;
         Scene* scene = _appModel->getCurrentScene();
         if (scene == NULL) return;
         _appModel->rewindScene(scene);
     }
-    if(command == "rewind" && args != "all" && args != ""){
-        Scene* scene = _appModel->getScene(args);
+
+    if(command == "rewind" && value != "all" && value != ""){
+        cout << "Prompter OSC Rewind: " << value << endl;
+        Scene* scene = _appModel->getScene(value);
         if (scene == NULL) return;
         _appModel->rewindScene(scene);
     }
-    if(command == "rewind" && args == "all"){
+
+    if(command == "rewind" && value == "all"){
+        cout << "Prompter OSC Rewind: " << value << endl;
         _appModel->rewindAll();
     }
 
+    // play scene command
+    if(command == "play"){
+        cout << "Prompter OSC Play: " << value << endl;
+        hEventArgs args;
+        args.eventName = "selectScene";
+        Scene* scene = _appModel->getScene(value);
+        if (scene == NULL) return;
+        args.strings.push_back(scene->getName());
+        selectScene(args);
+        string sceneName = scene->getName();
+        hGui * gui = hGui::getInstance();
+        hListBox * sceneList = (hListBox*)gui->getWidget("sceneList");
+        sceneList->selectElement(sceneName);
+        sceneList->setScrollBarPosition(sceneList->findElement(sceneName)->index - 1);
+    }
 }
 
 //--------------------------------------------------------------
-void GuiView::oscIpadControl(string ipadID, string movieName){
-    LOG_VERBOSE("Ipad OSC TRIGGER: " + ipadID + " " + movieName);
+void GuiView::oscIpadControl(string ipadID, string value){
+
+    LOG_VERBOSE("Ipad OSC TRIGGER: " + ipadID + " " + value);
+
+    int iIpadID;
+    if(ipadID == "A"){
+        iIpadID = -100; // garbage
+    }else{
+       iIpadID = ofToInt(ipadID) - 1;
+    }
+
+    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOSVideoPlayers();
+    map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iIpadID);
+
+
+    if(value == "mirror:true"){
+        if(it != iosVideoPlayers.end()){
+            _appModel->sendIOSOsc("/app/mirror", 100 + iIpadID, "1");
+        }else if(ipadID == "A"){
+            _appModel->sendAllIOSOsc("/app/mirror", "1");
+        }
+        return;
+    }
+
+    if(value == "mirror:false"){
+        if(it != iosVideoPlayers.end()){
+            _appModel->sendIOSOsc("/app/mirror", 100 + iIpadID, "0");
+        }else if(ipadID == "A"){
+            _appModel->sendAllIOSOsc("/app/mirror", "0");
+        }
+        return;
+    }
+
+    if(value == "stop"){
+        if(it != iosVideoPlayers.end()){
+            _appModel->sendIOSOsc("/app/stop", 100 + iIpadID, "");
+        }else if(ipadID == "A"){
+            _appModel->sendAllIOSOsc("/app/stop", "");
+        }
+        return;
+    }
+
     hEventArgs args;
-    args.eventName = "selectIOSVideo_" + ipadID;
-    args.strings.push_back(movieName);
+    args.eventName = "selectIOSVideo_" + ofToString(iIpadID);
+    args.strings.push_back(value);
     selectIOSVideo(args);
-}
-
-//--------------------------------------------------------------
-void GuiView::oscPlayScene(string sceneName){
-    LOG_VERBOSE("Scene OSC TRIGGER: " + sceneName);
-    hEventArgs args;
-    args.eventName = "selectScene";
-    Scene* scene = _appModel->getScene(sceneName);
-    if (scene == NULL) return;
-    args.strings.push_back(scene->getName());
-    selectScene(args);
 }
 
 //--------------------------------------------------------------
@@ -301,14 +364,40 @@ void GuiView::setup() {
     events->addListener("save", this, &GuiView::save);
     saveButton->setMessage("save");
 
-    hButton * rewindButton = gui->addButton("rewind", scenesPanel, HGUI_ABSOLUTE_POSITION, 25 + 90 * 3, 240, 80, "rewind");
+    hButton * rewindButton = gui->addButton("rewind", scenesPanel, HGUI_ABSOLUTE_POSITION, 25 + 90 * 3, 240, 60, "rewind");
     events->addListener("rewind", this, &GuiView::rewind);
     rewindButton->setMessage("rewind");
+
+    hButton * rewindAllButton = gui->addButton("rewindAll", scenesPanel, HGUI_ABSOLUTE_POSITION, 25 + 90 * 3 + 70, 240, 60, "rewind all");
+    events->addListener("rewindAll", this, &GuiView::rewindAll);
+    rewindButton->setMessage("rewindAll");
 
     // Kinect Control Panel
 
 	hPanel * kinectPanel = gui->addPanel("kinect", mainscenesPanel, HGUI_RIGHT, gui->margin2, 0, halfWidth, 250, true);
 	hLabel * kinectPanelLabel = gui->addLabel("", kinectPanel, HGUI_TOP_LEFT, 2, 0, "Kinect");
+
+    hListBox * kinectVideoList = gui->addListBox("kinectVideoList", kinectPanel, HGUI_NEXT_ROW, gui->margin2+2, gui->margin2, 200);
+
+    kinectVideoList->addItems(7,"");
+    events->addListener("selectKinectVideo", this, &GuiView::selectKinectVideo);
+    kinectVideoList->setMessage("selectKinectVideo");
+
+    hButton * fadeUp = gui->addButton("fadeUp", kinectPanel, HGUI_NEXT_ROW, gui->margin2+2, gui->margin2 - 90, 80, "fadeUp");
+    events->addListener("fadeUp", this, &GuiView::fadeKinectVideo);
+    fadeUp->setMessage("fadeUp");
+
+    hButton * fadeDown = gui->addButton("fadeDown", kinectPanel, HGUI_NEXT_COL, gui->margin2+2, 208, 80, "fadeDown");
+    events->addListener("fadeDown", this, &GuiView::fadeKinectVideo);
+    fadeDown->setMessage("fadeDown");
+
+    hButton * stopButton = gui->addButton("stopKinectVideo", kinectPanel, HGUI_NEXT_COL, gui->margin2+2, 208, 80, "stopKinectVideo");
+    events->addListener("stopKinectVideo", this, &GuiView::stopKinectVideo);
+    stopButton->setMessage("stopKinectVideo");
+
+    hCheckBox * heartBeat = gui->addCheckBox("kinectHeartBeat", kinectPanel, HGUI_NEXT_COL, gui->margin2+2, 208);
+
+    hLabel * kinectInfo = gui->addLabel("kinectDeviceInfo", kinectPanel, HGUI_NEXT_ROW, gui->margin2+2, gui->margin2 - 68, "");
 
     // Scene Layout Panel
 
@@ -423,7 +512,7 @@ void GuiView::setup() {
         }
 
         hPanel * serverPanel = gui->addPanel("server" + panelID, mainscenesPanel, HGUI_ABSOLUTE_POSITION, xx, yy, halfWidth, 250, true);
-        hLabel * serverPanelLabel = gui->addLabel("", serverPanel, HGUI_TOP_LEFT, 2, 0, "Server_" + panelID);
+        hLabel * serverPanelLabel = gui->addLabel("", serverPanel, HGUI_TOP_LEFT, 2, 0, "iPad_" + ofToString(i+1));
 
         hListBox * iosVideoList = gui->addListBox("iosVideoList" + panelID, serverPanel, HGUI_NEXT_ROW, gui->margin2+2, gui->margin2, 200);
 
@@ -431,11 +520,21 @@ void GuiView::setup() {
         events->addListener("selectIOSVideo_" + panelID, this, &GuiView::selectIOSVideo);
         iosVideoList->setMessage("selectIOSVideo_" + panelID);
 
-        hButton * syncButton = gui->addButton("syncIOSDevice" + panelID, serverPanel, HGUI_NEXT_ROW, gui->margin2+2, gui->margin2 - 90, 80, "syncIOSDevice");
+        hButton * stopButton = gui->addButton("stopIOSVideo" + panelID, serverPanel, HGUI_NEXT_ROW, gui->margin2+2, gui->margin2 - 90, 80, "stopIOSVideo");
+        events->addListener("stopIOSVideo_" + panelID, this, &GuiView::stopIOSVideo);
+        stopButton->setMessage("stopIOSVideo_" + panelID);
+
+        hButton * syncButton = gui->addButton("syncIOSDevice" + panelID, serverPanel, HGUI_NEXT_COL, gui->margin2+2, 208, 80, "syncIOSDevice");
         events->addListener("syncIOSDevice_" + panelID, this, &GuiView::syncIOSDevice);
         syncButton->setMessage("syncIOSDevice_" + panelID);
 
-        hLabel * labelInfo = gui->addLabel("iosDeviceInfo" + panelID, serverPanel, HGUI_NEXT_ROW, gui->margin2+2, gui->margin2 - 70, "");
+        hButton * delButton = gui->addButton("delIOSDevice" + panelID, serverPanel, HGUI_NEXT_COL, gui->margin2+2, 208, 80, "delIOSDevice");
+        events->addListener("delIOSDevice_" + panelID, this, &GuiView::delIOSDevice);
+        delButton->setMessage("delIOSDevice_" + panelID);
+
+        hCheckBox * heartBeat = gui->addCheckBox("iosHeartBeat" + panelID, serverPanel, HGUI_NEXT_COL, gui->margin2+2, 208);
+
+        hLabel * labelInfo = gui->addLabel("iosDeviceInfo" + panelID, serverPanel, HGUI_NEXT_ROW, gui->margin2+2, gui->margin2 - 68, "");
 
     }
 
@@ -497,11 +596,97 @@ void GuiView::update() {
         updateIOSVideoList(i);
     }
 
+    updateKinectVideoList();
+
     begin();
     {
-         if(boost::any_cast<bool>(_appModel->getProperty("showGui"))) gui->draw();
+         gui->draw();
     }
     end();
+}
+
+//--------------------------------------------------------------
+void GuiView::updateIOSVideoList(int iosID){
+
+    //LOG_VERBOSE("Update iosVideo list " + ofToString(iosID));
+
+    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOSVideoPlayers();
+    map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iosID);
+
+    if(it != iosVideoPlayers.end()){
+
+        hGui * gui = hGui::getInstance();
+        hListBox * iosVideoList = (hListBox*)gui->getWidget("iosVideoList" + ofToString(iosID));
+
+        IOSVideoPlayer* iosVideoPlayer = it->second;
+
+        hCheckBox * heartBeat = (hCheckBox*)gui->getWidget("iosHeartBeat" + ofToString(iosID));
+        if(ofGetElapsedTimeMillis() - iosVideoPlayer->lastHeartBeat < 500){
+            heartBeat->setSelected(true);
+        }else{
+            heartBeat->setSelected(false);
+        }
+
+        if(iosVideoPlayer->bNeedsDisplayUpdate){
+
+            LOG_VERBOSE("Updating iosVideo list " + ofToString(iosID));
+
+            iosVideoList->clear();
+            iosVideoList->addItems(7, "");
+
+            for (int i = 0; i < iosVideoPlayer->files.size(); i++) {
+                if (i < 7) iosVideoList->setElementLabel(i+1, iosVideoPlayer->files[i]);
+                if (i > 6) iosVideoList->addData(iosVideoPlayer->files[i]);
+            }
+
+            iosVideoList->setMessage("selectIOSVideo_" + ofToString(iosID));
+            iosVideoList->displayAllIndexes(true);
+            iosVideoPlayer->bNeedsDisplayUpdate = false;
+        }
+
+        hLabel * labelInfo = (hLabel*)gui->getWidget("iosDeviceInfo" + ofToString(iosID));
+
+        string msg = _appModel->getIOSAppStateAsString(iosVideoPlayer->iosAppState) + "  ";
+
+        if(iosVideoPlayer->currentFile != ""){
+            string elementName = iosVideoPlayer->currentFile;
+            if(iosVideoPlayer->iosAppState == IOS_APP_PLAY){
+                elementName = elementName.substr(1);
+                //cout << "name*" << iosVideoPlayer->files.size() << " " << iosVideoList->getNumData() << " " << endl;
+                if(iosVideoPlayer->files.size() > 0){
+                    iosVideoList->selectElement(elementName);
+                    iosVideoList->setScrollBarPosition(iosVideoList->findElement(elementName)->index - 1);
+                }else{
+                    //cout << "NULL" << endl;
+                }
+            }
+            msg += elementName + " " + ofToString(iosVideoPlayer->currentFrame) + " / " + ofToString(iosVideoPlayer->totalFrames);
+        }else{
+            iosVideoList->unselectLastRadioElement();
+        }
+        labelInfo->setLabel(msg);
+    }
+}
+
+//--------------------------------------------------------------
+void GuiView::delIOSDevice(hEventArgs& args){
+
+    if(glutGetModifiers() == GLUT_ACTIVE_ALT){
+        LOG_VERBOSE("Delete iosVideo device " + args.eventName);
+        vector<string> iosParts = ofSplitString(args.eventName, "_");
+        int iosID = ofToInt(iosParts[1]);
+
+        map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOSVideoPlayers();
+        map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iosID);
+
+        if(it != iosVideoPlayers.end()){
+            _appModel->sendIOSOsc("/app/delete", 100 + iosID);
+        }
+
+    }else{
+        LOG_WARNING("Hold down the Alt/Option key to delete ALL movies on this ipad!");
+    }
+
 }
 
 //--------------------------------------------------------------
@@ -527,51 +712,16 @@ void GuiView::syncIOSDevice(hEventArgs& args){
 }
 
 //--------------------------------------------------------------
-void GuiView::updateIOSVideoList(int iosID){
-
-    //LOG_VERBOSE("Update iosVideo list " + ofToString(iosID));
-
-    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOSVideoPlayers();
-    map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iosID);
-
-    if(it != iosVideoPlayers.end()){
-
-        hGui * gui = hGui::getInstance();
-        hListBox * iosVideoList = (hListBox*)gui->getWidget("iosVideoList" + ofToString(iosID));
-
-        IOSVideoPlayer* iosVideoPlayer = it->second;
-
-        if(iosVideoPlayer->bNeedsDisplayUpdate){
-            LOG_VERBOSE("Updating iosVideo list " + ofToString(iosID));
-            iosVideoList->clear();
-            iosVideoList->addItems(7, "");
-            for (int i = 0; i < iosVideoPlayer->files.size(); i++) {
-                if (i < 7) iosVideoList->setElementLabel(i+1, iosVideoPlayer->files[i]);
-                if (i > 6) iosVideoList->addData(iosVideoPlayer->files[i]);
-            }
-
-            iosVideoList->setMessage("selectIOSVideo_" + ofToString(iosID));
-            iosVideoList->displayAllIndexes(true);
-            iosVideoPlayer->bNeedsDisplayUpdate = false;
-        }
-
-        hLabel * labelInfo = (hLabel*)gui->getWidget("iosDeviceInfo" + ofToString(iosID));
-
-        if(iosVideoPlayer->currentFile != ""){
-            labelInfo->setLabel(iosVideoPlayer->currentFile + " " + ofToString(iosVideoPlayer->currentFrame) + " / " + ofToString(iosVideoPlayer->totalFrames));
-        }else{
-            labelInfo->setLabel("");
-        }
-
-    }
-}
-
-//--------------------------------------------------------------
 void GuiView::selectIOSVideo(hEventArgs& args){
     LOG_VERBOSE("Select iosVideo " + args.eventName);
 
     vector<string> iosParts = ofSplitString(args.eventName, "_");
     int iosID = ofToInt(iosParts[1]);
+
+    if(iosID == -100 && args.strings[0] != ""){
+        _appModel->sendAllIOSOsc("/app/play", args.strings[0]);
+        return;
+    }
 
     map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOSVideoPlayers();
     map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iosID);
@@ -580,10 +730,101 @@ void GuiView::selectIOSVideo(hEventArgs& args){
         _appModel->sendIOSOsc("/app/play", 100 + iosID, args.strings[0]);
     }
 
-//    hGui * gui = hGui::getInstance();
-//    hListBox * iosVideoList = (hListBox*)gui->getWidget("iosVideoList" + ofToString(iosID));
-//    iosVideoList->unselectLastRadioElement();
+}
 
+//--------------------------------------------------------------
+void GuiView::stopIOSVideo(hEventArgs& args){
+    LOG_VERBOSE("Stop IOS Video: " + args.eventName);
+
+    vector<string> iosParts = ofSplitString(args.eventName, "_");
+    int iosID = ofToInt(iosParts[1]);
+
+    map<int, IOSVideoPlayer*>& iosVideoPlayers = _appModel->getIOSVideoPlayers();
+    map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(100 + iosID);
+
+    if(it != iosVideoPlayers.end()){
+        _appModel->sendIOSOsc("/app/stop", 100 + iosID, "");
+    }
+}
+
+//--------------------------------------------------------------
+void GuiView::updateKinectVideoList(){
+    KinectVideoPlayer& kinectVideoPlayer = _appModel->getKinectVideoPlayer();
+
+    if(kinectVideoPlayer.isSetup){
+
+        hGui * gui = hGui::getInstance();
+        hListBox * kinectVideoList = (hListBox*)gui->getWidget("kinectVideoList");
+
+        hCheckBox * heartBeat = (hCheckBox*)gui->getWidget("kinectHeartBeat");
+        if(ofGetElapsedTimeMillis() - kinectVideoPlayer.lastHeartBeat < 500){
+            heartBeat->setSelected(true);
+        }else{
+            heartBeat->setSelected(false);
+        }
+
+        if(kinectVideoPlayer.bNeedsDisplayUpdate){
+
+            LOG_VERBOSE("Updating kinectVideo list");
+
+            kinectVideoList->clear();
+            kinectVideoList->addItems(7, "");
+
+            for (int i = 0; i < kinectVideoPlayer.files.size(); i++) {
+                if (i < 7) kinectVideoList->setElementLabel(i+1, kinectVideoPlayer.files[i]);
+                if (i > 6) kinectVideoList->addData(kinectVideoPlayer.files[i]);
+            }
+
+            kinectVideoList->setMessage("selectKinectVideo");
+            kinectVideoList->displayAllIndexes(true);
+            kinectVideoPlayer.bNeedsDisplayUpdate = false;
+        }
+
+        hLabel * labelInfo = (hLabel*)gui->getWidget("kinectDeviceInfo");
+
+        string msg = _appModel->getKinectAppStateAsString(kinectVideoPlayer.kinectAppState) + "  ";
+
+        if(kinectVideoPlayer.currentFile != ""){
+            if(kinectVideoPlayer.kinectAppState == KINECT_APP_PLAY){
+                string elementName = kinectVideoPlayer.currentFile;
+                if(kinectVideoPlayer.files.size() > 0){
+                    kinectVideoList->selectElement(elementName);
+                    kinectVideoList->setScrollBarPosition(kinectVideoList->findElement(elementName)->index - 1);
+                }else{
+                    //cout << "NULL" << endl;
+                }
+            }
+
+            msg += kinectVideoPlayer.currentFile + " " + ofToString(kinectVideoPlayer.currentFrame) + " / " + ofToString(kinectVideoPlayer.totalFrames);
+        }else{
+            kinectVideoList->unselectLastRadioElement();
+        }
+
+        labelInfo->setLabel(msg);
+    }
+
+}
+//--------------------------------------------------------------
+void GuiView::fadeKinectVideo(hEventArgs& args){
+    LOG_VERBOSE("Fade kinect video " + args.eventName);
+    if(args.eventName == "fadeUp"){
+        _appModel->sendAllKinectOsc("/app/fade", "1.0:3000");
+    }
+    if(args.eventName == "fadeDown"){
+        _appModel->sendAllKinectOsc("/app/fade", "0.0:3000");
+    }
+}
+
+//--------------------------------------------------------------
+void GuiView::selectKinectVideo(hEventArgs& args){
+    LOG_VERBOSE("Select kinectVideo " + args.eventName);
+    _appModel->sendAllKinectOsc("/app/play", args.strings[0]);
+}
+
+//--------------------------------------------------------------
+void GuiView::stopKinectVideo(hEventArgs& args){
+    LOG_VERBOSE("Stop Kinect Video: " + args.eventName);
+    _appModel->sendAllKinectOsc("/app/stop", "");
 }
 
 //--------------------------------------------------------------
@@ -646,14 +887,6 @@ void GuiView::updateSceneList() {
 
     sceneList->setMessage("selectScene");
     sceneList->displayAllIndexes(true);
-
-    Scene* scene = _appModel->getCurrentScene();
-    if (scene == NULL) return;
-
-    string sceneName = scene->getName();
-    sceneList->selectElement(sceneName);
-    sceneList->scrollItems(sceneList->findElement(sceneName)->index-1);
-    sceneList->setScrollBarPosition(sceneList->findElement(sceneName)->index);
 
 }
 
@@ -761,28 +994,46 @@ void GuiView::changePattern(hEventArgs& args) {
         return;
     }
 
-    int oldtype = _appModel->getPatternIndex(scene->getPatternName());
+    vector<ofRectangle*> oldPattern = _appModel->getPattern(scene->getPatternName());
     vector<ofRectangle*> pattern = _appModel->getPattern(args.strings[0]);
+    vector<VideoObject*>& videos = scene->getVideos();
 
-    if (oldtype != -1){
+    if(pattern.size() < oldPattern.size() && pattern.size() > 0){
 
-        vector<ofRectangle*> oldpattern = _appModel->getPattern(scene->getPatternName());
+        vector<VideoObject*> oldVideos;
+        oldVideos.resize(videos.size());
+        for(int i = 0; i < videos.size(); i++){
+            oldVideos[i] = videos[i];
+        }
 
-        if(oldpattern.size() > pattern.size()){
-            // delete excess videos
-            for (int i = pattern.size()-6; i < scene->getVideos().size()-6; i++) {
-                delete scene->getVideos()[i];
-                scene->getVideos()[i] = NULL;
+        videos.clear();
+        videos.resize(pattern.size());
+
+        for(int i = 0; i < 6; i++){
+            videos[videos.size() - 1 - i] = oldVideos[oldVideos.size() - 1 - i];
+        }
+
+        for(int i = 0; i < videos.size() - 6; i++){
+            if(oldVideos[i] != NULL){
+                videos[i] = oldVideos[i];
+            }else{
+                videos[i] = new VideoObject();
+            }
+        }
+
+    oldVideos.clear();
+
+    }else{
+        if(pattern.size() == 0){
+            videos.clear();
+        }else{
+            videos.resize(pattern.size());
+            for(int i = 0; i < videos.size(); i++){
+                if(videos[i] == NULL) videos[i] = new VideoObject;
             }
         }
     }
-
     scene->setPatternName(args.strings[0]);
-    scene->getVideos().resize(pattern.size());
-
-    for (int i = 0; i < pattern.size(); i++) {
-        if(scene->getVideos()[i] == NULL) scene->getVideos()[i] = new VideoObject();
-    }
 
     hGui * gui = hGui::getInstance();
     hListBox * videoList = (hListBox*)gui->getWidget("videoList");
@@ -853,8 +1104,7 @@ void GuiView::selectPattern(hEventArgs& args) {
         } else {
             cameraList->unselectLastRadioElement();
             videoList->selectElement(videoName);
-            videoList->scrollItems(videoList->findElement(videoName)->index-1);
-            videoList->setScrollBarPosition(videoList->findElement(videoName)->index);
+            videoList->setScrollBarPosition(videoList->findElement(videoName)->index - 1);
         }
     } else {
         LOG_VERBOSE("No Video/Camera path selected");
@@ -995,8 +1245,13 @@ void GuiView::rewind(hEventArgs& args) {
     LOG_VERBOSE("Rewind current scene");
     Scene* scene = _appModel->getCurrentScene();
     if (scene == NULL) return;
-
     _appModel->rewindScene(scene);
+}
+
+//--------------------------------------------------------------
+void GuiView::rewindAll(hEventArgs& args) {
+    LOG_VERBOSE("Rewind ALL scenes");
+    _appModel->rewindAll();
 }
 
 //--------------------------------------------------------------

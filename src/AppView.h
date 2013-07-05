@@ -38,13 +38,18 @@ public:
 
 private:
 
+    void drawVideoObject(VideoObject* videoObject, float x, float y, float w, float h, float cW, float cH, float cPixels);
+
     void toggleFullscreen();
 
-    ofShader _shader;
+    ofShader _shaderDegrade;
+    ofShader _shaderDeinterlace;
 
     bool bCustomFullscreen;
     ofRectangle originalRect;
     long originalStyle;
+
+    int crop720, crop1280, crop1920;
 
 protected:
 

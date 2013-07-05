@@ -35,6 +35,8 @@ public:
 
 	void threadedVideoEvent(ofxThreadedVideoEvent & e);
 
+    void showVideoSettings(int cameraIndex);
+
 private:
 
     ofDirectory dir;

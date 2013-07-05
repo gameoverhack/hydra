@@ -131,6 +131,10 @@ public:
 
     map< string, ofxThreadedVideo* >&       getOffScreenVideos() {return _offScreenVideos;};
     map< string, ofxThreadedVideo* >&       getAllVideos() {return _allVideos;};
+    void setRenderTexture(ofTexture * texture){
+        renderTexture = texture;
+    };
+    ofTexture* getRenderTexture(){return renderTexture;};
 
 private:
 
@@ -169,6 +173,7 @@ private:
     map< string, ofxThreadedVideo* >     _offScreenVideos;
     map< string, ofxThreadedVideo* >     _allVideos;
 
+    ofTexture* renderTexture;
 
 };
 

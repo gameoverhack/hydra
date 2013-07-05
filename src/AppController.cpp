@@ -24,6 +24,9 @@ AppController::AppController() {
 
 	_appModel->setProperty("showGui", true);
     _appModel->setProperty("showDebug", true);
+    _appModel->setProperty("crop720", 12);
+    _appModel->setProperty("crop1280", 80);
+    _appModel->setProperty("crop1920", 0);
 //    _appModel->setProperty("controlWidth", 1680.0f);
 //    _appModel->setProperty("controlHeight", 1050.0f);
 //    _appModel->setProperty("outputWidth", 1920.0f);
@@ -148,9 +151,14 @@ AppController::AppController() {
 //    _keyModel->registerEvent('v', kKEY_DOWN, "paste current viewport", "AppController::pasteCurrentViewport");
 //
 	_keyModel->registerEvent('f', kKEY_DOWN, "toggle fullscreen/window", "AppView::toggleFullscreen");
-	_keyModel->registerEvent('g', kKEY_DOWN, "toggle show/hide gui", "AppModel::toggleBooleanProperty", (string)"showGui");
-	_keyModel->registerEvent('p', kKEY_DOWN, "show all properties in debug view", "AppModel::toggleBooleanProperty", (string)"showProps");
-	_keyModel->registerEvent('d', kKEY_DOWN, "show/hide debug view", "AppModel::toggleBooleanProperty", (string)"showDebug");
+//	_keyModel->registerEvent('g', kKEY_DOWN, "toggle show/hide gui", "AppModel::toggleBooleanProperty", (string)"showGui");
+//	_keyModel->registerEvent('p', kKEY_DOWN, "show all properties in debug view", "AppModel::toggleBooleanProperty", (string)"showProps");
+//	_keyModel->registerEvent('d', kKEY_DOWN, "show/hide debug view", "AppModel::toggleBooleanProperty", (string)"showDebug");
+
+	for(int i = 0; i < MAX_CAMERAS; i++){
+        _keyModel->registerEvent(49+i, kKEY_DOWN, "open video settings for camera " + ofToString(i+1), "VideoController::showVideoSettings", i+1);
+	}
+
 	//_keyModel->registerEvent('s', kKEY_DOWN, "toggle dual screen draw", "AppModel::toggleBooleanProperty", (string)"showDualScreen");
 	//_keyModel->registerEvent('y', kKEY_DOWN, "increment blurIterations", "AppModel::adjustIntProperty", (string)"blurIterations", 1);
 //	//_keyModel->registerEvent('h', kKEY_DOWN, "decrement blurIterations", "AppModel::adjustIntProperty", (string)"blurIterations", -1);

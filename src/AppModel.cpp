@@ -487,27 +487,35 @@ void AppModel::sendIOSOsc(string address, int iosIPID, string arg){
     ofxOscMessage m;
     m.setAddress(address);
     m.addStringArg(arg);
+
     cout << "SendOne IOS OSC: " << iosIPID << " : " << address << " : " << arg << endl;
-    iosVideoPlayers[iosIPID]->oscSender->sendMessage(m);
+    map<int, IOSVideoPlayer*>::iterator it = iosVideoPlayers.find(iosIPID);
+    if(it != iosVideoPlayers.end()){
+        IOSVideoPlayer* iosVideoPlayer = it->second;
+        iosVideoPlayer->oscSender->sendMessage(m);
+    }
 }
 
 //--------------------------------------------------------------
 string AppModel::getIOSAppStateAsString(IOSAppState appState){
     switch (appState) {
-        case APP_INIT:
-            return "APP_INIT";
+        case IOS_APP_INIT:
+            return "IOS_APP_INIT";
             break;
-        case APP_SYNC:
-            return "APP_SYNC";
+        case IOS_APP_SYNC:
+            return "IOS_APP_SYNC";
             break;
-        case APP_PLAY:
-            return "APP_PLAY";
+        case IOS_APP_PLAY:
+            return "IOS_APP_PLAY";
             break;
-        case APP_LIST:
-            return "APP_LIST";
+        case IOS_APP_LIST:
+            return "IOS_APP_LIST";
             break;
-        case APP_WAIT:
-            return "APP_WAIT";
+        case IOS_APP_WAIT:
+            return "IOS_APP_WAIT";
+            break;
+        case IOS_APP_OFF:
+            return "IOS_APP_OFF";
             break;
     }
 }
@@ -548,6 +556,9 @@ string AppModel::getKinectAppStateAsString(KinectAppState appState){
             break;
         case KINECT_APP_LIST:
             return "KINECT_APP_LIST";
+            break;
+        case KINECT_APP_OFF:
+            return "KINECT_APP_OFF";
             break;
     }
 }

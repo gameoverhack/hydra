@@ -66,7 +66,7 @@ ofFbo* BaseView::getViewFBO(){
 }
 
 ofTexture* BaseView::getViewFBOTexture() {
-	return &_viewFBO[_activeTextureIndex].getTextureReference();
+	return &_viewFBO[0].getTextureReference();
 }
 
 float BaseView::getX(){

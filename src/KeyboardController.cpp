@@ -8,6 +8,7 @@
  */
 
 #include "KeyboardController.h"
+#include "glut.h"
 
 //--------------------------------------------------------------
 KeyboardController::KeyboardController() {
@@ -31,6 +32,7 @@ KeyboardController::~KeyboardController() {
 
 //--------------------------------------------------------------
 void KeyboardController::keyPressed(ofKeyEventArgs &e) {
+    if(glutGetModifiers() != GLUT_ACTIVE_ALT) return;
     hGui * gui = hGui::getInstance();
     if (gui->getCurrentData() !=NULL) if (gui->getCurrentData()->type == "text_box" || gui->getCurrentData()->type == "text_area") return;
 	_keyModel->executeFunction(e.key, kKEY_DOWN);
@@ -38,6 +40,7 @@ void KeyboardController::keyPressed(ofKeyEventArgs &e) {
 
 //--------------------------------------------------------------
 void KeyboardController::keyReleased(ofKeyEventArgs &e) {
+    if(glutGetModifiers() != GLUT_ACTIVE_ALT) return;
     hGui * gui = hGui::getInstance();
     if (gui->getCurrentData() !=NULL) if (gui->getCurrentData()->type == "text_box" || gui->getCurrentData()->type == "text_area") return;
 	_keyModel->executeFunction(e.key, kKEY_UP);

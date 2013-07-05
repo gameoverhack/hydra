@@ -8759,7 +8759,7 @@
 	"ofFileUtils.h"
 	"ofTypes.h"
 
-1366104333 c:\users\gameover\code\of007pc\libs\openframeworks\types\oftypes.h
+1372757986 c:\users\gameover\code\of007pc\libs\openframeworks\types\oftypes.h
 	"ofConstants.h"
 	"ofColor.h"
 	<memory>
@@ -9049,7 +9049,7 @@
 	"ofLog.h"
 	<shellapi.h>
 
-1366104573 c:\users\gameover\code\of007pc\libs\openframeworks\types\ofbasetypes.h
+1372758220 c:\users\gameover\code\of007pc\libs\openframeworks\types\ofbasetypes.h
 	"ofPoint.h"
 	"ofRectangle.h"
 	"ofConstants.h"
@@ -9372,7 +9372,7 @@
 	<sndfile.h>
 	<mpg123.h>
 
-1366111675 c:\users\gameover\code\of007pc\libs\openframeworks\video\ofvideograbber.h
+1372759125 c:\users\gameover\code\of007pc\libs\openframeworks\video\ofvideograbber.h
 	"ofConstants.h"
 	"ofTexture.h"
 	"ofBaseTypes.h"
@@ -9385,7 +9385,7 @@
 	"ofGstVideoGrabber.h"
 	"ofxAndroidVideoGrabber.h"
 
-1366104333 c:\users\gameover\code\of007pc\libs\openframeworks\video\ofquicktimegrabber.h
+1372757898 c:\users\gameover\code\of007pc\libs\openframeworks\video\ofquicktimegrabber.h
 	"ofConstants.h"
 	"ofQtUtils.h"
 	"ofTexture.h"
@@ -10291,7 +10291,7 @@
 1366104333 c:\users\gameover\code\of007pc\libs\openframeworks\video\ofqtkitgrabber.h
 	"ofMain.h"
 
-1366111663 c:\users\gameover\code\of007pc\libs\openframeworks\video\ofdirectshowgrabber.h
+1372758161 c:\users\gameover\code\of007pc\libs\openframeworks\video\ofdirectshowgrabber.h
 	"ofConstants.h"
 	"ofTexture.h"
 	"ofBaseTypes.h"
@@ -10773,7 +10773,7 @@
 	"hGui.h"
 	"hEvents.h"
 
-1366189648 source:c:\users\gameover\code\of007pc\addons\ofxhgui\src\hlistbox.cpp
+1372954597 source:c:\users\gameover\code\of007pc\addons\ofxhgui\src\hlistbox.cpp
 	"hListBox.h"
 	"hPanel.h"
 	"hListItem.h"
@@ -10818,7 +10818,7 @@
 	<typeinfo>
 	<iostream>
 
-1366189648 source:c:\users\gameover\code\of007pc\addons\ofxhgui\src\hscrollbar.cpp
+1372954845 source:c:\users\gameover\code\of007pc\addons\ofxhgui\src\hscrollbar.cpp
 	"hScrollBar.h"
 	"hScrollButton.h"
 	"hListBox.h"
@@ -12679,7 +12679,7 @@
 	<string>
 	<iostream>
 
-1372668503 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.cpp
+1373011543 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.cpp
 	"AppController.h"
 
 1372668503 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appcontroller.h
@@ -12698,7 +12698,7 @@
 	"GuiView.h"
 	"DebugView.h"
 
-1372668503 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.h
+1372820208 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.h
 	"ofxThreadedVideo.h"
 	"Config.h"
 	"Singleton.h"
@@ -12751,7 +12751,7 @@
 	"ofxOscSender.h"
 	"ofxOscReceiver.h"
 
-1372668503 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\scenedatatype.h
+1373018143 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\scenedatatype.h
 	"FunctionModel.h"
 	"SerializationUtils.h"
 	"ofxOsc.h"
@@ -15874,7 +15874,7 @@
 	"ofxMidiIn.h"
 	"ofxMidiOut.h"
 
-1372668503 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\videocontroller.h
+1372818487 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\videocontroller.h
 	"AppModel.h"
 	"Logger.h"
 	"BaseState.h"
@@ -15893,7 +15893,7 @@
 1372668503 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\oscmodel.h
 	"AppModel.h"
 
-1372668503 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.h
+1373018058 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.h
 	"BaseView.h"
 	"BaseState.h"
 	"SceneDataType.h"
@@ -15907,7 +15907,7 @@
 1315475423 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\viewport.h
 	"ofMain.h"
 
-1372668503 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.h
+1372947185 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.h
 	"BaseView.h"
 	"BaseState.h"
 	"MidiModel.h"
@@ -15920,29 +15920,31 @@
 	"AppModel.h"
 	"KeyboardModel.h"
 
-1372669412 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.cpp
+1373010451 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appmodel.cpp
 	"AppModel.h"
 
-1372668503 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.cpp
+1372929699 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\appview.cpp
 	"AppView.h"
 
 1314314228 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\basestate.cpp
 	"BaseState.h"
 
-1372668503 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\baseview.cpp
+1372820132 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\baseview.cpp
 	"BaseView.h"
 
 1372668503 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\datacontroller.cpp
 	"DataController.h"
 
-1372668503 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.cpp
+1372819971 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\debugview.cpp
 	"DebugView.h"
 
-1372668503 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.cpp
+1373016662 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\guiview.cpp
 	"GuiView.h"
+	"glut.h"
 
-1366863058 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\keyboardcontroller.cpp
+1373011614 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\keyboardcontroller.cpp
 	"KeyboardController.h"
+	"glut.h"
 
 1317313386 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\logger.cpp
 	"Logger.h"
@@ -15980,7 +15982,7 @@
 1366862982 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\textcontroller.cpp
 	"TextController.h"
 
-1372668503 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\videocontroller.cpp
+1372936224 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\videocontroller.cpp
 	"VideoController.h"
 
 1366104332 source:c:\users\gameover\code\of007pc\addons\ofxosc\libs\oscpack\src\osc\oscoutboundpacketstream.cpp
@@ -16059,15 +16061,20 @@
 	"AppModel.h"
 	"BaseState.h"
 
-1372668503 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\ioscontroller.cpp
+1373009779 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\ioscontroller.cpp
 	"IOSController.h"
 
 1372668503 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\config.h
 
-1372668503 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\kinectcontroller.cpp
+1372960815 source:c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\kinectcontroller.cpp
 	"KinectController.h"
 
 1372668503 c:\users\gameover\code\of007pc\apps\devdonotdelete\hydra\src\kinectcontroller.h
 	"AppModel.h"
 	"BaseState.h"
+
+1317284549 c:\users\gameover\code\of007pc\libs\glut\include\glut.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
 

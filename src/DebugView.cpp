@@ -78,34 +78,37 @@ void DebugView::update() {
 
 void DebugView::drawOutputView() {
 
-    Scene* scene = _appModel->getCurrentScene();
-    if (scene == NULL) return;
-
-    vector<VideoObject*> videoObjects = scene->getVideos();
-
-    string patternName = scene->getPatternName();
-    if (patternName == "") return;
-
-    vector<ofRectangle*> currentPattern = _appModel->getPattern(patternName);
+//    Scene* scene = _appModel->getCurrentScene();
+//    if (scene == NULL) return;
+//
+//    vector<VideoObject*> videoObjects = scene->getVideos();
+//
+//    string patternName = scene->getPatternName();
+//    if (patternName == "") return;
+//
+//    vector<ofRectangle*> currentPattern = _appModel->getPattern(patternName);
 
     ofSetColor(255,255,255,255);
-    for (int i = 0; i < videoObjects.size(); i++) {
-
-        float x = currentPattern[i]->x;
-        float y = currentPattern[i]->y;
-        float w = currentPattern[i]->width;
-        float h = currentPattern[i]->height;
-
-        switch(videoObjects[i]->_inputType) {
-            case GO_VIDEO_PLAYER:
-                videoObjects[i]->_player->draw(x,y,w,h);
-                break;
-            case GO_VIDEO_CAMERA:
-                videoObjects[i]->_camera->draw(x,y,w,h);
-                break;
-
-        }
-    }
+    ofTexture * renderTexture = _appModel->getRenderTexture();
+    if(renderTexture == NULL) return;
+    renderTexture->draw(0,0);
+//    for (int i = 0; i < videoObjects.size(); i++) {
+//
+//        float x = currentPattern[i]->x;
+//        float y = currentPattern[i]->y;
+//        float w = currentPattern[i]->width;
+//        float h = currentPattern[i]->height;
+//
+//        switch(videoObjects[i]->_inputType) {
+//            case GO_VIDEO_PLAYER:
+//                videoObjects[i]->_player->draw(x,y,w,h);
+//                break;
+//            case GO_VIDEO_CAMERA:
+//                videoObjects[i]->_camera->draw(x,y,w,h);
+//                break;
+//
+//        }
+//    }
 }
 
 void DebugView::drawCameraViews() {

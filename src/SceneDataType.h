@@ -56,6 +56,7 @@ public:
         _bAssigned = _bOffscreen = _bDegraded = false;
         _fVolume = 1.0f;
         _fPan = 0.0f;
+        generateRandom();
         _updated = false;
     };
 //    VideoObject(int inputType, int cropType, ofRectangle* position, goBaseVideo* video)
@@ -108,6 +109,29 @@ public:
 
     };
 
+    void generateRandom(){
+        if(_camera != NULL){
+            if(jamFBO.getWidth() != _camera->getWidth() && _camera->getWidth() != 0){
+                jamFBO.allocate(_camera->getWidth(), _camera->getHeight());
+            }
+        }
+        if(ofRandom(10) < 3.0){
+            rFactor = ofRandom(0.02, 0.03);
+            rMillis = ofRandom(5000, 20000);
+            jamMillis = ofRandom(500, 1000);
+        }else{
+            rFactor = ofRandom(0.01, 0.02);
+            rMillis = ofRandom(200, 4000);
+            jamMillis = ofRandom(100, 500);
+        }
+
+        doJam = ofRandom(10);
+        rColor1 = ofPoint(ofRandom(0.0, 0.05), ofRandom(0.0, 0.05), ofRandom(1.0));
+        rColor2 = ofPoint(ofRandom(0.0, 0.05), ofRandom(0.0, 0.05), ofRandom(1.0));
+        lastTime = ofGetElapsedTimeMillis();
+        lastJam = ofGetElapsedTimeMillis();
+    }
+
     int _inputType;
     int _cropType;
 
@@ -125,6 +149,14 @@ public:
     ofxThreadedVideo* _player;
     ofxThreadedVideo* _overlay;
     ofVideoGrabber*   _camera;
+
+    float rFactor;
+    int rMillis;
+    int jamMillis;
+    int lastTime, lastJam;
+    float doJam;
+    ofPoint rColor1, rColor2;
+    ofFbo jamFBO;
 
 private:
 
@@ -145,11 +177,12 @@ private:
 };
 
 enum IOSAppState{
-    APP_INIT = 0,
-    APP_SYNC,
-    APP_PLAY,
-    APP_LIST,
-    APP_WAIT
+    IOS_APP_INIT = 0,
+    IOS_APP_SYNC,
+    IOS_APP_PLAY,
+    IOS_APP_LIST,
+    IOS_APP_WAIT,
+    IOS_APP_OFF
 };
 
 class IOSVideoPlayer{
@@ -173,6 +206,7 @@ public:
     string currentFile;
     int currentFrame;
     int totalFrames;
+    int lastHeartBeat;
     IOSAppState iosAppState;
 };
 
@@ -181,7 +215,8 @@ enum KinectAppState{
     KINECT_APP_WHITE,
     KINECT_APP_IMAGE,
     KINECT_APP_PLAY,
-    KINECT_APP_LIST
+    KINECT_APP_LIST,
+    KINECT_APP_OFF
 };
 
 class KinectVideoPlayer{
@@ -211,6 +246,7 @@ public:
     int minDepth, maxDepth;
     float blurScale, threshold;
     bool bUseContour;
+    int lastHeartBeat;
     KinectAppState kinectAppState;
 };
 
@@ -221,7 +257,7 @@ public:
 	Scene() {
         LOG_VERBOSE("Creating scene");
         _name = "";
-        _patternName = "";
+        setPatternName("0_none");
         _layoutPosition = 0;
         _midiNote = _midiChannel = -1;
 	};

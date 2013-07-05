@@ -21,8 +21,14 @@ AppView::AppView(float x, float y, float width, float height) : BaseView(x, y, w
 
     _functionModel->registerFunction("AppView::toggleFullscreen", MakeDelegate(this, &AppView::toggleFullscreen));
 
-    _shader.load(ofToDataPath("shaders/deinterlace.vert"), ofToDataPath("shaders/deinterlace.frag"));
+    _shaderDeinterlace.load("shaders/deinterlace");
+    _shaderDegrade.load("shaders/degrade");
 
+    _appModel->setRenderTexture(getViewFBOTexture());
+
+    crop720 = boost::any_cast<int>(_appModel->getProperty("crop720"));
+    crop1280 = boost::any_cast<int>(_appModel->getProperty("crop1280"));
+    crop1920 = boost::any_cast<int>(_appModel->getProperty("crop1920"));
 //    currentPatternIndex = -1;
 //    currentPattern = nextPattern = NULL;
 }
@@ -68,19 +74,23 @@ void AppView::update() {
             float w = currentPattern[i]->width;
             float h = currentPattern[i]->height;
 
+
             switch(videoObjects[i]->_inputType) {
                 case GO_VIDEO_PLAYER:
+//                    float vW = videoObjects[i]->_player->getWidth();
+//                    float vH = videoObjects[i]->_player->getHeight();
+//                    drawVideoObject(videoObjects[i], x, y, w, h);
                     videoObjects[i]->_player->draw(x,y,w,h);
                     break;
                 case GO_VIDEO_CAMERA:
-                    if(videoObjects[i]->_camera->getWidth() == 720){
-                        _shader.begin(); // 1 is TP1 (ie presenter)
-                        videoObjects[i]->_camera->getTextureReference().drawSubsection(x, y, w * 1024.0/720.0f, h, 12, 5, w - 10, h - 10);
-                        _shader.end();
+                    float cW = videoObjects[i]->_camera->getWidth();
+                    float cH = videoObjects[i]->_camera->getHeight();
+                    if(cW == 720){
+                        drawVideoObject(videoObjects[i], x, y, w, h, cW, cH, crop720);
+                    }else if(cW == 1280){
+                        drawVideoObject(videoObjects[i], x, y, w, h, cW, cH, crop1280);
                     }else{
-                        _shader.begin();
-                        videoObjects[i]->_camera->draw(x,y,w,h);
-                        _shader.end();
+                        drawVideoObject(videoObjects[i], x, y, w, h, cW, cH, crop1920);
                     }
                     break;
 
@@ -88,6 +98,42 @@ void AppView::update() {
         }
     }
     end();
+
+}
+
+void AppView::drawVideoObject(VideoObject* videoObject, float x, float y, float w, float h, float cW, float cH, float cPixels){
+
+    if(videoObject->_bDegraded){
+        if(ofGetElapsedTimeMillis() - videoObject->lastTime > videoObject->rMillis) videoObject->generateRandom();
+        if(ofGetElapsedTimeMillis() - videoObject->lastJam > videoObject->jamMillis){
+            videoObject->lastJam = ofGetElapsedTimeMillis();
+            videoObject->doJam = ofRandom(10);
+            videoObject->jamFBO.begin();
+            {
+                videoObject->_camera->getTextureReference().draw(0,0);
+            }
+            videoObject->jamFBO.end();
+        }
+        _shaderDegrade.begin();
+            {
+                if(videoObject->doJam < 3.5){
+                    videoObject->jamFBO.getTextureReference().drawSubsection(x, y, w, h, cPixels, cPixels, cW - 2.0 * cPixels, cH - 2.0 * cPixels);
+                }else{
+                    videoObject->_camera->getTextureReference().drawSubsection(x, y, w, h, cPixels, cPixels, cW - 2.0 * cPixels, cH - 2.0 * cPixels);
+                }
+
+                _shaderDegrade.setUniform3f("rColor1", videoObject->rColor1.x, videoObject->rColor1.y, videoObject->rColor1.z);
+                _shaderDegrade.setUniform3f("rColor2", videoObject->rColor2.x, videoObject->rColor2.y, videoObject->rColor2.z);
+                _shaderDegrade.setUniform1f("rWidth", videoObject->rFactor);
+                _shaderDegrade.setUniform1f("rHeight", videoObject->rFactor);
+            }
+        _shaderDegrade.end();
+
+    }else{
+        _shaderDeinterlace.begin();
+        videoObject->_camera->getTextureReference().drawSubsection(x, y, w, h, cPixels, cPixels, cW - 2.0 * cPixels, cH - 2.0 * cPixels);
+        _shaderDeinterlace.end();
+    }
 }
 
 void AppView::toggleFullscreen() {
