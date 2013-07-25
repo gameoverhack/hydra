@@ -26,7 +26,7 @@ OscController::~OscController() {
 }
 
 void OscController::update() {
-return;
+
 	// do rec osc commands
 	while( _oscIn.hasWaitingMessages() )
 	{
