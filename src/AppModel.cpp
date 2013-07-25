@@ -136,21 +136,37 @@ bool AppModel::loadScenes(string path) {
             for (int j = 0; j < videoObjects.size(); j++) {
                 if (videoObjects[j]->_inputType == GO_VIDEO_CAMERA) videoObjects[j]->_bAssigned = false;
                 if (videoObjects[j]->_inputType == GO_VIDEO_PLAYER) {
-                    LOG_VERBOSE("Load video: " + videoObjects[j]->_videoName);
+                    //LOG_VERBOSE("Finding video: " + videoObjects[j]->_videoName);
                     map< string, ofxThreadedVideo* >::iterator it = _allVideos.find(videoObjects[j]->_videoName);
                     if (it == _allVideos.end()) {
+                        LOG_VERBOSE("Loading video: " + videoObjects[j]->_videoName);
                         videoObjects[j]->_bAssigned = true;
                         videoObjects[j]->_player = new ofxThreadedVideo();
                         videoObjects[j]->_player->setPixelFormat(OF_PIXELS_BGRA);
+                        videoObjects[j]->_player->setLoopState(OF_LOOP_NONE);
+
                         videoObjects[j]->_player->loadMovie(videoObjects[j]->_videoPath);
                         videoObjects[j]->_player->update();
-                        while(videoObjects[j]->_player->isLoading()) {
+                        int attempts = 0;
+                        while(!videoObjects[j]->_player->isLoaded()) {
                             videoObjects[j]->_player->update();
-                            videoObjects[j]->_player->draw();
+                            attempts++;
+                            if(attempts >= 1000000) break;
+                            //videoObjects[j]->_player->draw();
                         }
-                        videoObjects[j]->_player->setLoopState(OF_LOOP_NONE);
-                        _allVideos.insert(pair< string, ofxThreadedVideo* >(videoObjects[j]->_videoName, videoObjects[j]->_player));
+
+                        if(attempts < 1000000){
+                            videoObjects[j]->_player->setPaused(true);
+                            //videoObjects[j]->_player->setVolume(0.0f);
+                            LOG_VERBOSE("...OK " + videoObjects[j]->_videoName);
+                            _allVideos.insert(pair< string, ofxThreadedVideo* >(videoObjects[j]->_videoName, videoObjects[j]->_player));
+                        }else{
+                            LOG_ERROR("...FAIL " + videoObjects[j]->_videoName + " <====   **** SOMETHING IS WRONG WITH THIS FILE ****");
+                            //assert(false);
+                        }
+
                     } else {
+                        LOG_VERBOSE("Assigning video: " + videoObjects[j]->_videoName);
                         videoObjects[j]->_player = it->second;
                     }
 
@@ -256,7 +272,9 @@ bool AppModel::rewindScene(Scene* scene) {
                 break;
             case GO_VIDEO_PLAYER:
                 if (videoObjects[i]->_player != NULL) {
+                    if(getCurrentScene() != scene) videoObjects[i]->_player->setPaused(true);
                     videoObjects[i]->_player->setFrame(0);
+                    videoObjects[i]->_player->update();
                     //videoObjects[i]->_player->setVolume(0);
                 }
                 break;
@@ -288,9 +306,11 @@ bool AppModel::setupScene(Scene* scene) {
             case GO_VIDEO_PLAYER:
                 //videoObjects[i]->_player->setFrame(0);
                 if (videoObjects[i]->_player != NULL) {
+                    if (videoObjects[i]->_player->getIsMovieDone()) videoObjects[i]->_player->setFrame(0);
+                    videoObjects[i]->_player->setPaused(false);
                     videoObjects[i]->_player->setVolume(videoObjects[i]->_fVolume);
                     videoObjects[i]->_player->setPan(videoObjects[i]->_fPan);
-                    if (videoObjects[i]->_player->getIsMovieDone()) videoObjects[i]->_player->setFrame(0);
+                    videoObjects[i]->_player->update();
                 }
                 break;
         }
@@ -302,35 +322,35 @@ bool AppModel::setupScene(Scene* scene) {
 bool AppModel::setCurrentScene(string sceneName) {
 
     Scene * lastScene = _currentScene;
-
-    if(lastScene != NULL){
-        vector<VideoObject*>& videoObjects = lastScene->getVideos();
-        for (int i =0; i < videoObjects.size(); i++) {
-        switch (videoObjects[i]->_inputType) {
-            case GO_VIDEO_CAMERA:
-                // nothing
-                break;
-            case GO_VIDEO_PLAYER:
-                //videoObjects[i]->_player->setFrame(0);
-                if (videoObjects[i]->_player != NULL) {
-                    if(!videoObjects[i]->_bOffscreen) videoObjects[i]->_player->setVolume(0.0f);
-                }
-                break;
-        }
-    }
-    }
-
-
-	map<string, Scene *>::iterator sceneIter;
+    Scene * nextScene = NULL;
+    map<string, Scene *>::iterator sceneIter;
 	sceneIter = _scenes.find(sceneName);
-	if (sceneIter != _scenes.end()) {
+	if (sceneIter != _scenes.end()) nextScene = sceneIter->second;
 
-		_currentScene = sceneIter->second; // TODO: DO we have to dereference this? TEST IT.
-//		_currentScene->registerFunctions();
-
+    if(nextScene != NULL){
 		LOG_NOTICE("Set current scene to " + sceneName);
-		setupScene(_currentScene);
-		//rewindScene(lastScene); // rewind the last scene
+		setupScene(nextScene);
+		if(lastScene != NULL){
+            vector<VideoObject*>& videoObjects = lastScene->getVideos();
+            for (int i =0; i < videoObjects.size(); i++) {
+                switch (videoObjects[i]->_inputType) {
+                    case GO_VIDEO_CAMERA:
+                        // nothing
+                        break;
+                    case GO_VIDEO_PLAYER:
+                        //videoObjects[i]->_player->setFrame(0);
+                        if (videoObjects[i]->_player != NULL) {
+                            if(!videoObjects[i]->_bOffscreen){
+                                //videoObjects[i]->_player->setVolume(0.0f);
+                                videoObjects[i]->_player->setPaused(true);
+                                videoObjects[i]->_player->update();
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+        _currentScene = nextScene;
 		return true;
 
 	} else {
@@ -697,6 +717,7 @@ bool AppModel::hasProperty(string propName) {
 void AppModel::toggleBooleanProperty(string propName) {
 	bool prop = boost::any_cast<bool>(getProperty(propName));
 	setProperty(propName, !prop);
+	cout << propName << " " << !prop << endl;
 }
 
 // return a list of ALL properties -> useful for debug

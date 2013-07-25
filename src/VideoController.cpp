@@ -132,21 +132,22 @@ void VideoController::update() {
                         videoObjects[i]->_player->loadMovie(videoObjects[i]->_videoPath);
                         ofAddListener(videoObjects[i]->_player->threadedVideoEvent, this, &VideoController::threadedVideoEvent);
                         allVideos.insert(pair< string, ofxThreadedVideo* >(videoObjects[i]->_videoName, videoObjects[i]->_player));
-                    } else {
+                    }// else {
                         videoObjects[i]->_player = it->second;
-                    }
+                    //}
                 }
                 if(videoObjects[i]->_player->getVolume() != videoObjects[i]->_fVolume) videoObjects[i]->_player->setVolume(videoObjects[i]->_fVolume);
                 if(videoObjects[i]->_player->getPan() != videoObjects[i]->_fPan) videoObjects[i]->_player->setPan(videoObjects[i]->_fPan);
-                if(!videoObjects[i]->_updated && !videoObjects[i]->isFrameNew()){
+                //if(!videoObjects[i]->_updated && !videoObjects[i]->isFrameNew()){
                     videoObjects[i]->_player->update();
                     videoObjects[i]->_updated = true;
-                }
+                //}
                 break;
         }
-        for (int i = 0; i < videoObjects.size(); i++) videoObjects[i]->_updated = false;
+        videoObjects[i]->_updated = false;
     }
 
+    //for (int i = 0; i < videoObjects.size(); i++) videoObjects[i]->_updated = false;
 }
 
 //--------------------------------------------------------------
@@ -155,7 +156,7 @@ void VideoController::threadedVideoEvent(ofxThreadedVideoEvent & e) {
     ofxThreadedVideo * video = e.video;
 
     if(e.eventType == VIDEO_EVENT_LOAD_OK){
-        LOG_NOTICE("Finsished loading: " + video->getPath());
+        LOG_NOTICE("Finsished loading: " + video->getMoviePath());
         video->setVolume(1.0f);
         video->setPan(0.0f);
         video->setLoopState(OF_LOOP_NONE);

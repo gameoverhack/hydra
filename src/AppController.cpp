@@ -27,6 +27,7 @@ AppController::AppController() {
     _appModel->setProperty("crop720", 12);
     _appModel->setProperty("crop1280", 80);
     _appModel->setProperty("crop1920", 0);
+//    _appModel->setProperty("forcePause", true);
 //    _appModel->setProperty("controlWidth", 1680.0f);
 //    _appModel->setProperty("controlHeight", 1050.0f);
 //    _appModel->setProperty("outputWidth", 1920.0f);
@@ -46,7 +47,7 @@ AppController::AppController() {
 
     _appModel->loadScenes("scenes/scenes.bin");
     _appModel->listVideoFolder(boost::any_cast<string>(_appModel->getProperty("videoPath")));
-
+    _appModel->rewindAll();
 #ifdef FENSTER
 
     ofxDisplayList displays = ofxDisplayManager::get()->getDisplays();
@@ -151,7 +152,7 @@ AppController::AppController() {
 //    _keyModel->registerEvent('v', kKEY_DOWN, "paste current viewport", "AppController::pasteCurrentViewport");
 //
 	_keyModel->registerEvent('f', kKEY_DOWN, "toggle fullscreen/window", "AppView::toggleFullscreen");
-//	_keyModel->registerEvent('g', kKEY_DOWN, "toggle show/hide gui", "AppModel::toggleBooleanProperty", (string)"showGui");
+//	_keyModel->registerEvent('p', kKEY_DOWN, "toggle forcePause", "AppModel::toggleBooleanProperty", (string)"forcePause");
 //	_keyModel->registerEvent('p', kKEY_DOWN, "show all properties in debug view", "AppModel::toggleBooleanProperty", (string)"showProps");
 //	_keyModel->registerEvent('d', kKEY_DOWN, "show/hide debug view", "AppModel::toggleBooleanProperty", (string)"showDebug");
 

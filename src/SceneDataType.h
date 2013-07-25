@@ -96,14 +96,15 @@ public:
     string getInfo(){
 
         ostringstream os;
-        os << "Name: " << _videoName;// << endl;
+        os << "N: " << _videoName;// << endl;
         //os << "Type: " << videoType[_inputType] << endl;
         //os << "Crop: " << cropType[_cropType] << endl;
-        os << " Assigned: " << string(_bAssigned ? "TRUE" : "FALSE");// << endl;
-        os << " Offscreen: " << string(_bOffscreen ? "TRUE" : "FALSE");// << endl;
-        os << " Degraded: " << string(_bDegraded ? "TRUE" : "FALSE");// << endl;
-        os << " Volume: " << _fVolume;// << endl;
-        os << " Pan: " << _fPan;// << endl;
+        os << " A: " << string(_bAssigned ? "TRUE" : "FALSE");// << endl;
+        os << " O: " << string(_bOffscreen ? "TRUE" : "FALSE");// << endl;
+        os << " D: " << string(_bDegraded ? "TRUE" : "FALSE");// << endl;
+        os << " V: " << _fVolume;// << endl;
+        os << " P: " << _fPan;// << endl;
+        if (_player != NULL) os << " F: " << _player->getCurrentFrame();
 
         return os.str();
 

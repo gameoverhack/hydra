@@ -5,6 +5,7 @@
         <property name="crop1280" type="int">80</property>
         <property name="crop1920" type="int">0</property>
         <property name="crop720" type="int">12</property>
+        <property name="forcePause" type="bool">true</property>
         <property name="outputHeight" type="float">1050.000000000</property>
         <property name="outputWidth" type="float">1680.000000000</property>
         <property name="showDebug" type="bool">true</property>

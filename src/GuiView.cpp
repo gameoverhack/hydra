@@ -370,7 +370,7 @@ void GuiView::setup() {
 
     hButton * rewindAllButton = gui->addButton("rewindAll", scenesPanel, HGUI_ABSOLUTE_POSITION, 25 + 90 * 3 + 70, 240, 60, "rewind all");
     events->addListener("rewindAll", this, &GuiView::rewindAll);
-    rewindButton->setMessage("rewindAll");
+    rewindAllButton->setMessage("rewindAll");
 
     // Kinect Control Panel
 
