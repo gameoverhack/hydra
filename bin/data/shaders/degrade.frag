@@ -25,7 +25,8 @@ vec4 tex2DBiLinear( sampler2DRect textureSampler_i, vec2 texCoord_i, float fWidt
     vec4 p0q0 = texture2DRect(textureSampler_i, texCoord_New);
     vec4 p1q0 = texture2DRect(textureSampler_i, texCoord_New + vec2(texelSizeX, 0));
 
-    float m = rand(p0q0.xy) / 1.5;
+    float m = 0.9;
+//rand(p0q0.xy) / 1.5
 
 //    p0q0.r *= rand(rColor1.xy);
 //    p0q0.g *= rand(p0q0.xy);
@@ -131,7 +132,8 @@ void main()
 //    if(rColor1.z > 0.6){
 //        Data = tex2DBiLinear( ImageTexture, gl_TexCoord[0].st , rWidth+0.05, rHeight+0.05);
 //    }else{
-        Data = tex2DBiLinear( ImageTexture, gl_TexCoord[0].st , rWidth*6.0, rHeight*6.0);
+        Data = tex2DBiLinear( ImageTexture, gl_TexCoord[0].st , 0.25, 0.25);
+//rWidth*6.0, rHeight*6.0
 //    }
 
 	gl_FragColor = Data;
