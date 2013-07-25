@@ -331,19 +331,27 @@ bool AppModel::setCurrentScene(string sceneName) {
 		LOG_NOTICE("Set current scene to " + sceneName);
 		setupScene(nextScene);
 		if(lastScene != NULL){
-            vector<VideoObject*>& videoObjects = lastScene->getVideos();
-            for (int i =0; i < videoObjects.size(); i++) {
-                switch (videoObjects[i]->_inputType) {
+            vector<VideoObject*>& lastvideoObjects = lastScene->getVideos();
+            vector<VideoObject*>& nextVideoObjects = nextScene->getVideos();
+            for (int i = 0; i < lastvideoObjects.size(); i++) {
+                switch (lastvideoObjects[i]->_inputType) {
                     case GO_VIDEO_CAMERA:
                         // nothing
                         break;
                     case GO_VIDEO_PLAYER:
                         //videoObjects[i]->_player->setFrame(0);
-                        if (videoObjects[i]->_player != NULL) {
-                            if(!videoObjects[i]->_bOffscreen){
+                        if (lastvideoObjects[i]->_player != NULL) {
+                            bool bInNextScene = false;
+                            for (int j = 0; j < nextVideoObjects.size(); j++) {
+                                if(lastvideoObjects[i]->_player == nextVideoObjects[j]->_player){
+                                    bInNextScene = true;
+                                    break;
+                                }
+                            }
+                            if(!bInNextScene){
                                 //videoObjects[i]->_player->setVolume(0.0f);
-                                videoObjects[i]->_player->setPaused(true);
-                                videoObjects[i]->_player->update();
+                                lastvideoObjects[i]->_player->setPaused(true);
+                                lastvideoObjects[i]->_player->update();
                             }
                         }
                         break;
