@@ -310,7 +310,12 @@ bool AppModel::setupScene(Scene* scene) {
                     videoObjects[i]->_player->setPaused(false);
                     videoObjects[i]->_player->setVolume(videoObjects[i]->_fVolume);
                     videoObjects[i]->_player->setPan(videoObjects[i]->_fPan);
-                    videoObjects[i]->_player->update();
+//                    int lastFrCame = videoObjects[i]->_player->getCurrentFrame();
+//                    while(videoObjects[i]->_player->getCurrentFrame() == lastFrame){
+//                        videoObjects[i]->_player->update();
+//                    }
+                    for(int voodoo = 0; voodoo < 12; voodoo++) videoObjects[i]->_player->update();
+
                 }
                 break;
         }
