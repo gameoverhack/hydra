@@ -111,11 +111,6 @@ public:
     };
 
     void generateRandom(){
-        if(_camera != NULL){
-            if(jamFBO.getWidth() != _camera->getWidth() && _camera->getWidth() != 0){
-                jamFBO.allocate(_camera->getWidth(), _camera->getHeight());
-            }
-        }
         if(ofRandom(10) < 3.0){
             rFactor = ofRandom(0.02, 0.03);
             rMillis = ofRandom(5000, 20000);

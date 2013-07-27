@@ -38,7 +38,7 @@ public:
 
 private:
 
-    void drawVideoObject(VideoObject* videoObject, float x, float y, float w, float h, float cW, float cH, float cPixels);
+    void drawCamera(VideoObject* videoObject, float x, float y, float w, float h, float cW, float cH, float cPixels);
 
     void toggleFullscreen();
 

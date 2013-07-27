@@ -74,26 +74,18 @@ void AppView::update() {
             float w = currentPattern[i]->width;
             float h = currentPattern[i]->height;
 
-
-            switch(videoObjects[i]->_inputType) {
-                case GO_VIDEO_PLAYER:
-//                    float vW = videoObjects[i]->_player->getWidth();
-//                    float vH = videoObjects[i]->_player->getHeight();
-//                    drawVideoObject(videoObjects[i], x, y, w, h);
-                    videoObjects[i]->_player->draw(x,y,w,h);
-                    break;
-                case GO_VIDEO_CAMERA:
-                    float cW = videoObjects[i]->_camera->getWidth();
-                    float cH = videoObjects[i]->_camera->getHeight();
-                    if(cW == 720){
-                        drawVideoObject(videoObjects[i], x, y, w, h, cW, cH, crop720);
-                    }else if(cW == 1280){
-                        drawVideoObject(videoObjects[i], x, y, w, h, cW, cH, crop1280);
-                    }else{
-                        drawVideoObject(videoObjects[i], x, y, w, h, cW, cH, crop1920);
-                    }
-                    break;
-
+            if(videoObjects[i]->_inputType == GO_VIDEO_PLAYER){
+                videoObjects[i]->_player->draw(x, y, w, h);
+            }else if(videoObjects[i]->_inputType == GO_VIDEO_CAMERA){
+                float cW = videoObjects[i]->_camera->getWidth();
+                float cH = videoObjects[i]->_camera->getHeight();
+                if(cW == 720){
+                    drawCamera(videoObjects[i], x, y, w, h, cW, cH, crop720);
+                }else if(cW == 1280){
+                    drawCamera(videoObjects[i], x, y, w, h, cW, cH, crop1280);
+                }else{
+                    drawCamera(videoObjects[i], x, y, w, h, cW, cH, crop1920);
+                }
             }
         }
     }
@@ -101,9 +93,14 @@ void AppView::update() {
 
 }
 
-void AppView::drawVideoObject(VideoObject* videoObject, float x, float y, float w, float h, float cW, float cH, float cPixels){
+void AppView::drawCamera(VideoObject* videoObject, float x, float y, float w, float h, float cW, float cH, float cPixels){
 
     if(videoObject->_bDegraded){
+
+        if(videoObject->jamFBO.getWidth() != cW || videoObject->jamFBO.getHeight() != cH){
+            videoObject->jamFBO.allocate(cW, cH);
+        }
+
         if(ofGetElapsedTimeMillis() - videoObject->lastTime > videoObject->rMillis) videoObject->generateRandom();
         if(ofGetElapsedTimeMillis() - videoObject->lastJam > videoObject->jamMillis){
             videoObject->lastJam = ofGetElapsedTimeMillis();
